@@ -1,0 +1,5 @@
+name: mymodule
+description: This is a custom module created for the emonstration purpose.
+package: Custom
+type: module
+core_version_requirement: ^9 || ^10
