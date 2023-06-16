@@ -1,3 +1,5 @@
 services:
   rsvplist.enabler:
+    class: '\Drupal\rsvplist\EnablerService'
+    arguments: ['@database']
     
