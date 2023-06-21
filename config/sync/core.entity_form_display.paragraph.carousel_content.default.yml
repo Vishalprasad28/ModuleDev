@@ -1,0 +1,36 @@
+uuid: 26d5d284-35fc-48a3-b5a1-c3d8eefaf92e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.carousel_content.field_descripton
+    - field.field.paragraph.carousel_content.field_image_of_carousel
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.carousel_content
+  module:
+    - image
+    - text
+id: paragraph.carousel_content.default
+targetEntityType: paragraph
+bundle: carousel_content
+mode: default
+content:
+  field_descripton:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_image_of_carousel:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
