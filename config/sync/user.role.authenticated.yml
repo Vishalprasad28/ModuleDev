@@ -1,0 +1,12 @@
+uuid: 7641a2da-8407-4682-9ef0-2cca02f9b4c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - background_image
+id: authenticated
+label: 'Authenticated user'
+weight: -9
+is_admin: null
+permissions:
+  - 'view background image'
