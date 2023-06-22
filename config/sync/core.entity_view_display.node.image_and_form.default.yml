@@ -20,8 +20,8 @@ third_party_settings:
         layout_id: layout_twocol_section
         layout_settings:
           label: ''
-          context_mapping: {  }
           column_widths: 50-50
+          context_mapping: {  }
         components:
           6c7bd021-1168-4f15-93f5-ab3ec84987ce:
             uuid: 6c7bd021-1168-4f15-93f5-ab3ec84987ce
