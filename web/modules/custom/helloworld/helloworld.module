@@ -6,6 +6,9 @@
  * Contains the hook impletemnation
  */
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+
  /**
   * Implementing the hook_permission()
   */
@@ -16,4 +19,21 @@ function helloworld_permission() {
       'description' => t('Perform administration tasks for my module.'),
     ),
   );
+}
+
+/**
+ * Implementing the hook_help module
+ */
+function helloworld_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.helloworld':
+      return '<p>' . '<h3>' . t('Its a custom Page') . '</h3>' . t('Where your name and the email id will be printed  provided you are logged in, also it has a feature of printing the content based on route parameter,') . '<br> <i>' . t('This Page is being brought by implementing the ') . '<strong><a href="https://api.drupal.org/api/drupal/core%21modules%21help%21help.api.php/function/hook_help/10">hook_help()</a></strong> </i>' . '</p>';
+  }
+}  
+
+/**
+ * Implementing the hook_entity_view()
+ */
+function helloworld_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  $node_id = $entity->id();
 }
