@@ -37,4 +37,24 @@ class SimpleController extends ControllerBase {
 
     return $content;
   }
+
+  /**
+   * @method
+   * To Return a simple markup.
+   * 
+   * @return array
+   */
+  public function dynamicGreeting(string $name, string $company) {
+    $content = [
+      '#type' => 'markup',
+      '#markup' => t('Hello <strong> @user </strong> You are an employee at <strong> @company </strong>',
+       [
+        '@user' => $name,
+        '@company' => $company,
+       ]
+       ),
+      ];
+
+    return $content;
+  }
 }
