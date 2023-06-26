@@ -21,17 +21,23 @@ class SimpleController extends ControllerBase {
 
   /**
    * @method
-   * To Return a simple markup.
+   * To Return a simple markup of user details.
    * 
    * @return array
    */
   public function helloUser() {
+
+    $session = \Drupal::request()->getSession();
+
+    $user_details = $session->get('custom_user.details');
     $content = [
       '#type' => 'markup',
-      '#markup' => $this->t('Hello <strong>@user</strong> how are you? <br><br> gocha we got your email id: @email',
+      '#markup' => $this->t('Hello <strong>@user</strong> how are you? <br><br> Your email id: @email <br> Your Phone Number: <strong>@phone</strong> <br> Your Gender: <strong> @gender </strong>',
       [
-        '@user' => $this->current_user->getAccountName(),
-        '@email' => $this->current_user->getEmail(),
+        '@user' => $user_details['full_name'],
+        '@email' => $user_details['email'],
+        '@phone' => $user_details['phone'],
+        '@gender' => $user_details['gender'],
       ]),
     ];
 
