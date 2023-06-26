@@ -7,4 +7,4 @@ dependencies:
   - drupal:block
   - drupal:views
   - mymodule:mymodule
-configure: helloworld.admin_settings
+configure: helloworld.basic_config_form

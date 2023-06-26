@@ -1,4 +1,4 @@
-# Rout For the User Greeting page
+# Route For the User Greeting page
 helloworld.simple_page:
   path: '/greet-me'
   defaults:
@@ -7,7 +7,7 @@ helloworld.simple_page:
   requirements:
     _permission: Custom static Permission
 
-# Rout For the Dynamic Renderable page    
+# Route For the Dynamic Renderable page    
 helloworld.dynamic_page:
   path: '/hello/{name}/{company}'
   defaults:
@@ -15,4 +15,12 @@ helloworld.dynamic_page:
     _controller: \Drupal\helloworld\Controller\SimpleController::dynamicGreeting
   requirements:
     _permission: Custom static Permission
-    
+
+# Route for the Config Form
+helloworld.basic_config_form:
+  path: '/admin/config/development/helloworld/user_form'
+  defaults:
+    _title: User Form
+    _form: \Drupal\helloworld\Form\BasicConfigForm
+  requirements:
+    _permission: Configuration Form permission
