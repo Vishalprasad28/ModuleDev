@@ -1,0 +1,100 @@
+uuid: 216dce00-85fb-4951-ab89-be063a21ddf2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.image_and_form.field_digital_agency_form
+    - field.field.node.image_and_form.field_form_image
+    - node.type.image_and_form
+  module:
+    - image
+    - layout_builder
+    - user
+    - webform
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          column_widths: 50-50
+          context_mapping: {  }
+        components:
+          6c7bd021-1168-4f15-93f5-ab3ec84987ce:
+            uuid: 6c7bd021-1168-4f15-93f5-ab3ec84987ce
+            region: first
+            configuration:
+              id: 'field_block:node:image_and_form:field_form_image'
+              label: 'Form Image'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          0d885068-4bf3-4090-a454-bf1aa53ff294:
+            uuid: 0d885068-4bf3-4090-a454-bf1aa53ff294
+            region: second
+            configuration:
+              id: 'field_block:node:image_and_form:field_digital_agency_form'
+              label: 'Digital Agency Form'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: webform_entity_reference_entity_view
+                label: hidden
+                settings:
+                  source_entity: true
+                  lazy: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+id: node.image_and_form.default
+targetEntityType: node
+bundle: image_and_form
+mode: default
+content:
+  field_digital_agency_form:
+    type: webform_entity_reference_entity_view
+    label: above
+    settings:
+      source_entity: true
+      lazy: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_form_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
