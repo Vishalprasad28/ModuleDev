@@ -7,6 +7,8 @@
 
 namespace Drupal\helloworld\Form;
 
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -66,6 +68,9 @@ class BasicConfigForm extends ConfigFormBase {
       '#title' => $this->t('Enter Your Full Name'),
       '#description' => $this->t('First Name Should Contain only Characters'),
       '#required' => TRUE,
+      '#attributes'=> [
+        'id' => 'dynamic-field',
+      ],
     ];
     $form['phone'] = [
       '#type' => 'tel',
@@ -87,6 +92,16 @@ class BasicConfigForm extends ConfigFormBase {
       '#title' => $this->t('Enter Your Gender'),
       '#default_value' => 1,
       '#options' => $options,
+      '#ajax' => [
+        'callback' => '::dynamicNameModify',
+        'disable-refocus' => FALSE,
+        'event' => 'change',
+        'wrapper' => 'dynamic-field',
+        'progress' => [
+          'type' => 'throbber',
+          'message' => $this->t('Verifying entry..'),
+        ],
+      ],
       '#description' => $this->t('Select Your Gender'),
     ];
     return parent::buildForm($form, $form_state);
@@ -181,5 +196,33 @@ class BasicConfigForm extends ConfigFormBase {
     else {
       return TRUE;
     }
+  }
+
+  /**
+   * @method dynamicNameModify()
+   * 
+   * @param array &$form
+   *   Takes in the Form array
+   * @param FormStateInterface $form_state
+   *   Takes in the FormStateInterface Object
+   * 
+   * @return array
+   */
+  public function dynamicNameModify(array &$form, FormStateInterface $form_state) {
+    $full_name = $form['full_name']['#value'];
+    $gender = $form['gender']['#value'];
+
+    if ($gender === 1) {
+      $full_name = 'Mr' . $full_name;
+    }
+    elseif ($gender === 2) {
+      $full_name = 'Miss' . $full_name;
+    }
+    $form['full_name']['#value'] = $full_name;
+
+    $ajax = new AjaxResponse();
+    $ajax->addCommand(new ReplaceCommand('#dynamic-field', $form['full_name']));
+    return $ajax;
+
   }
 }
