@@ -33,6 +33,9 @@ class SimpleController extends ControllerBase {
         '@user' => $this->current_user->getAccountName(),
         '@email' => $this->current_user->getEmail(),
       ]),
+      '#cache' => [
+        'max-age' => 0
+      ],
     ];
 
     return $content;
