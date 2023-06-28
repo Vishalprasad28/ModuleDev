@@ -8,33 +8,34 @@
 namespace Drupal\helloworld\Form;
 
 use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\HtmlResponse;
+use Masterminds\HTML5\Serializer\HTML5Entities;
 
 class BasicConfigForm extends ConfigFormBase {
 
-  /**
-   * @var array $accepted_domains
-   */
-  private array $accepted_domains;
+  private const ACCEPTED_DOMAINS = [
+    'yahoo',
+    'gmail',
+    'outlook',
+    'proton',
+  ];
 
-  /**
-   * @var array $accepted_domain_extentions
-   */
-  private array $accepted_domain_extentions;
+  private const ACCEPTED_DOMAIN_EXTENTIONS = [
+    'com',
+  ];
 
-  public function __construct() {
-    $this->accepted_domains = [
-      'yahoo',
-      'gmail',
-      'outlook',
-      'proton',
-    ];
-    $this->accepted_domain_extentions = [
-      'com',
-    ];
-  }
+  private const BASIC = 0.7;
+  
+  private const HRA = 0.225;
+
+  private const ALLOWANCE = 0.075;
+
+
   /**
    * {@inheritdoc}
    */
@@ -68,10 +69,25 @@ class BasicConfigForm extends ConfigFormBase {
       '#title' => $this->t('Enter Your Full Name'),
       '#description' => $this->t('First Name Should Contain only Characters'),
       '#required' => TRUE,
+      '#ajax' => [
+        'callback' => '::dynamicNameModify',
+        'focus' => TRUE,
+        'event' => 'keyup',
+        'wrapper' => 'dynamic-field',
+      ],
+    ];
+
+    $form['auto_name_display'] = [
+      '#type' => 'textfield',
+      '#default_value' => $form_state->getValue('full_name'),
+      '#disabled' => TRUE,
       '#attributes'=> [
         'id' => 'dynamic-field',
       ],
     ];
+
+    // $form['auto_name_display']['#value'] = $this->updateDynamicField($form, $form_state);
+  
     $form['phone'] = [
       '#type' => 'tel',
       '#title' => $this->t('Enter Your Phone Number'),
@@ -80,6 +96,7 @@ class BasicConfigForm extends ConfigFormBase {
       '#required' => TRUE,
       '#pattern' => '[\+][9][1][0-9]{10}$',
     ];
+
     $form['email'] = [
       '#type' => 'email',
       '#title' => $this->t('Enter Your Email'),
@@ -87,24 +104,99 @@ class BasicConfigForm extends ConfigFormBase {
       '#pattern' => '[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$',
       '#required' => TRUE,
     ];
+
+    $form['salary'] = [
+      '#type' => 'number',
+      '#unsigned' => TRUE,
+      '#size' => 'small',
+      '#title' => $this->t('Enter your salary'),
+      '#description' => $this->t('Enter Your Salary here'),
+      '#required' => TRUE,
+      '#ajax' => [
+        'callback' => '::salaryDivision',
+        'focus' => TRUE,
+        'event' => 'change',
+        'wrapper' => 'salary-division',
+      ],
+    ];
+
+    $form['basic'] = [
+      '#type' => 'textfield',
+      '#disabled' => TRUE,
+      '#title' => $this->t('Basic Salary'),
+      '#default_value' =>(int)$form_state->getValue('salary') * self::BASIC,
+      '#attributes' => [
+        'id' => 'basic'
+      ]
+    ];
+    $form['hra'] = [
+      '#type' => 'textfield',
+      '#disabled' => TRUE,
+      '#title' => $this->t('HRA'),
+      '#default_value' =>(int)$form_state->getValue('salary') * self::HRA,
+      '#attributes' => [
+        'id' => 'hra'
+      ]
+    ];
+    $form['allowance'] = [
+      '#type' => 'textfield',
+      '#disabled' => TRUE,
+      '#title' => $this->t('allowance'),
+      '#default_value' =>(int)$form_state->getValue('salary') * self::ALLOWANCE,
+      '#attributes' => [
+        'id' => 'allowance'
+      ]
+    ];
+
     $form['gender'] = [
       '#type' => 'radios',
       '#title' => $this->t('Enter Your Gender'),
       '#default_value' => 1,
       '#options' => $options,
-      '#ajax' => [
-        'callback' => '::dynamicNameModify',
-        'disable-refocus' => FALSE,
-        'event' => 'change',
-        'wrapper' => 'dynamic-field',
-        'progress' => [
-          'type' => 'throbber',
-          'message' => $this->t('Verifying entry..'),
-        ],
-      ],
       '#description' => $this->t('Select Your Gender'),
     ];
-    return parent::buildForm($form, $form_state);
+
+    $form['actions']['#type'] = 'actions';
+    $form['actions']['submit'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('submit'),
+    ];
+
+    return $form;
+  }
+
+    /**
+   * @method dynamicNameModify()
+   * 
+   * @param array &$form
+   *   Takes in the Form array
+   * @param FormStateInterface $form_state
+   *   Takes in the FormStateInterface Object
+   * 
+   * @return mixed
+   */
+  public function dynamicNameModify(array &$form, FormStateInterface $form_state) {
+    $response = new AjaxResponse();
+    $response->addCommand(new InvokeCommand('#dynamic-field', 'val', [$form_state->getValue('full_name')]));
+    return $response;
+    // return $form['auto_name_display'];
+  }
+
+  /**
+   * @method salaryDivision()
+   * 
+   * @param array &$form,
+   * @param FormStateInterface $form_state
+   * 
+   * @return array
+   */
+  public function salaryDivision(array &$form, FormStateInterface $form_state) {
+    $response = new AjaxResponse();
+    $response->addCommand(new InvokeCommand('#basic', 'val', [$form_state->getValue('salary') * self::BASIC]));
+    $response->addCommand(new InvokeCommand('#hra', 'val', [$form_state->getValue('salary') * self::HRA]));
+    $response->addCommand(new InvokeCommand('#allowance', 'val', [$form_state->getValue('salary') * self::ALLOWANCE]));
+
+    return $response;
   }
 
   /**
@@ -173,7 +265,7 @@ class BasicConfigForm extends ConfigFormBase {
     $domain_with_extention = explode('@', $email);
     $domain = explode('.', $domain_with_extention[1]);
 
-    if ($email == '' || !in_array($domain[0], $this->accepted_domains, TRUE) || !in_array($domain[1], $this->accepted_domain_extentions, TRUE)) {
+    if ($email == '' || !in_array($domain[0], self::ACCEPTED_DOMAINS, TRUE) || !in_array($domain[1], self::ACCEPTED_DOMAIN_EXTENTIONS, TRUE)) {
       return FALSE;
     }
     return TRUE;
@@ -196,33 +288,5 @@ class BasicConfigForm extends ConfigFormBase {
     else {
       return TRUE;
     }
-  }
-
-  /**
-   * @method dynamicNameModify()
-   * 
-   * @param array &$form
-   *   Takes in the Form array
-   * @param FormStateInterface $form_state
-   *   Takes in the FormStateInterface Object
-   * 
-   * @return array
-   */
-  public function dynamicNameModify(array &$form, FormStateInterface $form_state) {
-    $full_name = $form['full_name']['#value'];
-    $gender = $form['gender']['#value'];
-
-    if ($gender === 1) {
-      $full_name = 'Mr' . $full_name;
-    }
-    elseif ($gender === 2) {
-      $full_name = 'Miss' . $full_name;
-    }
-    $form['full_name']['#value'] = $full_name;
-
-    $ajax = new AjaxResponse();
-    $ajax->addCommand(new ReplaceCommand('#dynamic-field', $form['full_name']));
-    return $ajax;
-
   }
 }
