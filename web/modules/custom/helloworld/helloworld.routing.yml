@@ -1,0 +1,58 @@
+# Route For the User Greeting page
+helloworld.simple_page:
+  path: '/greet-me'
+  defaults:
+    _title: This is a Greeting Page for the Hello World Module
+    _controller: \Drupal\helloworld\Controller\SimpleController::helloUser
+  requirements:
+    _permission: Custom static Permission
+
+# Route For the Dynamic Renderable page    
+helloworld.dynamic_page:
+  path: '/hello/{name}/{company}'
+  defaults:
+    _title: This is a dynamic page taking parameters from url
+    _controller: \Drupal\helloworld\Controller\SimpleController::dynamicGreeting
+  requirements:
+    _permission: Custom static Permission
+
+# Route for the Config Form
+helloworld.basic_config_form:
+  path: '/admin/config/development/helloworld/user_form'
+  defaults:
+    _title: User Form
+    _form: \Drupal\helloworld\Form\BasicConfigForm
+  requirements:
+    _permission: Configuration Form permission
+
+# Route for a simple page
+helloworld.static_page:
+  path: '/static-page'
+  defaults:
+    _title: This is a Static Page from the Hello World Module
+    _controller: \Drupal\helloworld\Controller\SimpleController::staticPage
+  requirements:
+    _permission: access the custom page
+
+# Route to a template
+helloworld.template_route:
+  path: '/helloworld/templete'
+  defaults:
+    _controller: \Drupal\helloworld\Controller\SimpleController::newController
+    _title_callback: \Drupal\helloworld\Controller\SimpleController::dynamicTitle
+  requirements:
+    _custom_access: \Drupal\helloworld\Controller\SimpleController::checkAccess
+    _role: administrator+content_editor
+
+# Route for the campaign page
+helloworld.campaign:
+  path: /campaign/value/{val}
+  defaults:
+    _controller: \Drupal\helloworld\Controller\SimpleController::campaignValueFetch
+    _title: Campaign Page
+    # This is the default value for the parameter
+    val: 0
+  requirements:
+    _permission: access content
+    # Setting the regx to stricltly deny any value other than an integer
+    val: '\d+'  

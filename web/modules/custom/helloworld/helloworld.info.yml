@@ -1,0 +1,10 @@
+name: 'HelloWorld'
+type: module
+description: 'A Custom Module for the Testing Purpose.'
+package: Custom
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:block
+  - drupal:views
+  - mymodule:mymodule
+configure: helloworld.basic_config_form

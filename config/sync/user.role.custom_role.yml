@@ -1,0 +1,9 @@
+uuid: c0f70167-ff13-48b7-9e13-92ae3deac0f6
+langcode: en
+status: true
+dependencies: {  }
+id: custom_role
+label: 'custom role'
+weight: -7
+is_admin: null
+permissions: {  }
