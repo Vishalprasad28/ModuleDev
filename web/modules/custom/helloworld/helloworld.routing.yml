@@ -25,6 +25,15 @@ helloworld.basic_config_form:
   requirements:
     _permission: Configuration Form permission
 
+# Route for a simple page
+helloworld.static_page:
+  path: '/static-page'
+  defaults:
+    _title: This is a Static Page from the Hello World Module
+    _controller: \Drupal\helloworld\Controller\SimpleController::staticPage
+  requirements:
+    _permission: access the custom page
+
 # Route to a template
 helloworld.template_route:
   path: '/helloworld/templete'
@@ -32,4 +41,4 @@ helloworld.template_route:
     _controller: \Drupal\helloworld\Controller\SimpleController::newController
     _title_callback: \Drupal\helloworld\Controller\SimpleController::dynamicTitle
   requirements:
-    _role: administrator+content_editor
+    _custom_access: \Drupal\helloworld\Controller\SimpleController::checkAccess

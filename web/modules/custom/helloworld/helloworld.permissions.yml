@@ -4,4 +4,7 @@ Custom static Permission:
 Configuration Form permission:
   title: Hello World User Form
   description: It is a basic user form form the user details input
-  restrict access: TRUE  
+  restrict access: TRUE
+access the custom page:
+  title: Custom Permission
+  description: It is the custom permission being given to the users to view the greeting page

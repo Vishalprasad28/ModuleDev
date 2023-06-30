@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 id: custom_role
 label: 'custom role'
-weight: -6
+weight: -7
 is_admin: null
 permissions: {  }

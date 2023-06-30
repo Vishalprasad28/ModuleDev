@@ -6,7 +6,9 @@
  */
 namespace Drupal\helloworld\Controller;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\user\Entity\User;
 
 class SimpleController extends ControllerBase {
@@ -18,6 +20,18 @@ class SimpleController extends ControllerBase {
 
   public function __construct() {
     $this->current_user = \Drupal::currentUser();
+  }
+
+  /**
+   * @method staticPage()
+   * 
+   * @return array
+   */
+  public function staticPage() {
+    return [
+      '#type' => 'markup',
+      '#markup' => $this->t('This is just a static page'),
+    ];
   }
 
   /**
@@ -94,5 +108,15 @@ class SimpleController extends ControllerBase {
 
     $account_name = $user->getAccountName();
     return 'Page title being served for' . ' ' . $account_name ;
+  }
+
+  /**
+   * @method checkAccess()
+   * 
+   * @return \Drupal\Core\Access\AccessResultInterface
+   *   Returns the permission to the route access
+   */
+  public function checkAccess() {
+    return AccessResult::allowedIf($this->current_user->hasPermission('access the custom page'));
   }
 }
