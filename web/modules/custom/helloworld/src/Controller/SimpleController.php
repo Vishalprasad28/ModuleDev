@@ -119,4 +119,19 @@ class SimpleController extends ControllerBase {
   public function checkAccess() {
     return AccessResult::allowedIf($this->current_user->hasPermission('access the custom page'));
   }
+
+  /**
+   * @method campaignValueFetch()
+   * 
+   * @param int $val
+   *   Takes an integer parameter from the url
+   * @return array
+   *   returns the render array to display on the page.
+   */
+  public function campaignValueFetch(int $val) {
+    return[
+      '#type' => 'markup',
+      '#markup' => t('Campaign Number of the Campaign is: @val', ['@val' => $val]),
+    ];
+  }
 }

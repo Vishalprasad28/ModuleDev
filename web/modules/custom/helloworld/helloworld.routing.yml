@@ -43,3 +43,16 @@ helloworld.template_route:
   requirements:
     _custom_access: \Drupal\helloworld\Controller\SimpleController::checkAccess
     _role: administrator+content_editor
+
+# Route for the campaign page
+helloworld.campaign:
+  path: /campaign/value/{val}
+  defaults:
+    _controller: \Drupal\helloworld\Controller\SimpleController::campaignValueFetch
+    _title: Campaign Page
+    # This is the default value for the parameter
+    val: 0
+  requirements:
+    _permission: access content
+    # Setting the regx to stricltly deny any value other than an integer
+    val: '\d+'  
