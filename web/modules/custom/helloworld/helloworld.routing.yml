@@ -42,3 +42,4 @@ helloworld.template_route:
     _title_callback: \Drupal\helloworld\Controller\SimpleController::dynamicTitle
   requirements:
     _custom_access: \Drupal\helloworld\Controller\SimpleController::checkAccess
+    _role: administrator+content_editor
