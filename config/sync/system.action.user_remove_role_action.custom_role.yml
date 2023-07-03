@@ -1,0 +1,14 @@
+uuid: 6b81f52f-a738-4c73-93bb-f2be09b11d0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.custom_role
+  module:
+    - user
+id: user_remove_role_action.custom_role
+label: 'Remove the custom role role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: custom_role

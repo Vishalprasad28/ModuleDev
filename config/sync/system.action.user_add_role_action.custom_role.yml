@@ -1,0 +1,14 @@
+uuid: af8406ab-3515-4602-8741-6f5a9c09c1ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.custom_role
+  module:
+    - user
+id: user_add_role_action.custom_role
+label: 'Add the custom role role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: custom_role
