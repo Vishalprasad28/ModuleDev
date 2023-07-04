@@ -36,7 +36,7 @@ class BasicRouting extends RouteSubscriberBase {
    * @return void
    */
   public function redirectAfterSubmit(string $route_name, &$form, FormStateInterface $form_state) {
-    $url = Url::fromRoute('helloworld.custom_welcome_page');
+    $url = Url::fromRoute($route_name);
     $form_state->setRedirectUrl($url);
   }
 }
