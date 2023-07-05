@@ -97,7 +97,7 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
     $user_detail = $this->configuration['user_detail'];
     switch ($user_detail) {
       case 'role':
-        $value = $this->current_user->getRoles()[0];
+        $value = implode(', ', $this->current_user->getRoles());
         break;
       case 'email':
         $value = $this->current_user->getEmail();
@@ -106,7 +106,7 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
         $value = $this->current_user->getAccountName();
         break;
       default:
-        $value = $this->current_user->getRoles()[0];
+        $value = implode(', ', $this->current_user->getRoles());
     }
 
     $build['content'] = [
