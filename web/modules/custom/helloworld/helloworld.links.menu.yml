@@ -1,0 +1,6 @@
+helloworld.admin_settings_link:
+  title: Hello World Form
+  description: User Configuration form for the helloworld module
+  route_name: helloworld.basic_config_form
+  parent: system.admin_config_development
+  weight: 10

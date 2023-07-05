@@ -1,0 +1,27 @@
+uuid: 5eab953c-8221-45c9-a282-8da7dc3772f1
+langcode: en
+status: true
+dependencies:
+  module:
+    - helloworld
+    - system
+  theme:
+    - olivero
+id: olivero_greetingblock
+theme: olivero
+region: sidebar
+weight: 0
+provider: null
+plugin: helloworld_greeting_block
+settings:
+  id: helloworld_greeting_block
+  label: 'Greeting Block'
+  label_display: visible
+  provider: helloworld
+  user_detail: role
+  example: 'Hello world!'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /custom-welcome-page

@@ -1,0 +1,7 @@
+block.settings.helloworld_greeting_block:
+  type: block_settings
+  label: 'Greeting Block block'
+  mapping:
+    user_detail:
+      type: radios
+      label: User Details

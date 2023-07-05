@@ -4,9 +4,11 @@ status: true
 dependencies:
   module:
     - background_image
+    - helloworld
 id: authenticated
 label: 'Authenticated user'
 weight: -9
 is_admin: null
 permissions:
+  - 'Custom static Permission'
   - 'view background image'
