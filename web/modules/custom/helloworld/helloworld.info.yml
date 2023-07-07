@@ -1,0 +1,5 @@
+name: 'helloworld'
+type: module
+description: 'abcd'
+package: Custom
+core_version_requirement: ^10

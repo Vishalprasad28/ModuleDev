@@ -11,6 +11,6 @@ features:
   favicon: true
   node_user_picture: true
 logo:
-  path: 'public://icons8-puppy-50 (1).png'
+  path: ''
   url: ''
-  use_default: false
+  use_default: true

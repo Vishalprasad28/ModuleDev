@@ -1,0 +1,23 @@
+field.storage_settings.rgb_color_picker:
+  type: mapping
+  label: RGB Color Picker storage settings
+  mapping:
+    foo:
+      type: string
+      label: Foo
+
+field.field_settings.rgb_color_picker:
+  type: mapping
+  label: RGB Color Picker field settings
+  mapping:
+    bar:
+      type: string
+      label: Bar
+
+field.value.rgb_color_picker:
+  type: mapping
+  label: Default value
+  mapping:
+    value:
+      type: label
+      label: Value

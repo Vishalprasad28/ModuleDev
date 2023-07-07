@@ -1,0 +1,5 @@
+name: 'rsvplist'
+type: module
+description: 'eddf'
+package: Custom
+core_version_requirement: ^10

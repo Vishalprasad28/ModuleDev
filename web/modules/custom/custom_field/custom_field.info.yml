@@ -1,0 +1,5 @@
+name: 'custom_field'
+type: module
+description: 'A Custom Field Type along with its widget and formatter.'
+package: Custom
+core_version_requirement: ^10

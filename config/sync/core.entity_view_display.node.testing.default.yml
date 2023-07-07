@@ -1,0 +1,37 @@
+uuid: e553ed3b-0015-4139-a104-a1f9f30a388d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.testing.body
+    - field.field.node.testing.field_rgb_picker
+    - node.type.testing
+  module:
+    - custom_field
+    - text
+    - user
+id: node.testing.default
+targetEntityType: node
+bundle: testing
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_rgb_picker:
+    type: static_hex_code
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
