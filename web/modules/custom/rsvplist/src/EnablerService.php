@@ -38,7 +38,7 @@ class EnablerService {
       $rsvp_enabled->condition('nid', $node->id());
       $result = $rsvp_enabled->execute();
 
-      return !(empty($result->fetchCol()));
+      return !empty($result->fetchCol());
 
     }
     catch (\Exception $e) {
@@ -56,7 +56,6 @@ class EnablerService {
    * @throw Exception
    */
   public function setEnabled(Node $node) {
-
     try {
       if (!$this->isEnabled($node)) {
         $insert = $this->database_connection->insert('rsvplist_enabled');
