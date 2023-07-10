@@ -73,10 +73,8 @@ final class RgbColorPickerItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public function isEmpty(): bool {
-    return match ($this->get('value')->getValue()) {
-      NULL, '' => TRUE,
-      default => FALSE,
-    };
+    $is_empty = $this->get('value')->getValue() == NULL && ($this->get('red')->getValue() == NULL && $this->get('green')->getValue() == NULL && $this->get('blue')->getValue() == NULL);
+    return $is_empty;
   }
 
   /**
@@ -87,9 +85,8 @@ final class RgbColorPickerItem extends FieldItemBase {
     // See /core/lib/Drupal/Core/TypedData/Plugin/DataType directory for
     // available data types.
     $properties['value'] = DataDefinition::create('string')
-      ->setLabel(t('Text value'))
-      ->addConstraint('HexCodeFormatter')
-      ->setRequired(TRUE);
+      ->setLabel(('Text value'))
+      ->addConstraint('HexCodeFormatter');
 
       //Properties for the red component
       $properties['red'] = DataDefinition::create('string')->setLabel('red');
@@ -113,6 +110,9 @@ final class RgbColorPickerItem extends FieldItemBase {
 
     // @DCG Suppose our value must not be longer than 6 characters.
     $options['value']['Length']['max'] = 7;
+    $options['red']['Length']['max'] = 2;
+    $options['green']['Length']['max'] = 2;
+    $options['blue']['Length']['max'] = 2;
 
     // See /core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint
     // directory for available constraints.

@@ -24,7 +24,7 @@ final class BackgroundColorSetterFormatter extends FormatterBase {
     $roles = $user->getRoles();
     $element = [];
     foreach ($items as $delta => $item) {
-      if (isset($item->value)) {
+      if ($item->value) {
         $value = $item->value;
       }
       else {

@@ -21,12 +21,43 @@ final class RgbPickerWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state): array {
+    if ($items[$delta]->value) {
+      $value = $items[$delta]->value;
+    }
+    elseif ($items[$delta]->red && $items[$delta]->green && $items[$delta]->blue) {
+      $value = '#' . $items[$delta]->red . $items[$delta]->green . $items[$delta]->blue;
+    }
+    else {
+      $value = '';
+    }
     $element['value'] = $element + [
       '#type' => 'color',
       '#title' => $this->t('Pick the color'),
-      '#default_value' => $items[$delta]->value ?? NULL,
+      '#element_validate' => array(
+        array($this, 'minColorRangeValidate'),
+      ),
+      '#default_value' => $value,
     ];
     return $element;
   }
 
+ /**
+   * @method minColorRangeValidate()
+   *   To Validated the color value whethere its within the range
+   * 
+   * @param array $element
+   *   Receives the Field elements
+   * @param FormStateInterface $form_state
+   *   Receives the form_state
+   * 
+   * @return void
+   */
+  public function minColorRangeValidate($element, FormStateInterface $form_state) {
+    $min_value = base_convert(substr($this->getSetting('rgb_min'), 1, 6), 16, 10);
+    $form_value = base_convert(substr($form_state->getValue('value'), 1, 6), 16, 10);
+
+    if ($form_value < $min_value) {
+      $form_state->setErrorByName('value', $this->t('Value is outside the range'));
+    }
+  }
 }
