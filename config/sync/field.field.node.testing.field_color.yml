@@ -1,0 +1,22 @@
+uuid: 271cdb36-7e28-49a5-a871-bd752cb50137
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_color
+    - node.type.testing
+  module:
+    - custom_field
+id: node.testing.field_color
+field_name: field_color
+entity_type: node
+bundle: testing
+label: color
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  rgb_min: '#000000'
+field_type: rgb_color_picker
