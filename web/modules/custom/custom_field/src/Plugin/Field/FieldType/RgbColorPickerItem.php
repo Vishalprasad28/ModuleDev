@@ -91,6 +91,15 @@ final class RgbColorPickerItem extends FieldItemBase {
       ->addConstraint('HexCodeFormatter')
       ->setRequired(TRUE);
 
+      //Properties for the red component
+      $properties['red'] = DataDefinition::create('string')->setLabel('red');
+
+      //Properties for the green component
+      $properties['green'] = DataDefinition::create('string')->setLabel('green');
+      
+      //Properties for the blue component
+      $properties['blue'] = DataDefinition::create('string')->setLabel('blue');
+      
     return $properties;
   }
 
@@ -122,6 +131,24 @@ final class RgbColorPickerItem extends FieldItemBase {
         'not null' => FALSE,
         'description' => 'RGB Hex code for a color',
         'length' => 7,
+      ],
+      'red' => [
+        'type' => 'varchar',
+        'not null' => FALSE,
+        'description' => 'RGB Hex code for a color',
+        'length' => 2,
+      ],
+      'green' => [
+        'type' => 'varchar',
+        'not null' => FALSE,
+        'description' => 'RGB Hex code for a color',
+        'length' => 2,
+      ],
+      'blue' => [
+        'type' => 'varchar',
+        'not null' => FALSE,
+        'description' => 'RGB Hex code for a color',
+        'length' => 2,
       ],
     ];
 

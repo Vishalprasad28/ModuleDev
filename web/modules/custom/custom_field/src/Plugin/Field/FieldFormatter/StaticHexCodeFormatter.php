@@ -20,10 +20,19 @@ final class StaticHexCodeFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode): array {
+    $user = \Drupal::currentUser();
+    $roles = $user->getRoles();
     $element = [];
     foreach ($items as $delta => $item) {
+      if (isset($item->value)) {
+        $value = $item->value;
+      }
+      else {
+        $value = '#' . $item->red . $item->green . $item->blue;
+      }
       $element[$delta] = [
-        '#markup' => $item->value,
+        '#markup' => $value,
+        '#access' => in_array('administrator', $roles),
       ];
     }
     return $element;
