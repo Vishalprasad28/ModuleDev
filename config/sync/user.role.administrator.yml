@@ -6,6 +6,10 @@ _core:
   default_config_hash: OeKGIkmZA_c-t6QLH81WNQx8gDCc1MRmxaTuQgxBByU
 id: administrator
 label: Administrator
+<<<<<<< HEAD
 weight: -7
+=======
+weight: 3
+>>>>>>> development
 is_admin: true
 permissions: {  }

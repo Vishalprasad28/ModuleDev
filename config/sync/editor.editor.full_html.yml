@@ -49,6 +49,7 @@ settings:
       startIndex: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
+<<<<<<< HEAD
     ckeditor5_codeBlock:
       languages:
         -
@@ -93,6 +94,8 @@ settings:
         -
           label: XML
           language: xml
+=======
+>>>>>>> development
 image_upload:
   status: true
   scheme: public

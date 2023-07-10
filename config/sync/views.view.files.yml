@@ -335,6 +335,7 @@ display:
             date_format: medium
             custom_date_format: ''
             timezone: ''
+<<<<<<< HEAD
             tooltip:
               date_format: ''
               custom_date_format: ''
@@ -344,6 +345,8 @@ display:
               past_format: '@interval ago'
               granularity: 2
               refresh: 60
+=======
+>>>>>>> development
         changed:
           id: changed
           table: file_managed
@@ -400,6 +403,7 @@ display:
             date_format: medium
             custom_date_format: ''
             timezone: ''
+<<<<<<< HEAD
             tooltip:
               date_format: ''
               custom_date_format: ''
@@ -409,6 +413,8 @@ display:
               past_format: '@interval ago'
               granularity: 2
               refresh: 60
+=======
+>>>>>>> development
         count:
           id: count
           table: file_usage

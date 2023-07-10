@@ -187,6 +187,7 @@ display:
             date_format: short
             custom_date_format: ''
             timezone: ''
+<<<<<<< HEAD
             tooltip:
               date_format: ''
               custom_date_format: ''
@@ -196,6 +197,8 @@ display:
               past_format: '@interval ago'
               granularity: 2
               refresh: 60
+=======
+>>>>>>> development
         operations:
           id: operations
           table: node

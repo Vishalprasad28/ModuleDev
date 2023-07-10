@@ -21,8 +21,13 @@ third_party_settings:
         layout_id: layout_twocol_section
         layout_settings:
           label: ''
+<<<<<<< HEAD
           column_widths: 50-50
           context_mapping: {  }
+=======
+          context_mapping: {  }
+          column_widths: 50-50
+>>>>>>> development
         components:
           5505e2fb-0cd9-41f7-bf86-6eddde0eabce:
             uuid: 5505e2fb-0cd9-41f7-bf86-6eddde0eabce

@@ -24,7 +24,10 @@ module:
   dblog: 0
   devel: 0
   devel_generate: 0
+<<<<<<< HEAD
   devel_php: 0
+=======
+>>>>>>> development
   dynamic_page_cache: 0
   editor: 0
   entity_reference_revisions: 0
@@ -33,7 +36,10 @@ module:
   file: 0
   filter: 0
   hcaptcha: 0
+<<<<<<< HEAD
   helloworld: 0
+=======
+>>>>>>> development
   help: 0
   history: 0
   image: 0
@@ -52,7 +58,10 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+<<<<<<< HEAD
   phpass: 0
+=======
+>>>>>>> development
   project_browser: 0
   rsvplist: 0
   search: 0

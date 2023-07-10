@@ -20,8 +20,11 @@ content:
     settings:
       max_width: 0
       max_height: 0
+<<<<<<< HEAD
       loading:
         attribute: eager
+=======
+>>>>>>> development
     third_party_settings: {  }
     weight: 0
     region: content
