@@ -1,5 +1,5 @@
-name: mymodule
-description: This is a custom module created for the emonstration purpose.
-package: Custom
+name: 'mu module'
 type: module
+description: 'A Custom Module for the Testing Purpose.'
+package: Custom
 core_version_requirement: ^9 || ^10
