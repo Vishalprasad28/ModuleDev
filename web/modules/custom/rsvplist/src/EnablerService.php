@@ -6,14 +6,14 @@ use Drupal\Core\database\Connection;
 use Drupal\node\Entity\Node;
 
 /**
- *
+ * @package Drupal\rsvplist\EnablerService
  */
 class EnablerService {
 
   protected $database_connection;
 
   /**
-   *
+   * @param Connection $connection
    */
   public function __construct(Connection $connection) {
     $this->database_connection = $connection;
