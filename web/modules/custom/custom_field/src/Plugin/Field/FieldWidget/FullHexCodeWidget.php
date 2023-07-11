@@ -1,10 +1,13 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types = 1);
 
 namespace Drupal\custom_field\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 /**
  * Defines the 'full_hex_code' field widget.
@@ -15,7 +18,7 @@ use Drupal\Core\Form\FormStateInterface;
  *   field_types = {"rgb_color_picker"},
  * )
  */
-final class FullHexCodeWidget extends WidgetBase {
+final class FullHexCodeWidget extends WidgetBase implements ContainerFactoryPluginInterface {
 
   /**
    * {@inheritdoc}
@@ -35,31 +38,9 @@ final class FullHexCodeWidget extends WidgetBase {
       '#title' => $this->t('RGB Color Code'),
       '#pattern' => '^[#][a-fA-F0-9]{6}$',
       '#maxlength' => 7,
-      '#element_validate' => array(
-        array($this, 'minColorRangeValidate'),
-      ),
       '#default_value' => $value,
     ];
     return $element;
   }
 
-  /**
-   * @method minColorRangeValidate()
-   *   To Validated the color value whethere its within the range
-   * 
-   * @param array $element
-   *   Receives the Field elements
-   * @param FormStateInterface $form_state
-   *   Receives the form_state
-   * 
-   * @return void
-   */
-  public function minColorRangeValidate($element, FormStateInterface $form_state) {
-    $min_value = base_convert(substr($this->getSetting('rgb_min'), 1, 6), 16,10);
-    $form_value = base_convert(substr($form_state->getValue('value'), 1, 6), 16,10);
-
-    if ($form_value < $min_value) {
-      $form_state->setErrorByName('value', $this->t('Value is outside the range'));
-    }
-  }
 }

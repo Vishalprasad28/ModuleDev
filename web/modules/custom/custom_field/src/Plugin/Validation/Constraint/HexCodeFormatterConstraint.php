@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types = 1);
 
 namespace Drupal\custom_field\Plugin\Validation\Constraint;
 
@@ -14,10 +16,14 @@ use Symfony\Component\Validator\Constraint;
  */
 final class HexCodeFormatterConstraint extends Constraint {
 
-  //This message is shown when value is not in proper hex formate
+  /**
+   * This message is shown when value is not in proper hex formate.
+   */
   public string $hex_format = '@value is not in proper hex format';
 
-  //This message is show when the value is outside the defined range
+  /**
+   * This message is show when the value is outside the defined range.
+   */
   public string $range_error = '@value is out of the range';
 
 }

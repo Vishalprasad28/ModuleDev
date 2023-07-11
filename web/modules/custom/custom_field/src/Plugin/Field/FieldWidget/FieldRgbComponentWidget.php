@@ -1,10 +1,13 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types = 1);
 
 namespace Drupal\custom_field\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 /**
  * Defines the 'field_rgb_component' field widget.
@@ -15,7 +18,7 @@ use Drupal\Core\Form\FormStateInterface;
  *   field_types = {"rgb_color_picker"},
  * )
  */
-final class FieldRgbComponentWidget extends WidgetBase {
+final class FieldRgbComponentWidget extends WidgetBase implements ContainerFactoryPluginInterface {
 
   /**
    * {@inheritdoc}
@@ -36,8 +39,8 @@ final class FieldRgbComponentWidget extends WidgetBase {
       $green = '';
       $blue = '';
     }
-    
-    $element['red'] =  [
+
+    $element['red'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Red'),
       '#description' => $this->t('Write in formate ff'),
@@ -58,9 +61,6 @@ final class FieldRgbComponentWidget extends WidgetBase {
       '#title' => $this->t('Blue'),
       '#description' => $this->t('Write in formate ff'),
       '#maxlength' => 2,
-      '#element_validate' => array(
-        array($this, 'minColorRangeValidate'),
-      ),
       '#pattern' => '^[a-fA-F0-9]{2}$',
       '#default_value' => $blue,
     ];
@@ -68,27 +68,4 @@ final class FieldRgbComponentWidget extends WidgetBase {
     return $element;
   }
 
-  /**
-   * @method minColorRangeValidate()
-   *   To Validated the color value whethere its within the range
-   * 
-   * @param array $element
-   *   Receives the Field elements
-   * @param FormStateInterface $form_state
-   *   Receives the form_state
-   * 
-   * @return void
-   */
-  public function minColorRangeValidate(array $element, FormStateInterface $form_state) {
-
-    $color_value = $form_state->getValue('red') . $form_state->getValue('green') . $form_state->getValue('blue');
-    $min_value = base_convert(substr($this->getSetting('rgb_min'), 1, 6), 16, 10);
-    $form_value = base_convert($color_value, 16, 10);
-
-    if ($form_value < $min_value) {
-      $form_state->setErrorByName('red', $this->t('Value is outside the range'));
-      $form_state->setErrorByName('green', $this->t('Value is outside the range'));
-      $form_state->setErrorByName('blue', $this->t('Value is outside the range'));
-    }
-  }
 }

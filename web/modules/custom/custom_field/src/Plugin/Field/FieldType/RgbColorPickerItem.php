@@ -88,15 +88,15 @@ final class RgbColorPickerItem extends FieldItemBase {
       ->setLabel(('Text value'))
       ->addConstraint('HexCodeFormatter');
 
-      //Properties for the red component
-      $properties['red'] = DataDefinition::create('string')->setLabel('red');
+    // Properties for the red component.
+    $properties['red'] = DataDefinition::create('string')->setLabel('red');
 
-      //Properties for the green component
-      $properties['green'] = DataDefinition::create('string')->setLabel('green');
-      
-      //Properties for the blue component
-      $properties['blue'] = DataDefinition::create('string')->setLabel('blue');
-      
+    // Properties for the green component.
+    $properties['green'] = DataDefinition::create('string')->setLabel('green');
+
+    // Properties for the blue component.
+    $properties['blue'] = DataDefinition::create('string')->setLabel('blue');
+
     return $properties;
   }
 
@@ -167,4 +167,5 @@ final class RgbColorPickerItem extends FieldItemBase {
     $values['value'] = $random->word(mt_rand(6, 6));
     return $values;
   }
+
 }
