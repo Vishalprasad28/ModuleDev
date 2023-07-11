@@ -5,13 +5,11 @@ namespace Drupal\rsvplist\Controller;
 use Drupal\Core\Controller\ControllerBase;
 
 /**
- * @package \Drupal\rsvplist\Controlle\ReportController
- *   ReportController class to process the routes.
+ * ReportController class to process the routes.
  */
 class ReportController extends ControllerBase {
 
   /**
-   * @method load()
    * Function to load the RSVP submission datas
    * that includes the user name of the user submitting the form
    * Node id of the node
@@ -49,8 +47,7 @@ class ReportController extends ControllerBase {
   }
 
   /**
-   * @method report()
-   *   Function to Return an render array of all the RSVP Reports
+   * Function to Return an render array of all the RSVP Reports
    *
    * @return array|null
    *   Returns the array or Null.

@@ -6,8 +6,7 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * @package \Drupal\rsvplist\Form\RSVPSettingsForm
- *   RSVPSettingsForm Class for configuration purpose.
+ * RSVPSettingsForm Class for configuration purpose.
  */
 class RSVPSettingsForm extends ConfigFormBase {
 

@@ -5,16 +5,15 @@ namespace Drupal\mymodule\Controller;
 use Drupal\Core\Controller\ControllerBase;
 
 /**
- * @package \Drupal\mymodule\Controller\FirstController
+ * Created a controller for testing.
  */
 class FirstController extends ControllerBase {
 
   /**
-   * @method simpleContent()
-   *   A Simple Controller
+   * A Simple Controller
    *
    * @return array
-   *   Returns the render array
+   *   Returns the render array.
    */
   public function simpleContent() {
     return [
@@ -24,15 +23,15 @@ class FirstController extends ControllerBase {
   }
 
   /**
-   * @method variableContent()
-   *
+   * Function to render the variable content.
+   * 
    * @param string $name1
    *   A String.
    * @param string $name2
    *   A String.
    *
    * @return array
-   *   Returns the render array
+   *   Returns the render array.
    */
   public function variableContent($name1, $name2) {
     return [

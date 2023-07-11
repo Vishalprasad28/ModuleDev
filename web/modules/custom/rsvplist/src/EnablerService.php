@@ -2,12 +2,13 @@
 
 namespace Drupal\rsvplist;
 
+use Drupal;
 use Drupal\Core\database\Connection;
 use Drupal\node\Entity\Node;
+use Exception;
 
 /**
- * @package Drupal\rsvplist\EnablerService
- *   EnablerService Class.
+ * EnablerService Class.
  */
 class EnablerService {
 
@@ -26,8 +27,7 @@ class EnablerService {
   }
 
   /**
-   * @method isEnabled()
-   *   Checks if the Current node is RSVP Enabled or not.
+   * Checks if the Current node is RSVP Enabled or not.
    *
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.
@@ -50,15 +50,14 @@ class EnablerService {
       return !(empty($result->fetchCol()));
 
     }
-    catch (\Exception $e) {
-      \Drupal::messenger()->addMessage(t("Sorry Drupal Couldn't Connect to database"));
+    catch (Exception $e) {
+      Drupal::messenger()->addMessage(t("Sorry Drupal Couldn't Connect to database"));
       return NULL;
     }
   }
 
   /**
-   * @method setEnabled()
-   *   Enables the RSVP List Service for a particular node.
+   * Enables the RSVP List Service for a particular node.
    *
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.
@@ -74,16 +73,15 @@ class EnablerService {
         $insert->execute();
       }
     }
-    catch (\Exception $e) {
-      \Drupal::messenger()->addMessage(t("Sorry Could't Connect to the database"));
+    catch (Exception $e) {
+      Drupal::messenger()->addMessage(t("Sorry Could't Connect to the database"));
       return $e;
     }
 
   }
 
   /**
-   * @method deleteEnabled()
-   *   Deletes the RSVP List EnBled Node ids from the table.
+   * Deletes the RSVP List EnBled Node ids from the table.
    *
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.
@@ -95,8 +93,8 @@ class EnablerService {
       $delete->condition('nid', [$node->id()]);
       $delete->execute();
     }
-    catch (\Exception $e) {
-      \Drupal::messenger()->addMessage(t("Sorry Could't Connect to the database"));
+    catch (Exception $e) {
+      Drupal::messenger()->addMessage(t("Sorry Could't Connect to the database"));
     }
   }
 

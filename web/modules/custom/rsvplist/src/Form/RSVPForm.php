@@ -2,12 +2,13 @@
 
 namespace Drupal\rsvplist\Form;
 
+use Drupal;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Exception;
 
 /**
- * @package \Drupal\rsvplist\Form\RSVPForm
- *   RSVP Form Class.
+ * RSVP Form Class.
  */
 class RSVPForm extends FormBase {
 
@@ -24,7 +25,7 @@ class RSVPForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     
     // Gives the fiully Loaded Node Object of the current node.
-    $node = \Drupal::routeMatch()->getParameter('node');
+    $node = Drupal::routeMatch()->getParameter('node');
 
     // Some Pages may not be node in that cae the node object will contain
     // the NULL.
@@ -66,13 +67,13 @@ class RSVPForm extends FormBase {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     // Checking if the entered email id is valid.
     $submitted_email = $form_state->getValue('email');
-    if (!(\Drupal::service('email.validator')->isvalid($submitted_email))) {
+    if (!(Drupal::service('email.validator')->isvalid($submitted_email))) {
       $form_state->setErrorByName('email', $this->t('Provided Email Id is not Valid'));
     }
 
     // Checking if the given email id already exists.
     try {
-      $database = \Drupal::database();
+      $database = Drupal::database();
       $query = $database->select('rsvplist', 'r');
       $query->condition('r.mail', $form_state->getValue('email'), '=');
       $query->fields('r', ['id']);
@@ -82,8 +83,8 @@ class RSVPForm extends FormBase {
         $form_state->setErrorByName('email', $this->t('Provided Email Id is already taken try another one'));
       }
     }
-    catch (\Exception $e) {
-      \Drupal::messenger()->addMessage($this->t('Failed to varify, please try again later'));
+    catch (Exception $e) {
+      Drupal::messenger()->addMessage($this->t('Failed to varify, please try again later'));
     }
 
   }
@@ -99,17 +100,17 @@ class RSVPForm extends FormBase {
     try {
       // Getting the Current Logged In user
       // $user = \Drupal\user\Entity::load(\Drupal::currentUser()->id());
-      $uid = \Drupal::currentUser()->id();
+      $uid = Drupal::currentUser()->id();
 
       // Getting the Values entered in the form.
       $nid = $form_state->getValue('nid');
       $email = $form_state->getValue('email');
 
       // Getting the Current time the form was submitted on.
-      $current = \Drupal::time()->getRequestTime();
+      $current = Drupal::time()->getRequestTime();
 
       // Building a Querybuilder object.
-      $query = \Drupal::database()->insert('rsvplist');
+      $query = Drupal::database()->insert('rsvplist');
 
       // Listing the fields to be populated.
       $query->fields([
@@ -129,11 +130,11 @@ class RSVPForm extends FormBase {
       $query->execute();
 
       // Displaying a success message after the successful submission.
-      \Drupal::messenger()->addMessage($this->t('Thank You For your submission'));
+      Drupal::messenger()->addMessage($this->t('Thank You For your submission'));
     }
 
-    catch (\Exception $e) {
-      \Drupal::messenger()->addMessage($this->t('Submission Failed'));
+    catch (Exception $e) {
+      Drupal::messenger()->addMessage($this->t('Submission Failed'));
     }
   }
 
