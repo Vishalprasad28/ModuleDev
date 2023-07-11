@@ -21,8 +21,8 @@ class RSVPBlock extends BlockBase {
    */
   public function build() {
     // Fetching the RSVP form we just made.
-    $RSVP_form = \Drupal::formBuilder()->getForm('Drupal\rsvplist\Form\RSVPForm');
-    return $RSVP_form;
+    $rsvp_form = \Drupal::formBuilder()->getForm('Drupal\rsvplist\Form\RSVPForm');
+    return $rsvp_form;
   }
 
   /**

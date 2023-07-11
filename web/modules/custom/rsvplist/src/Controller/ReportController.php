@@ -5,7 +5,8 @@ namespace Drupal\rsvplist\Controller;
 use Drupal\Core\Controller\ControllerBase;
 
 /**
- *
+ * @package \Drupal\rsvplist\Controlle\ReportController
+ *   ReportController class to process the routes.
  */
 class ReportController extends ControllerBase {
 
@@ -14,18 +15,21 @@ class ReportController extends ControllerBase {
    * Function to load the RSVP submission datas
    * that includes the user name of the user submitting the form
    * Node id of the node
-   * and the email id the form was submitted with
+   * and the email id the form was submitted with.
    *
    * @return array|null
+   *   Returns the array.
    */
   protected function load() {
 
     try {
       $database = \Drupal::database();
       $query = $database->select('rsvplist', 'r');
-      // Joining the User's table to get the information about the user's username.
+      // Joining the User's table to get the information about the user's
+      // username.
       $query->join('users_field_data', 'u', 'r.uid = u.uid');
-      // Joining with the node table to get the information about the Event's name.
+      // Joining with the node table to get the information about the Event's
+      // name.
       $query->join('node_field_data', 'n', 'r.nid = n.nid');
 
       // Add the Fields to be displayed.
@@ -46,10 +50,10 @@ class ReportController extends ControllerBase {
 
   /**
    * @method report()
-   *
-   * Function to Return an render arry of all the RSVP Reports
+   *   Function to Return an render array of all the RSVP Reports
    *
    * @return array|null
+   *   Returns the array or Null.
    */
   public function report() {
     $content = [];
@@ -73,7 +77,8 @@ class ReportController extends ControllerBase {
     ];
 
     // Setting up the cachebility of the table data
-    // We are setting it up to 0 because we want to display the most up to date data.
+    // We are setting it up to 0 because we want to display the most up to date
+    // data.
     $content['#cache']['max-age'] = 0;
 
     // Returning the Render Array to be rendered.

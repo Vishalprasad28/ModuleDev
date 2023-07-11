@@ -11,8 +11,10 @@ class FirstController extends ControllerBase {
 
   /**
    * @method simpleContent()
+   *   A Simple Controller
    *
    * @return array
+   *   Returns the render array
    */
   public function simpleContent() {
     return [
@@ -25,9 +27,12 @@ class FirstController extends ControllerBase {
    * @method variableContent()
    *
    * @param string $name1
+   *   A String.
    * @param string $name2
+   *   A String.
    *
    * @return array
+   *   Returns the render array
    */
   public function variableContent($name1, $name2) {
     return [

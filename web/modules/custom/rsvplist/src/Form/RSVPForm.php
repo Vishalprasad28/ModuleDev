@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 
 /**
  * @package \Drupal\rsvplist\Form\RSVPForm
+ *   RSVP Form Class.
  */
 class RSVPForm extends FormBase {
 
@@ -21,32 +22,25 @@ class RSVPForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    /**
-     * Gives the fiully Loaded Node Object of the current node
-     */
+    
+    // Gives the fiully Loaded Node Object of the current node.
     $node = \Drupal::routeMatch()->getParameter('node');
 
-    /**
-     * Some Pages may not be node in that cae the node object will
-     * contain the NULL
-     */
+    // Some Pages may not be node in that cae the node object will contain
+    // the NULL.
     if (!(is_null($node))) {
       $nid = $node->id();
     }
 
-    /**
-     * If the Node is NULL
-     */
+    // If the Node is NULL.
     else {
       $nid = 0;
     }
 
-    /**
-     * Establishing the Form Render Array
-     * It Implements the Email Id Field
-     * A Submit Buttonn and a hidden text field
-     * containing the node id
-     */
+    // Establishing the Form Render Array.
+    // It Implements the Email Id Field
+    // A Submit Buttonn and a hidden text field
+    // containing the node id.
     $form['email'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Email Address'),
@@ -99,7 +93,8 @@ class RSVPForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // $submitted_email = $form_state->getValue('email');
-    // $this->messenger()->addMessage($this->$this->t('The Email Id that you entered is @email',
+    // $this->messenger()->addMessage($this->$this->t('The Email Id that
+    // you entered is @email',
     // ['@email' => $submitted_email]));
     try {
       // Getting the Current Logged In user

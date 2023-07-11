@@ -7,13 +7,19 @@ use Drupal\node\Entity\Node;
 
 /**
  * @package Drupal\rsvplist\EnablerService
+ *   EnablerService Class.
  */
 class EnablerService {
 
-  protected $database_connection;
+  /**
+   * @var Connection $database_connection
+   *   A database connection object.
+   */
+  protected Connection $database_connection;
 
   /**
    * @param Connection $connection
+   *   Takes the Connection object.
    */
   public function __construct(Connection $connection) {
     $this->database_connection = $connection;
@@ -21,11 +27,13 @@ class EnablerService {
 
   /**
    * @method isEnabled()
-   * Checks if the Current node is RSVP Enabled or not.
+   *   Checks if the Current node is RSVP Enabled or not.
    *
    * @param \Drupal\node\Entity\Node $node
+   *   Takes the Node Object.
+   * 
    * @return bool
-   *   Returns True or False Based on the RSVP Enabled status
+   *   Returns True or False Based on the RSVP Enabled status.
    */
   public function isEnabled(Node $node) {
 
@@ -50,11 +58,11 @@ class EnablerService {
 
   /**
    * @method setEnabled()
-   *
-   * Enables the RSVP List Service for a particular node
+   *   Enables the RSVP List Service for a particular node.
    *
    * @param \Drupal\node\Entity\Node $node
-   * @throw Exception
+   *   Takes the Node Object.
+   * @throw Exception.
    */
   public function setEnabled(Node $node) {
 
@@ -75,10 +83,10 @@ class EnablerService {
 
   /**
    * @method deleteEnabled()
-   *
-   * Deletes the RSVP List EnBled Node ids from the table
+   *   Deletes the RSVP List EnBled Node ids from the table.
    *
    * @param \Drupal\node\Entity\Node $node
+   *   Takes the Node Object.
    */
   public function deleteEnabled(Node $node) {
 
