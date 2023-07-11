@@ -1,29 +1,30 @@
 <?php
 
-/**
- * @file
- * Contains the Enabler Service class
- */
-
 namespace Drupal\rsvplist;
 
 use Drupal\Core\database\Connection;
 use Drupal\node\Entity\Node;
 
+/**
+ *
+ */
 class EnablerService {
 
   protected $database_connection;
 
+  /**
+   *
+   */
   public function __construct(Connection $connection) {
     $this->database_connection = $connection;
   }
-  
+
   /**
    * @method isEnabled()
    * Checks if the Current node is RSVP Enabled or not.
-   * 
-   * @param Node $node
-   * @return boolean
+   *
+   * @param \Drupal\node\Entity\Node $node
+   * @return bool
    *   Returns True or False Based on the RSVP Enabled status
    */
   public function isEnabled(Node $node) {
@@ -32,7 +33,7 @@ class EnablerService {
       return FALSE;
     }
 
-    try{
+    try {
       $rsvp_enabled = $this->database_connection->select('rsvplist_enabled', 're');
       $rsvp_enabled->fields('re', ['nid']);
       $rsvp_enabled->condition('nid', $node->id());
@@ -49,10 +50,10 @@ class EnablerService {
 
   /**
    * @method setEnabled()
-   * 
+   *
    * Enables the RSVP List Service for a particular node
-   * 
-   * @param Node $node
+   *
+   * @param \Drupal\node\Entity\Node $node
    * @throw Exception
    */
   public function setEnabled(Node $node) {
@@ -74,13 +75,13 @@ class EnablerService {
 
   /**
    * @method deleteEnabled()
-   * 
+   *
    * Deletes the RSVP List EnBled Node ids from the table
-   * 
-   * @param Node $node
+   *
+   * @param \Drupal\node\Entity\Node $node
    */
   public function deleteEnabled(Node $node) {
-    
+
     try {
       $delete = $this->database_connection->delete('rsvplist_enabled');
       $delete->condition('nid', [$node->id()]);
@@ -90,4 +91,5 @@ class EnablerService {
       \Drupal::messenger()->addMessage(t("Sorry Could't Connect to the database"));
     }
   }
+
 }

@@ -27,8 +27,3 @@ basic information that it contains are
 - core_version_requirement: What are the drupal versions our moduleis supported for.
 - dependencies: What are the Modules our module is dependent on.
 - configure: A Route name to the configuration page of the module. 
-
-
-
-
-

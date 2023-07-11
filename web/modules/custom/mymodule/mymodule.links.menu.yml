@@ -4,4 +4,3 @@ mymodule.simplecontentpage:
   route_name: mymodule.simplecontent
   weight: 10
   menu_name: main
-  

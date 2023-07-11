@@ -13,3 +13,4 @@ rsvplist.rsvp_list:
     _controller: '\Drupal\rsvplist\Controller\ReportController::report'
   requirements:
     _permission: Access RSVP Report
+    

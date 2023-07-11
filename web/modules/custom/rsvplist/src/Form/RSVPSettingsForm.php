@@ -1,15 +1,13 @@
 <?php
 
-/**
- * @file
- * Implements the configuration form for the RSVP form.
- */
-
 namespace Drupal\rsvplist\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ *
+ */
 class RSVPSettingsForm extends ConfigFormBase {
 
   /**
@@ -24,7 +22,7 @@ class RSVPSettingsForm extends ConfigFormBase {
    */
   public function getEditableConfigNames() {
     return [
-      'rsvplist.settings'
+      'rsvplist.settings',
     ];
   }
 
@@ -54,9 +52,10 @@ class RSVPSettingsForm extends ConfigFormBase {
     sort($selected_allowed_types);
 
     $this->config('rsvplist.settings')
-    ->set('allowed_types', $selected_allowed_types)
-    ->save();
+      ->set('allowed_types', $selected_allowed_types)
+      ->save();
 
-    parent::submitForm($form, $form_state); 
+    parent::submitForm($form, $form_state);
   }
+
 }

@@ -1,14 +1,12 @@
 <?php
 
-/**
- * @file
- * It Contains the Controller for the All the RSVP Reports page
- */
-
 namespace Drupal\rsvplist\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
+/**
+ *
+ */
 class ReportController extends ControllerBase {
 
   /**
@@ -17,27 +15,27 @@ class ReportController extends ControllerBase {
    * that includes the user name of the user submitting the form
    * Node id of the node
    * and the email id the form was submitted with
-   * 
-   * @return array|NULL
+   *
+   * @return array|null
    */
   protected function load() {
 
     try {
       $database = \Drupal::database();
       $query = $database->select('rsvplist', 'r');
-      //Joining the User's table to get the information about the user's username
+      // Joining the User's table to get the information about the user's username.
       $query->join('users_field_data', 'u', 'r.uid = u.uid');
-      //Joining with the node table to get the information about the Event's name
-      $query->join('node_field_data', 'n','r.nid = n.nid');
+      // Joining with the node table to get the information about the Event's name.
+      $query->join('node_field_data', 'n', 'r.nid = n.nid');
 
-      //Add the Fields to be displayed
+      // Add the Fields to be displayed.
       $query->addField('u', 'name', 'username');
       $query->addField('n', 'title');
       $query->addField('r', 'mail');
 
-      //Executing the query and fetching the result
+      // Executing the query and fetching the result.
       $result = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
-      
+
       return $result;
     }
     catch (\Exception $e) {
@@ -48,10 +46,10 @@ class ReportController extends ControllerBase {
 
   /**
    * @method report()
-   * 
+   *
    * Function to Return an render arry of all the RSVP Reports
-   * 
-   * @return array|NULL
+   *
+   * @return array|null
    */
   public function report() {
     $content = [];
@@ -64,22 +62,23 @@ class ReportController extends ControllerBase {
       $this->t('Email'),
     ];
 
-    //Getting the Table Data from the database
+    // Getting the Table Data from the database.
     $table_rows = $this->load();
 
     $content['table'] = [
-      '#type'=> 'table',
+      '#type' => 'table',
       '#header' => $headers,
       '#rows' => $table_rows,
       '#empty' => $this->t('No Entries Available'),
     ];
 
-    //Setting up the cachebility of the table data
-    //We are setting it up to 0 because we want to display the most up to date data
+    // Setting up the cachebility of the table data
+    // We are setting it up to 0 because we want to display the most up to date data.
     $content['#cache']['max-age'] = 0;
 
-    //Returning the Render Array to be rendered
+    // Returning the Render Array to be rendered.
     return $content;
 
   }
+
 }

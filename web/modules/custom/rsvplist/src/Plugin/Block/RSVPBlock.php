@@ -1,30 +1,26 @@
 <?php
 
-/**
- * @file
- * It Extends the BlockBase class to display the formin block formate.
- */
-
 namespace Drupal\rsvplist\Plugin\Block;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Access\AccessResult;
 
 /**
- * Provides The RSVP main block
- * 
+ * Provides The RSVP main block.
+ *
  * @Block(
  *   id = "rsvp_block",
  *   admin_label = @Translation("RSVP Block")
  * )
  */
 class RSVPBlock extends BlockBase {
+
   /**
    * {@inheritdoc}
    */
   public function build() {
-    //Fetching the RSVP form we just made
+    // Fetching the RSVP form we just made.
     $RSVP_form = \Drupal::formBuilder()->getForm('Drupal\rsvplist\Form\RSVPForm');
     return $RSVP_form;
   }
@@ -33,11 +29,11 @@ class RSVPBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function blockAccess(AccountInterface $account) {
-    //If Viewing the node, get the full node object
+    // If Viewing the node, get the full node object.
     $node = \Drupal::routeMatch()->getParameter('node');
 
-    if (!(is_null($node))){
-      //Checking if the account has permission
+    if (!(is_null($node))) {
+      // Checking if the account has permission.
       $has_permission = AccessResult::allowedIfHasPermission($account, 'View RSVP List
       ');
       return $has_permission;
@@ -47,4 +43,3 @@ class RSVPBlock extends BlockBase {
   }
 
 }
-
