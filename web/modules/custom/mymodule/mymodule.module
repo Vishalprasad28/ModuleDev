@@ -8,14 +8,14 @@
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Implements the hook_cron() function.
+ * Implements the hook_cron().
  */
 function mymodule_cron() {
   Drupal::messenger()->addMessage(t('Hello This is Our custom module'));
 }
 
 /**
- * Implements the hook_form_alter() function.
+ * Implements the hook_form_alter().
  */
 function mymodule_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   Drupal::messenger()->addMessage(t('Form Id of this Form is @id: ', ['@id' => $form_id]));

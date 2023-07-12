@@ -10,7 +10,7 @@ use Drupal\Core\Controller\ControllerBase;
 class FirstController extends ControllerBase {
 
   /**
-   * A Simple Controller
+   * A Simple Controller.
    *
    * @return array
    *   Returns the render array.
@@ -18,7 +18,7 @@ class FirstController extends ControllerBase {
   public function simpleContent() {
     return [
       '#type' => 'markup',
-      '#markup' => t('Hello World i am from the first Controller'),
+      '#markup' => $this->t('Hello World i am from the first Controller'),
     ];
   }
 
@@ -36,7 +36,7 @@ class FirstController extends ControllerBase {
   public function variableContent($name1, $name2) {
     return [
       '#type' => 'markup',
-      '#markup' => t('@name1 is a good boy while @name2 is a .....I am here to introduce you with some terms and conditions of our website',
+      '#markup' => $this->t('@name1 is a good boy while @name2 is a .....I am here to introduce you with some terms and conditions of our website',
        ['@name1' => $name1, '@name2' => $name2]),
     ];
   }

@@ -3,11 +3,34 @@
 namespace Drupal\rsvplist\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\database\Connection;
+use Drupal\Core\Messenger\MessengerInterface;
 
 /**
  * ReportController class to process the routes.
  */
 class ReportController extends ControllerBase {
+
+  /**
+   * @var Connection $databaseConnection
+   */
+  protected Connection $databaseConnection;
+
+  /**
+   * @var MessengerInterface $this->messenger
+   */
+  protected MessengerInterface $messenger;
+
+  /**
+   * @param Drupal\Core\Messenger\MessengerInterface $messenger
+   *   Takes the Messenger object.
+   * @param Drupal\Core\database\Connection $connection
+   *   Takes the database Connection object.
+   */
+  public function __construct(MessengerInterface $messenger, Connection $connection) {
+    $this->messenger = $messenger;
+    $this->databaseConnection = $connection;
+  }
 
   /**
    * Function to load the RSVP submission datas
@@ -21,7 +44,7 @@ class ReportController extends ControllerBase {
   protected function load() {
 
     try {
-      $database = \Drupal::database();
+      $database = $this->databaseConnection;
       $query = $database->select('rsvplist', 'r');
       // Joining the User's table to get the information about the user's
       // username.
@@ -41,7 +64,7 @@ class ReportController extends ControllerBase {
       return $result;
     }
     catch (\Exception $e) {
-      \Drupal::messenger()->addMessage($this->t("Sorry Data Couldn't be loaded"));
+      $this->messenger->addMessage($this->t("Sorry Data Couldn't be loaded"));
       return NULL;
     }
   }

@@ -4,6 +4,7 @@ namespace Drupal\rsvplist;
 
 use Drupal;
 use Drupal\Core\database\Connection;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\node\Entity\Node;
 use Exception;
 
@@ -13,17 +14,24 @@ use Exception;
 class EnablerService {
 
   /**
-   * @var Connection $database_connection
-   *   A database connection object.
+   * @var Connection $databaseConnection
    */
-  protected Connection $database_connection;
+  protected Connection $databaseConnection;
 
   /**
-   * @param Connection $connection
-   *   Takes the Connection object.
+   * @var MessengerInterface $this->messenger
    */
-  public function __construct(Connection $connection) {
-    $this->database_connection = $connection;
+  protected MessengerInterface $messenger;
+
+  /**
+   * @param Drupal\Core\database\Connection $connection
+   *   Takes the Connection object.
+   * @param Drupal\Core\Messenger\MessengerInterface $messenger
+   *   Takes the Messenger Service Object.
+   */
+  public function __construct(Connection $connection, MessengerInterface $messenger) {
+    $this->databaseConnection = $connection;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -42,7 +50,7 @@ class EnablerService {
     }
 
     try {
-      $rsvp_enabled = $this->database_connection->select('rsvplist_enabled', 're');
+      $rsvp_enabled = $this->databaseConnection->select('rsvplist_enabled', 're');
       $rsvp_enabled->fields('re', ['nid']);
       $rsvp_enabled->condition('nid', $node->id());
       $result = $rsvp_enabled->execute();
@@ -51,7 +59,7 @@ class EnablerService {
 
     }
     catch (Exception $e) {
-      Drupal::messenger()->addMessage(t("Sorry Drupal Couldn't Connect to database"));
+      $this->messenger->addMessage(t("Sorry Drupal Couldn't Connect to database"));
       return NULL;
     }
   }
@@ -61,20 +69,21 @@ class EnablerService {
    *
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.
+   * 
    * @throw Exception.
    */
   public function setEnabled(Node $node) {
 
     try {
       if (!$this->isEnabled($node)) {
-        $insert = $this->database_connection->insert('rsvplist_enabled');
+        $insert = $this->databaseConnection->insert('rsvplist_enabled');
         $insert->fields(['nid']);
         $insert->values([$node->id()]);
         $insert->execute();
       }
     }
     catch (Exception $e) {
-      Drupal::messenger()->addMessage(t("Sorry Could't Connect to the database"));
+      $this->messenger->addMessage(t("Sorry Could't Connect to the database"));
       return $e;
     }
 
@@ -89,12 +98,12 @@ class EnablerService {
   public function deleteEnabled(Node $node) {
 
     try {
-      $delete = $this->database_connection->delete('rsvplist_enabled');
+      $delete = $this->databaseConnection->delete('rsvplist_enabled');
       $delete->condition('nid', [$node->id()]);
       $delete->execute();
     }
     catch (Exception $e) {
-      Drupal::messenger()->addMessage(t("Sorry Could't Connect to the database"));
+      $this->messenger->addMessage(t("Sorry Could't Connect to the database"));
     }
   }
 
