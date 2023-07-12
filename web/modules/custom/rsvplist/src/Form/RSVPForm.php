@@ -9,7 +9,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
-use Exception;
 use Drupal\Core\database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
