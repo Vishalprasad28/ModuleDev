@@ -4,10 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.testing.body
-    - field.field.node.testing.field_color
     - node.type.testing
   module:
-    - custom_field
     - text
     - user
 id: node.testing.default
@@ -21,13 +19,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
-    region: content
-  field_color:
-    type: background_color_setter
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 102
     region: content
   links:
     settings: {  }

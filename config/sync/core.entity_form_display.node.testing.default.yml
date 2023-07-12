@@ -4,10 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.testing.body
-    - field.field.node.testing.field_color
     - node.type.testing
   module:
-    - custom_field
     - path
     - text
 id: node.testing.default
@@ -28,12 +26,6 @@ content:
   created:
     type: datetime_timestamp
     weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_color:
-    type: rgb_picker_widget
-    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }

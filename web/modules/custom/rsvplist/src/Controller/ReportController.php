@@ -70,7 +70,7 @@ class ReportController extends ControllerBase {
   }
 
   /**
-   * Function to Return an render array of all the RSVP Reports
+   * Function to Return an render array of all the RSVP Reports.
    *
    * @return array|null
    *   Returns the array or Null.
