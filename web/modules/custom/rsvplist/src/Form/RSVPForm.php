@@ -93,10 +93,6 @@ class RSVPForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // $submitted_email = $form_state->getValue('email');
-    // $this->messenger()->addMessage($this->$this->t('The Email Id that
-    // you entered is @email',
-    // ['@email' => $submitted_email]));
     try {
       // Getting the Current Logged In user
       // $user = \Drupal\user\Entity::load(\Drupal::currentUser()->id());
