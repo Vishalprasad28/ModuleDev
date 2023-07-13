@@ -12,16 +12,22 @@ use Drupal\Core\Messenger\MessengerInterface;
 class ReportController extends ControllerBase {
 
   /**
-   * @var Connection $databaseConnection
+   * A database connection object.
+   * 
+   * @var Drupal\Core\database\Connection
    */
   protected Connection $databaseConnection;
 
   /**
-   * @var MessengerInterface $this->messenger
+   * A Messenger object.
+   * 
+   * @var Drupal\Core\Messenger\MessengerInterface
    */
   protected MessengerInterface $messenger;
 
   /**
+   * Constructs the Dependencies for this controller.
+   * 
    * @param Drupal\Core\Messenger\MessengerInterface $messenger
    *   Takes the Messenger object.
    * @param Drupal\Core\database\Connection $connection

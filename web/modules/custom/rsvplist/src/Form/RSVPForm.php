@@ -18,36 +18,48 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class RSVPForm extends FormBase {
 
   /**
-   * @var RouteMatchInterface $route
+   * Contains the Current route information.
+   * 
+   * @var Drupal\Core\Routing\RouteMatchInterface
    */
   protected RouteMatchInterface $route;
 
   /**
-   * @var MessengerInterface $this->messenger
+   * Contains the Messenger object.
+   * 
+   * @var Drupal\Core\Messenger\MessengerInterface
    */
   protected MessengerInterface $messenger;
 
   /**
-   * @var AccountInterface $user
+   * Contains the current user details.
+   * 
+   * @var Drupal\Core\Session\AccountInterface
    */
   protected AccountInterface $user;
 
   /**
-   * @var Connection $databaseConnection
+   * Contains the DatabaseConnection object. 
+   * 
+   * @var Drupal\Core\database\Connection
    */
   protected Connection $databaseConnection;
 
   /**
-   * @var TimeInterface $time
+   * @var Drupal\Component\Datetime\TimeInterface
    */
   protected TimeInterface $time;
 
   /**
-   * @var EmailValidatorInterface $emailvalidator
+   * Contains the Email Validator object.
+   * 
+   * @var Drupal\Component\Utility\EmailValidatorInterface
    */
   protected EmailValidatorInterface $emailValidator;
 
   /**
+   * Constructs the dependencies for the form.
+   * 
    * @param Drupal\Core\Routing\RouteMatchInterface $route
    *   Takes the current route object.
    * @param Drupal\Core\Messenger\MessengerInterface $messenger
@@ -155,7 +167,7 @@ class RSVPForm extends FormBase {
         $form_state->setErrorByName('email', $this->t('Provided Email Id is already taken try another one'));
       }
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->messenger->addMessage($this->t('Failed to varify, please try again later'));
     }
 
@@ -201,7 +213,7 @@ class RSVPForm extends FormBase {
       $this->messenger->addMessage($this->t('Thank You For your submission'));
     }
 
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->messenger->addMessage($this->t('Submission Failed'));
     }
   }

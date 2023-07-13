@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements the hook_schema().
+ * Implements hook_schema().
  */
 function rsvplist_schema() {
   //Create a database table with the following details:

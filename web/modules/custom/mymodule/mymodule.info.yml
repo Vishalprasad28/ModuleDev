@@ -1,5 +1,5 @@
 name: 'mu module'
-type: module
+type: 'module'
 description: 'A Custom Module for the Testing Purpose.'
-package: Custom
+package: 'Custom'
 core_version_requirement: ^9 || ^10

@@ -3,8 +3,8 @@ rsvplist.settings:
   label: RSVP List Content Type Settings
   mapping:
     allowed_types:
-      type: sequence
-      label: Content Types the RSVP Form Can Display On.
+      type: 'sequence'
+      label: 'Content Types the RSVP Form Can Display On.'
       sequence:
-        type: string
-        label: Content type
+        type: 'string'
+        label: 'Content type'

@@ -1,6 +1,6 @@
 mymodule.simplecontentpage:
-  title: Simple Content Link
-  description: Link to the simple content method
-  route_name: mymodule.simplecontent
+  title: 'Simple Content Link'
+  description: 'Link to the simple content method'
+  route_name: 'mymodule.simpleconte'nt
   weight: 10
-  menu_name: main
+  menu_name: 'main'

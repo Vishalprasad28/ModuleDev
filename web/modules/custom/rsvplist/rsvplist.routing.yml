@@ -1,4 +1,4 @@
-# Route for the administration configuration page
+
 rsvplist.admin_settings:
   path: '/admin/config/content/rsvplist'
   defaults:
@@ -6,7 +6,7 @@ rsvplist.admin_settings:
     _form: '\Drupal\rsvplist\Form\RSVPSettingsForm'
   requirements:
     _permission: 'Administer RSVP List'
-# Route for the RSVP Reports Page    
+
 rsvplist.rsvp_list:
   path: '/admin/reports/rsvp-report'
   defaults:

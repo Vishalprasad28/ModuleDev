@@ -1,4 +1,3 @@
 admin permission:
-  title: nothing
-  description: flksnf
-  
+  title: 'nothing'
+  description: 'A Demo Description for permission'

@@ -21,16 +21,22 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class RSVPBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
-   * @var RouteMatchInterface $route
+   * Contains the current route information.
+   * 
+   * @var Drupal\Core\Routing\RouteMatchInterface
    */
   protected RouteMatchInterface $route;
 
   /**
-   * @var 
+   * Contains the FormBuiler Object.
+   * 
+   * @var Drupal\Core\Form\FormBuilderInterface
    */
   protected FormBuilderInterface $formBuilder;
 
   /**
+   * Constructs the RSVP Block dependencies.
+   * 
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
    * @param string $plugin_id

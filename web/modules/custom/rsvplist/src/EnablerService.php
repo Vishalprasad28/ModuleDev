@@ -6,7 +6,6 @@ use Drupal;
 use Drupal\Core\database\Connection;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\node\Entity\Node;
-use Exception;
 
 /**
  * EnablerService Class.
@@ -14,16 +13,22 @@ use Exception;
 class EnablerService {
 
   /**
-   * @var Connection $databaseConnection
+   * Takes the Connectionobject.
+   * 
+   * @var Drupal\Core\database\Connection
    */
   protected Connection $databaseConnection;
 
   /**
-   * @var MessengerInterface $this->messenger
+   * Takes the Mesengerobject.
+   * 
+   * @var Drupal\Core\Messenger\MessengerInterface
    */
   protected MessengerInterface $messenger;
 
   /**
+   * Constructs the Dependencies for the Service.
+   * 
    * @param Drupal\Core\database\Connection $connection
    *   Takes the Connection object.
    * @param Drupal\Core\Messenger\MessengerInterface $messenger
@@ -58,7 +63,7 @@ class EnablerService {
       return !(empty($result->fetchCol()));
 
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->messenger->addMessage(t("Sorry Drupal Couldn't Connect to database"));
       return NULL;
     }
@@ -70,7 +75,8 @@ class EnablerService {
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.
    * 
-   * @throw Exception.
+   * @throws Exception.
+   *   Throws the exception on failure.
    */
   public function setEnabled(Node $node) {
 
@@ -82,7 +88,7 @@ class EnablerService {
         $insert->execute();
       }
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->messenger->addMessage(t("Sorry Could't Connect to the database"));
       return $e;
     }
@@ -102,7 +108,7 @@ class EnablerService {
       $delete->condition('nid', [$node->id()]);
       $delete->execute();
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->messenger->addMessage(t("Sorry Could't Connect to the database"));
     }
   }

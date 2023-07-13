@@ -8,5 +8,5 @@ rsvplist.rsvp_report_page:
   title: RSVP report
   description: View the RSVP Reports
   route_name: rsvplist.rsvp_list
-  parent: system.admin_reports #admin/reports
+  parent: system.admin_reports
   weight: 5
