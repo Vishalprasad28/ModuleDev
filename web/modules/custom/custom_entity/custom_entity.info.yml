@@ -1,0 +1,5 @@
+name: Movie Entity module
+type: module
+description: A Custom Module 
+package: Custom
+core_version_requirement: ^9 || ^10

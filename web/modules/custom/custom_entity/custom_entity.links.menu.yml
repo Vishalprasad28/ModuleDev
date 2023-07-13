@@ -1,0 +1,11 @@
+entity.movie_entity.settings:
+  title: 'Test'
+  description: 'Configure a Movie Entity module entity type.'
+  route_name:  entity.movie_entity.settings
+  parent: system.admin_structure
+
+entity.movie_entity.collection:
+  title: 'Movie Entity modules'
+  description: 'List of movie entity modules.'
+  route_name: entity.movie_entity.collection
+  parent: system.admin_content

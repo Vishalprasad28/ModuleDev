@@ -1,0 +1,10 @@
+entity.movie_entity.edit_form:
+  route_name: entity.movie_entity.edit_form
+  group: movie_entity
+  title: 'Edit'
+
+entity.movie_entity.delete_form:
+  route_name: entity.movie_entity.delete_form
+  group: movie_entity
+  title: 'Delete'
+  weight: 10

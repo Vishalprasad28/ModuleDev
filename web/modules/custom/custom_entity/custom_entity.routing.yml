@@ -1,0 +1,7 @@
+entity.movie_entity.settings:
+  path: 'admin/structure/test'
+  defaults:
+    _form: '\Drupal\custom_entity\Form\MovieEntityModuleSettingsForm'
+    _title: 'Movie Entity module'
+  requirements:
+    _permission: 'administer movie_entity'
