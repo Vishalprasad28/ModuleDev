@@ -85,7 +85,7 @@ class RSVPBlock extends BlockBase implements ContainerFactoryPluginInterface {
   /**
    * {@inheritdoc}
    */
-  public function blockAccess(AccountInterface $account) {
+  protected function blockAccess(AccountInterface $account) {
     // If Viewing the node, get the full node object.
     $node = $this->route->getParameter('node');
 

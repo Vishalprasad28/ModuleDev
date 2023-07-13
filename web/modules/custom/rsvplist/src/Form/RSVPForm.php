@@ -9,7 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\database\Connection;
+use Drupal\Core\Database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -41,7 +41,7 @@ class RSVPForm extends FormBase {
   /**
    * Contains the DatabaseConnection object. 
    * 
-   * @var Drupal\Core\database\Connection
+   * @var Drupal\Core\Database\Connection
    */
   protected Connection $databaseConnection;
 

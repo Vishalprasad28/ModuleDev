@@ -1,12 +1,12 @@
 rsvplist.admin_settings_link:
-  title: RSVP Admin
-  description: Link to the Administration Configuration page for the RSVP Module
+  title: 'RSVP Admin'
+  description: 'Link to the Administration Configuration page for the RSVP Module'
   route_name: rsvplist.admin_settings
   parent: system.admin_config_content
   weight: 10
 rsvplist.rsvp_report_page:
-  title: RSVP report
-  description: View the RSVP Reports
+  title: 'RSVP report'
+  description: 'View the RSVP Reports'
   route_name: rsvplist.rsvp_list
   parent: system.admin_reports
   weight: 5
