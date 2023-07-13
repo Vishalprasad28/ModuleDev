@@ -36,8 +36,9 @@ class FirstController extends ControllerBase {
   public function variableContent($name1, $name2) {
     return [
       '#type' => 'markup',
-      '#markup' => $this->t('@name1 is a good boy while @name2 is a .....I am here to introduce you with some terms and conditions of our website',
-       ['@name1' => $name1, '@name2' => $name2]),
+      '#markup' => $this->t('@name1 is a good boy while @name2 is a .....I 
+         am here to introduce you with some terms and conditions of our website',
+         ['@name1' => $name1, '@name2' => $name2]),
     ];
   }
 

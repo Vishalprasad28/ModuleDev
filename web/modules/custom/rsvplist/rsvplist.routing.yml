@@ -1,4 +1,3 @@
-
 rsvplist.admin_settings:
   path: '/admin/config/content/rsvplist'
   defaults:

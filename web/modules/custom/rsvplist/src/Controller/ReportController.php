@@ -40,8 +40,8 @@ class ReportController extends ControllerBase {
 
   /**
    * Function to load the RSVP submission datas
-   * that includes the user name of the user submitting the form
-   * Node id of the node
+   * that includes the user name of the user submitting the form,
+   * Node id of the node,
    * and the email id the form was submitted with.
    *
    * @return array|null
@@ -102,7 +102,7 @@ class ReportController extends ControllerBase {
       '#empty' => $this->t('No Entries Available'),
     ];
 
-    // Setting up the cachebility of the table data
+    // Setting up the cachebility of the table data.
     // We are setting it up to 0 because we want to display the most up to date
     // data.
     $content['#cache']['max-age'] = 0;
