@@ -69,3 +69,5 @@ package*.json
 privateFiles/
 *.vscode
 *.bashrc
+/web/modules/custom/rsvplist
+/web/modules/custom/mymodule

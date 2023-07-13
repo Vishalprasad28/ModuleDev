@@ -1,9 +1,0 @@
-name: RSVP List
-description: This is my first custom module in action.
-type: module
-core_version_requirement: ^9 || ^10
-package: RSVP List
-
-dependencies:
-  - drupal:block
-configure: rsvplist.admin_settings
