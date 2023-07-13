@@ -46,6 +46,8 @@ class RSVPForm extends FormBase {
   protected Connection $databaseConnection;
 
   /**
+   * Contains the TimeInterface Object.
+   * 
    * @var Drupal\Component\Datetime\TimeInterface
    */
   protected TimeInterface $time;
