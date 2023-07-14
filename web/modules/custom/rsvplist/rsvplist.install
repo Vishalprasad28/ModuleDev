@@ -61,7 +61,7 @@ function rsvplist_schema() {
     'description' => 'Checks whether the rsvp module is enabled for a node or not',
     'fields' => [
       'nid' => [
-        'description' => 'The {noe}.nid that has RSVP enabled',
+        'description' => 'The {node}.nid that has RSVP enabled',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,

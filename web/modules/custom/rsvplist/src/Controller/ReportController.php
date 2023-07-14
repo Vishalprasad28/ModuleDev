@@ -46,7 +46,7 @@ class ReportController extends ControllerBase {
    * and the email id the form was submitted with.
    *
    * @return array|null
-   *   Returns the array.
+   *   Returns the array or Null.
    */
   protected function load() {
 
