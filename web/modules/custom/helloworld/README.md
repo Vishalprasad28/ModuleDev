@@ -18,12 +18,15 @@ The Basic dependencies of this module are
 
 ## INFO FILE
 
-It Contains the basic information about the module required to make drupal discover it
+It Contains the basic information about the module required to make drupal
+discover it
 basic information that it contains are
 
 - name: Name of the Module as visible on the Extend page
 - type: Type that says whether its a module or a theme info file.
-- description: A Short Description about the module to make the other developers get an idea about what your module actually does.
-- core_version_requirement: What are the drupal versions our moduleis supported for.
+- description: A Short Description about the module to make the other developers
+  get an idea about what your module actually does.
+- core_version_requirement: What are the drupal versions our moduleis supported
+  for.
 - dependencies: What are the Modules our module is dependent on.
 - configure: A Route name to the configuration page of the module. 

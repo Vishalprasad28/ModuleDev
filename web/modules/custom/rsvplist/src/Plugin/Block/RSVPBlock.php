@@ -22,21 +22,21 @@ class RSVPBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * Contains the current route information.
-   * 
+   *
    * @var Drupal\Core\Routing\RouteMatchInterface
    */
   protected RouteMatchInterface $route;
 
   /**
    * Contains the FormBuiler Object.
-   * 
+   *
    * @var Drupal\Core\Form\FormBuilderInterface
    */
   protected FormBuilderInterface $formBuilder;
 
   /**
    * Constructs the RSVP Block dependencies.
-   * 
+   *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
    * @param string $plugin_id
@@ -49,9 +49,9 @@ class RSVPBlock extends BlockBase implements ContainerFactoryPluginInterface {
    *   Takes the FormBuilder Object.
    */
   public function __construct(
-    array $configuration, 
-    $plugin_id, 
-    $plugin_definition, 
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
     RouteMatchInterface $route,
     FormBuilderInterface $form_builder
   ) {

@@ -19,49 +19,49 @@ class RSVPForm extends FormBase {
 
   /**
    * Contains the Current route information.
-   * 
+   *
    * @var Drupal\Core\Routing\RouteMatchInterface
    */
   protected RouteMatchInterface $route;
 
   /**
    * Contains the Messenger object.
-   * 
+   *
    * @var Drupal\Core\Messenger\MessengerInterface
    */
   protected MessengerInterface $messenger;
 
   /**
    * Contains the current user details.
-   * 
+   *
    * @var Drupal\Core\Session\AccountInterface
    */
   protected AccountInterface $user;
 
   /**
-   * Contains the DatabaseConnection object. 
-   * 
+   * Contains the DatabaseConnection object.
+   *
    * @var Drupal\Core\Database\Connection
    */
   protected Connection $databaseConnection;
 
   /**
    * Contains the TimeInterface Object.
-   * 
+   *
    * @var Drupal\Component\Datetime\TimeInterface
    */
   protected TimeInterface $time;
 
   /**
    * Contains the Email Validator object.
-   * 
+   *
    * @var Drupal\Component\Utility\EmailValidatorInterface
    */
   protected EmailValidatorInterface $emailValidator;
 
   /**
    * Constructs the dependencies for the form.
-   * 
+   *
    * @param Drupal\Core\Routing\RouteMatchInterface $route
    *   Takes the current route object.
    * @param Drupal\Core\Messenger\MessengerInterface $messenger
@@ -84,7 +84,7 @@ class RSVPForm extends FormBase {
     $this->emailValidator = $email_validator;
   }
 
-    /**
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
@@ -109,7 +109,7 @@ class RSVPForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    
+
     // Gives the fiully Loaded Node Object of the current node.
     $node = $this->route->getParameter('node');
 

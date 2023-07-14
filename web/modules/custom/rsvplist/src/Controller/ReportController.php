@@ -13,21 +13,21 @@ class ReportController extends ControllerBase {
 
   /**
    * A database connection object.
-   * 
+   *
    * @var Drupal\Core\database\Connection
    */
   protected Connection $databaseConnection;
 
   /**
    * A Messenger object.
-   * 
+   *
    * @var Drupal\Core\Messenger\MessengerInterface
    */
   protected MessengerInterface $messenger;
 
   /**
    * Constructs the Dependencies for this controller.
-   * 
+   *
    * @param Drupal\Core\Messenger\MessengerInterface $messenger
    *   Takes the Messenger object.
    * @param Drupal\Core\database\Connection $connection
@@ -39,8 +39,9 @@ class ReportController extends ControllerBase {
   }
 
   /**
-   * Function to load the RSVP submission datas
-   * that includes the user name of the user submitting the form,
+   * Function to load the RSVP submission datas.
+   *
+   * It includes the user name of the user submitting the form,
    * Node id of the node,
    * and the email id the form was submitted with.
    *

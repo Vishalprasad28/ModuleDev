@@ -24,7 +24,7 @@ class FirstController extends ControllerBase {
 
   /**
    * Function to render the variable content.
-   * 
+   *
    * @param string $name1
    *   A String.
    * @param string $name2

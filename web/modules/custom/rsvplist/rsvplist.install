@@ -9,8 +9,8 @@
  * Implements hook_schema().
  */
 function rsvplist_schema() {
-  //Create a database table with the following details:
-  //1) d[int] 2)uid[int] 3)nid[int] 4)mail[varchar] 5)created[int].
+  // Create a database table with the following details:
+  // 1) d[int] 2)uid[int] 3)nid[int] 4)mail[varchar] 5)created[int].
   $schema['rsvplist'] = [
     'description' => 'Stores the uid, nid, emailand timestamp for the RSVP',
     'fields' => [
@@ -19,7 +19,7 @@ function rsvplist_schema() {
         'type' => 'serial',
         'size' => 'small',
         'unsigned' => TRUE,
-        'not null' => TRUE
+        'not null' => TRUE,
       ],
       'uid' => [
         'description' => 'This is the User id column',
@@ -52,11 +52,11 @@ function rsvplist_schema() {
     'indexes' => [
       'node' => ['nid'],
       'node_user' => ['nid', 'uid'],
-    ]
+    ],
   ];
 
-  //Creates the rsvplist_enabled table has the following columns
-  //1)nid[int].
+  // Creates the rsvplist_enabled table has the following columns
+  // 1)nid[int].
   $schema['rsvplist_enabled'] = [
     'description' => 'Checks whether the rsvp module is enabled for a node or not',
     'fields' => [

@@ -19,11 +19,11 @@ function mymodule_cron() {
  */
 function mymodule_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   Drupal::messenger()->addMessage(t('Form Id of this Form is @id:', ['@id' => $form_id]));
-  if($form_id == 'node_article_edit_form') {
+  if ($form_id == 'node_article_edit_form') {
     $form['actions']['submit']['#value'] = t('Edit an Article');
   }
 
-  if($form_id == 'node_article_form') {
+  if ($form_id == 'node_article_form') {
     $form['actions']['submit']['#value'] = t('Add an Article');
   }
 }

@@ -2,36 +2,35 @@
 
 namespace Drupal\rsvplist;
 
-use Drupal;
 use Drupal\Core\database\Connection;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\node\Entity\Node;
 
 /**
- * EnablerService Class.
+ * Class to handle the rsvpform display permission on different entity types.
  */
 class EnablerService {
 
   /**
    * Takes the Connectionobject.
-   * 
-   * @var Drupal\Core\database\Connection
+   *
+   * @var \Drupal\Core\database\Connection
    */
   protected Connection $databaseConnection;
 
   /**
    * Takes the Mesengerobject.
-   * 
-   * @var Drupal\Core\Messenger\MessengerInterface
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
    */
   protected MessengerInterface $messenger;
 
   /**
    * Constructs the Dependencies for the Service.
-   * 
-   * @param Drupal\Core\database\Connection $connection
+   *
+   * @param \Drupal\Core\database\Connection $connection
    *   Takes the Connection object.
-   * @param Drupal\Core\Messenger\MessengerInterface $messenger
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   Takes the Messenger Service Object.
    */
   public function __construct(Connection $connection, MessengerInterface $messenger) {
@@ -44,7 +43,7 @@ class EnablerService {
    *
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.
-   * 
+   *
    * @return bool
    *   Returns True or False Based on the RSVP Enabled status.
    */
@@ -74,7 +73,7 @@ class EnablerService {
    *
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.
-   * 
+   *
    * @throws Exception.
    *   Throws the exception on failure.
    */
