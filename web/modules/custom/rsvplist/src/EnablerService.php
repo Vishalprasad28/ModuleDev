@@ -44,11 +44,10 @@ class EnablerService {
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.
    *
-   * @return bool
+   * @return bool|null
    *   Returns True or False Based on the RSVP Enabled status.
    */
   public function isEnabled(Node $node) {
-
     if ($node->isNew()) {
       return FALSE;
     }
@@ -58,9 +57,7 @@ class EnablerService {
       $rsvp_enabled->fields('re', ['nid']);
       $rsvp_enabled->condition('nid', $node->id());
       $result = $rsvp_enabled->execute();
-
       return !(empty($result->fetchCol()));
-
     }
     catch (\Exception $e) {
       $this->messenger->addMessage(t("Sorry Drupal Couldn't Connect to database"));
@@ -78,7 +75,6 @@ class EnablerService {
    *   Throws the exception on failure.
    */
   public function setEnabled(Node $node) {
-
     try {
       if (!$this->isEnabled($node)) {
         $insert = $this->databaseConnection->insert('rsvplist_enabled');
@@ -101,7 +97,6 @@ class EnablerService {
    *   Takes the Node Object.
    */
   public function deleteEnabled(Node $node) {
-
     try {
       $delete = $this->databaseConnection->delete('rsvplist_enabled');
       $delete->condition('nid', [$node->id()]);

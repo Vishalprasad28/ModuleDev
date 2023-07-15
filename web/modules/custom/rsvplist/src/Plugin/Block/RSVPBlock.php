@@ -89,7 +89,7 @@ class RSVPBlock extends BlockBase implements ContainerFactoryPluginInterface {
     // If Viewing the node, get the full node object.
     $node = $this->route->getParameter('node');
 
-    if (!(is_null($node))) {
+    if ($node) {
       // Checking if the account has permission.
       $has_permission = AccessResult::allowedIfHasPermission($account, 'View RSVP List
       ');

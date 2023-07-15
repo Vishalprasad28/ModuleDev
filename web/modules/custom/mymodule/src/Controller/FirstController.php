@@ -26,9 +26,9 @@ class FirstController extends ControllerBase {
    * Function to render the variable content.
    *
    * @param string $name1
-   *   A String.
+   *   A String that comes from the url parameter.
    * @param string $name2
-   *   A String.
+   *   A String that comes from the url parameter.
    *
    * @return array
    *   Returns the render array.

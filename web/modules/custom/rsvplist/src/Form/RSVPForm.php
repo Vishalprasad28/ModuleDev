@@ -172,7 +172,6 @@ class RSVPForm extends FormBase {
     catch (\Exception $e) {
       $this->messenger->addMessage($this->t('Failed to varify, please try again later'));
     }
-
   }
 
   /**
@@ -183,7 +182,7 @@ class RSVPForm extends FormBase {
       // Getting the Current Logged In user
       // $user = \Drupal\user\Entity::load(\Drupal::currentUser()->id());
       $uid = $this->user->id();
-
+      
       // Getting the Values entered in the form.
       $nid = $form_state->getValue('nid');
       $email = $form_state->getValue('email');
