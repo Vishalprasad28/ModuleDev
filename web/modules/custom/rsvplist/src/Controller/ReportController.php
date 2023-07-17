@@ -16,14 +16,14 @@ class ReportController extends ControllerBase {
    *
    * @var Drupal\Core\database\Connection
    */
-  protected Connection $databaseConnection;
+  protected $databaseConnection;
 
   /**
    * A Messenger object.
    *
    * @var Drupal\Core\Messenger\MessengerInterface
    */
-  protected MessengerInterface $messenger;
+  protected $messenger;
 
   /**
    * Constructs the Dependencies for this controller.

@@ -22,42 +22,42 @@ class RSVPForm extends FormBase {
    *
    * @var Drupal\Core\Routing\RouteMatchInterface
    */
-  protected RouteMatchInterface $route;
+  protected $route;
 
   /**
    * Contains the Messenger object.
    *
    * @var Drupal\Core\Messenger\MessengerInterface
    */
-  protected MessengerInterface $messenger;
+  protected $messenger;
 
   /**
    * Contains the current user details.
    *
    * @var Drupal\Core\Session\AccountInterface
    */
-  protected AccountInterface $user;
+  protected $user;
 
   /**
    * Contains the DatabaseConnection object.
    *
    * @var Drupal\Core\Database\Connection
    */
-  protected Connection $databaseConnection;
+  protected $databaseConnection;
 
   /**
    * Contains the TimeInterface Object.
    *
    * @var Drupal\Component\Datetime\TimeInterface
    */
-  protected TimeInterface $time;
+  protected $time;
 
   /**
    * Contains the Email Validator object.
    *
    * @var Drupal\Component\Utility\EmailValidatorInterface
    */
-  protected EmailValidatorInterface $emailValidator;
+  protected $emailValidator;
 
   /**
    * Constructs the dependencies for the form.
