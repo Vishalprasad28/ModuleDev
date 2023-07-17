@@ -16,14 +16,14 @@ class EnablerService {
    *
    * @var \Drupal\Core\database\Connection
    */
-  protected Connection $databaseConnection;
+  protected $databaseConnection;
 
   /**
    * Takes the Mesengerobject.
    *
    * @var \Drupal\Core\Messenger\MessengerInterface
    */
-  protected MessengerInterface $messenger;
+  protected $messenger;
 
   /**
    * Constructs the Dependencies for the Service.
