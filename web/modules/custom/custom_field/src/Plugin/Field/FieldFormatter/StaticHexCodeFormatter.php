@@ -34,7 +34,6 @@ final class StaticHexCodeFormatter extends FormatterBase {
       }
       $element[$delta] = [
         '#markup' => $value,
-        '#access' => in_array('administrator', $roles),
       ];
     }
     return $element;

@@ -2,11 +2,16 @@
 
 /**
  * @file
- *   Contains the Hook Implementation for the module
+ * Contains the Hook Implementation for the module.
  */
 
+use Drupal\Core\Access\AccessResult;
+use \Drupal\Core\Field\FieldDefinitionInterface;
+use \Drupal\Core\Field\FieldItemListInterface;
+use \Drupal\Core\Session\AccountInterface;
+
 /**
- * Implementing the hook_theme()
+ * Implementing the hook_theme().
  */
 function custom_field_theme($existing, $type, $theme, $path) {
   $information = [
@@ -20,4 +25,18 @@ function custom_field_theme($existing, $type, $theme, $path) {
     ],
   ];
   return $information;
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function custom_field_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  $roles = $account->getRoles();
+  if ($field_definition->getType() == 'rgb_color_picker') {
+      if (in_array('administrator', $roles)) {
+        return AccessResult::allowed();
+      }
+      return AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
 }

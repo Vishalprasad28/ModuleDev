@@ -35,7 +35,6 @@ final class BackgroundColorSetterFormatter extends FormatterBase {
       $element[$delta] = [
         '#theme' => "dynamic-background-color",
         '#color' => $value,
-        '#access' => in_array('administrator', $roles),
       ];
     }
     return $element;
