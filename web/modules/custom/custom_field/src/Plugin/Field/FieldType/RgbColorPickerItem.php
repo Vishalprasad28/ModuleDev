@@ -108,7 +108,7 @@ final class RgbColorPickerItem extends FieldItemBase {
 
     $constraint_manager = $this->getTypedDataManager()->getValidationConstraintManager();
 
-    // @DCG Suppose our value must not be longer than 6 characters.
+    // @DCG Suppose our value must not be longer than 7 characters.
     $options['value']['Length']['max'] = 7;
     $options['red']['Length']['max'] = 2;
     $options['green']['Length']['max'] = 2;

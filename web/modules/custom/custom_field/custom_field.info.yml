@@ -1,4 +1,4 @@
-name: 'custom_field'
+name: 'Custom Field'
 type: module
 description: 'A Custom Field Type along with its widget and formatter.'
 package: Custom

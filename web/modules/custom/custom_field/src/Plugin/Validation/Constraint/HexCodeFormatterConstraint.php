@@ -18,12 +18,16 @@ final class HexCodeFormatterConstraint extends Constraint {
 
   /**
    * This message is shown when value is not in proper hex formate.
+   * 
+   * @var string
    */
-  public string $hex_format = '@value is not in proper hex format';
+  public $hex_format = '@value is not in proper hex format';
 
   /**
    * This message is show when the value is outside the defined range.
+   * 
+   * @var string
    */
-  public string $range_error = '@value is out of the range';
+  public $range_error = '@value is out of the range';
 
 }

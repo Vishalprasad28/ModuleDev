@@ -11,7 +11,7 @@ use \Drupal\Core\Field\FieldItemListInterface;
 use \Drupal\Core\Session\AccountInterface;
 
 /**
- * Implementing the hook_theme().
+ * Implements hook_theme().
  */
 function custom_field_theme($existing, $type, $theme, $path) {
   $information = [
@@ -33,10 +33,10 @@ function custom_field_theme($existing, $type, $theme, $path) {
 function custom_field_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
   $roles = $account->getRoles();
   if ($field_definition->getType() == 'rgb_color_picker') {
-      if (in_array('administrator', $roles)) {
-        return AccessResult::allowed();
-      }
-      return AccessResult::forbidden();
+    if (in_array('administrator', $roles)) {
+      return AccessResult::allowed();
+    }
+    return AccessResult::forbidden();
   }
   return AccessResult::neutral();
 }

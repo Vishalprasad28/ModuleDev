@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace Drupal\custom_field\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
@@ -22,8 +20,6 @@ final class BackgroundColorSetterFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode): array {
-    $user = \Drupal::currentUser();
-    $roles = $user->getRoles();
     $element = [];
     foreach ($items as $delta => $item) {
       if ($item->value) {

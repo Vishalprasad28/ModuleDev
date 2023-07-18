@@ -22,8 +22,6 @@ final class StaticHexCodeFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode): array {
-    $user = \Drupal::currentUser();
-    $roles = $user->getRoles();
     $element = [];
     foreach ($items as $delta => $item) {
       if ($item->value) {
