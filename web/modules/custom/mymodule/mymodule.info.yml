@@ -1,4 +1,4 @@
-name: 'my module'
+name: 'My module'
 type: module
 description: 'A Custom Module for the Testing Purpose.'
 package: Custom

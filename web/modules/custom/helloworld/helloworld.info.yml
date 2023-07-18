@@ -1,4 +1,4 @@
-name: 'HelloWorld'
+name: 'Hello World'
 type: module
 description: 'A Custom Module for the Testing Purpose.'
 package: Custom

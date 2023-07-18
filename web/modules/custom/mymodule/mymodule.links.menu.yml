@@ -1,4 +1,4 @@
-mymodule.simplecontentpage:
+mymodule.simple_conten_tpage:
   title: 'Simple Content Link'
   description: 'Link to the simple content method'
   route_name: mymodule.simplecontent
