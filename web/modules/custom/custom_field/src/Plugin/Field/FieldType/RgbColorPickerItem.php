@@ -73,8 +73,7 @@ final class RgbColorPickerItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public function isEmpty(): bool {
-    $is_empty = $this->get('value')->getValue() == NULL && ($this->get('red')->getValue() == NULL && $this->get('green')->getValue() == NULL && $this->get('blue')->getValue() == NULL);
-    return $is_empty;
+    return ($this->get('value')->getValue() == NULL);
   }
 
   /**
@@ -87,15 +86,6 @@ final class RgbColorPickerItem extends FieldItemBase {
     $properties['value'] = DataDefinition::create('string')
       ->setLabel(('Text value'))
       ->addConstraint('HexCodeFormatter');
-
-    // Properties for the red component.
-    $properties['red'] = DataDefinition::create('string')->setLabel('red');
-
-    // Properties for the green component.
-    $properties['green'] = DataDefinition::create('string')->setLabel('green');
-
-    // Properties for the blue component.
-    $properties['blue'] = DataDefinition::create('string')->setLabel('blue');
 
     return $properties;
   }
@@ -110,9 +100,6 @@ final class RgbColorPickerItem extends FieldItemBase {
 
     // @DCG Suppose our value must not be longer than 7 characters.
     $options['value']['Length']['max'] = 7;
-    $options['red']['Length']['max'] = 2;
-    $options['green']['Length']['max'] = 2;
-    $options['blue']['Length']['max'] = 2;
 
     // See /core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint
     // directory for available constraints.
@@ -131,24 +118,6 @@ final class RgbColorPickerItem extends FieldItemBase {
         'not null' => FALSE,
         'description' => 'RGB Hex code for a color',
         'length' => 7,
-      ],
-      'red' => [
-        'type' => 'varchar',
-        'not null' => FALSE,
-        'description' => 'RGB Hex code for a color',
-        'length' => 2,
-      ],
-      'green' => [
-        'type' => 'varchar',
-        'not null' => FALSE,
-        'description' => 'RGB Hex code for a color',
-        'length' => 2,
-      ],
-      'blue' => [
-        'type' => 'varchar',
-        'not null' => FALSE,
-        'description' => 'RGB Hex code for a color',
-        'length' => 2,
       ],
     ];
 

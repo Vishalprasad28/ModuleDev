@@ -24,14 +24,8 @@ final class StaticHexCodeFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode): array {
     $element = [];
     foreach ($items as $delta => $item) {
-      if ($item->value) {
-        $value = $item->value;
-      }
-      else {
-        $value = '#' . $item->red . $item->green . $item->blue;
-      }
       $element[$delta] = [
-        '#markup' => $value,
+        '#markup' => $item->value,
       ];
     }
     return $element;

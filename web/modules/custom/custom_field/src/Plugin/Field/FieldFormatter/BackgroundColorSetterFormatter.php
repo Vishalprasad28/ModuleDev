@@ -22,15 +22,9 @@ final class BackgroundColorSetterFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode): array {
     $element = [];
     foreach ($items as $delta => $item) {
-      if ($item->value) {
-        $value = $item->value;
-      }
-      else {
-        $value = '#' . $item->red . $item->green . $item->blue;
-      }
       $element[$delta] = [
         '#theme' => "dynamic-background-color",
-        '#color' => $value,
+        '#color' => $item->value,
       ];
     }
     return $element;

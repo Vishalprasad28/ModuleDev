@@ -22,29 +22,13 @@ final class FieldRgbComponentWidget extends WidgetBase implements ContainerFacto
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state): array {
-    if ($items[$delta]->value) {
-      $red = substr($items[$delta]->value, 1, 2);
-      $green = substr($items[$delta]->value, 3, 4);
-      $blue = substr($items[$delta]->value, 5, 6);
-    }
-    elseif ($items[$delta]->red && $items[$delta]->green && $items[$delta]->blue) {
-      $red = $items[$delta]->red;
-      $green = $items[$delta]->green;
-      $blue = $items[$delta]->blue;
-    }
-    else {
-      $red = '';
-      $green = '';
-      $blue = '';
-    }
-
     $element['red'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Red'),
       '#description' => $this->t('Write in formate ff'),
       '#maxlength' => 2,
       '#pattern' => '^[a-fA-F0-9]{2}$',
-      '#default_value' => $red,
+      '#default_value' => isset($items[$delta]->value) ? substr($items[$delta]->value, 1, 2) : '',
     ];
     $element['green'] = [
       '#type' => 'textfield',
@@ -52,7 +36,7 @@ final class FieldRgbComponentWidget extends WidgetBase implements ContainerFacto
       '#description' => $this->t('Write in formate ff'),
       '#maxlength' => 2,
       '#pattern' => '^[a-fA-F0-9]{2}$',
-      '#default_value' => $green,
+      '#default_value' => isset($items[$delta]->value) ? substr($items[$delta]->value, 3, 2) : '',
     ];
     $element['blue'] = [
       '#type' => 'textfield',
@@ -60,10 +44,25 @@ final class FieldRgbComponentWidget extends WidgetBase implements ContainerFacto
       '#description' => $this->t('Write in formate ff'),
       '#maxlength' => 2,
       '#pattern' => '^[a-fA-F0-9]{2}$',
-      '#default_value' => $blue,
+      '#default_value' => isset($items[$delta]->value) ? substr($items[$delta]->value, 5, 2) : '',
     ];
 
     return $element;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
+
+    foreach ($values as $index => $value) {
+      $full_rgb = '#' . $value['red'] . $value['green'] . $value['blue'];
+      $values[$index]['value'] = $full_rgb;
+      unset($values[$index]['red']);
+      unset($values[$index]['green']);
+      unset($values[$index]['blue']);
+    }
+    return $values;
   }
 
 }
