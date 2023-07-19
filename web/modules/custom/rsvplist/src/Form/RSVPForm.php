@@ -20,59 +20,59 @@ class RSVPForm extends FormBase {
   /**
    * Contains the Current route information.
    *
-   * @var Drupal\Core\Routing\RouteMatchInterface
+   * @var \Drupal\Core\Routing\RouteMatchInterface
    */
   protected $route;
 
   /**
    * Contains the Messenger object.
    *
-   * @var Drupal\Core\Messenger\MessengerInterface
+   * @var \Drupal\Core\Messenger\MessengerInterface
    */
   protected $messenger;
 
   /**
    * Contains the current user details.
    *
-   * @var Drupal\Core\Session\AccountInterface
+   * @var \Drupal\Core\Session\AccountInterface
    */
   protected $user;
 
   /**
    * Contains the DatabaseConnection object.
    *
-   * @var Drupal\Core\Database\Connection
+   * @var \Drupal\Core\Database\Connection
    */
   protected $databaseConnection;
 
   /**
    * Contains the TimeInterface Object.
    *
-   * @var Drupal\Component\Datetime\TimeInterface
+   * @var \Drupal\Component\Datetime\TimeInterface
    */
   protected $time;
 
   /**
    * Contains the Email Validator object.
    *
-   * @var Drupal\Component\Utility\EmailValidatorInterface
+   * @var \Drupal\Component\Utility\EmailValidatorInterface
    */
   protected $emailValidator;
 
   /**
    * Constructs the dependencies for the form.
    *
-   * @param Drupal\Core\Routing\RouteMatchInterface $route
+   * @param \Drupal\Core\Routing\RouteMatchInterface $route
    *   Takes the current route object.
-   * @param Drupal\Core\Messenger\MessengerInterface $messenger
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   Takes the Messenger service object.
-   * @param Drupal\Core\Session\AccountInterface $user
+   * @param \Drupal\Core\Session\AccountInterface $user
    *   Takes the current user object.
-   * @param Drupal\Core\database\Connection $connection
+   * @param \Drupal\Core\database\Connection $connection
    *   Takes the database connection object.
-   * @param Drupal\Component\Datetime\TimeInterface $time
+   * @param \Drupal\Component\Datetime\TimeInterface $time
    *   Takes the Current timeinterface object.
-   * @param Drupal\Component\Utility\EmailValidatorInterface $email_validator
+   * @param \Drupal\Component\Utility\EmailValidatorInterface $email_validator
    *   Takes the Email Validator object for validation purpose.
    */
   public function __construct(RouteMatchInterface $route, MessengerInterface $messenger, AccountInterface $user, Connection $connection, TimeInterface $time, EmailValidatorInterface $email_validator) {
@@ -115,14 +115,7 @@ class RSVPForm extends FormBase {
 
     // Some Pages may not be node in that cae the node object will contain
     // the NULL.
-    if (!(is_null($node))) {
-      $nid = $node->id();
-    }
-
-    // If the Node is NULL.
-    else {
-      $nid = 0;
-    }
+    is_null($node) ? $nid = 0 : $nid = $node->id();
 
     // Establishing the Form Render Array.
     // It Implements the Email Id Field

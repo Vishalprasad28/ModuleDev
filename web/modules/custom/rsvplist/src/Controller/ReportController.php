@@ -14,23 +14,23 @@ class ReportController extends ControllerBase {
   /**
    * A database connection object.
    *
-   * @var Drupal\Core\database\Connection
+   * @var \Drupal\Core\database\Connection
    */
   protected $databaseConnection;
 
   /**
    * A Messenger object.
    *
-   * @var Drupal\Core\Messenger\MessengerInterface
+   * @var \Drupal\Core\Messenger\MessengerInterface
    */
   protected $messenger;
 
   /**
    * Constructs the Dependencies for this controller.
    *
-   * @param Drupal\Core\Messenger\MessengerInterface $messenger
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   Takes the Messenger object.
-   * @param Drupal\Core\database\Connection $connection
+   * @param \Drupal\Core\database\Connection $connection
    *   Takes the database Connection object.
    */
   public function __construct(MessengerInterface $messenger, Connection $connection) {
@@ -49,7 +49,6 @@ class ReportController extends ControllerBase {
    *   Returns the array or Null.
    */
   protected function load() {
-
     try {
       $database = $this->databaseConnection;
       $query = $database->select('rsvplist', 'r');
@@ -110,7 +109,6 @@ class ReportController extends ControllerBase {
 
     // Returning the Render Array to be rendered.
     return $content;
-
   }
 
 }
