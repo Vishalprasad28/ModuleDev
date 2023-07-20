@@ -48,7 +48,7 @@ class RSVPSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $selected_allowed_types = array_filter($form_state->getValue('rscplist_types'));
+    $selected_allowed_types = array_filter($form_state->getValue('rsvplist_types'));
     sort($selected_allowed_types);
 
     // Saving the configuration values in ConfigFactory.
