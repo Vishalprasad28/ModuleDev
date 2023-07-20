@@ -29,14 +29,14 @@ class RSVPBlock extends BlockBase implements ContainerFactoryPluginInterface {
   protected $route;
 
   /**
-   * Contains the FormBuiler Object.
+   * Contains the FormBuiler Object to fetch the form that is already built.
    *
    * @var \Drupal\Core\Form\FormBuilderInterface
    */
   protected $formBuilder;
 
   /**
-   * Contains the config object.
+   * Contains the configFactory object to load the configuration data.
    * 
    * @var \Drupal\Core\Config\ConfigFactoryInterface
    */

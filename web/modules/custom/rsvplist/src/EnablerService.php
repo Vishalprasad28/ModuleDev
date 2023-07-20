@@ -12,14 +12,14 @@ use Drupal\node\Entity\Node;
 class EnablerService {
 
   /**
-   * Takes the Connectionobject.
+   * Takes the Connection object for database related operations.
    *
    * @var \Drupal\Core\database\Connection
    */
   protected $databaseConnection;
 
   /**
-   * Takes the Mesengerobject.
+   * Takes the Mesengerobject to show messages on UI.
    *
    * @var \Drupal\Core\Messenger\MessengerInterface
    */
@@ -91,7 +91,7 @@ class EnablerService {
   }
 
   /**
-   * Deletes the RSVP List EnBled Node ids from the table.
+   * Deletes the RSVP List Enabled Node ids from the table.
    *
    * @param \Drupal\node\Entity\Node $node
    *   Takes the Node Object.

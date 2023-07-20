@@ -8,7 +8,7 @@ use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * ReportController class to process the routes.
+ * ReportController class to process display the RSVP submitted data entries.
  */
 class ReportController extends ControllerBase {
 

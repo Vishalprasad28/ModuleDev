@@ -13,7 +13,7 @@ use Drupal\Core\Database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * RSVP Form Class.
+ * RSVP Form Class to take the RSVP data input from the enduser.
  */
 class RSVPForm extends FormBase {
 
@@ -75,7 +75,14 @@ class RSVPForm extends FormBase {
    * @param \Drupal\Component\Utility\EmailValidatorInterface $email_validator
    *   Takes the Email Validator object for validation purpose.
    */
-  public function __construct(RouteMatchInterface $route, MessengerInterface $messenger, AccountInterface $user, Connection $connection, TimeInterface $time, EmailValidatorInterface $email_validator) {
+  public function __construct(
+    RouteMatchInterface $route,
+    MessengerInterface $messenger,
+    AccountInterface $user,
+    Connection $connection,
+    TimeInterface $time,
+    EmailValidatorInterface $email_validator
+  ) {
     $this->route = $route;
     $this->messenger = $messenger;
     $this->user = $user;
