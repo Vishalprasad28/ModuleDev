@@ -5,6 +5,7 @@ namespace Drupal\rsvplist\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\database\Connection;
 use Drupal\Core\Messenger\MessengerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * ReportController class to process the routes.
@@ -36,6 +37,16 @@ class ReportController extends ControllerBase {
   public function __construct(MessengerInterface $messenger, Connection $connection) {
     $this->messenger = $messenger;
     $this->databaseConnection = $connection;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('messenger'),
+      $container->get('database'),
+    );
   }
 
   /**
