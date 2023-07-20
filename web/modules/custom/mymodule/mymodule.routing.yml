@@ -4,11 +4,11 @@ mymodule.simplecontent:
     _controller: \Drupal\mymodule\Controller\FirstController::simpleContent
     _title: 'This is the Markup Rendered from the First Controller'
   requirements:
-    _permission: admin permission
+    _permission: 'admin permission'
 mymodule.variablecontent:
   path: /variablecontent/{name1}/{name2}
   defaults:
     _controller: \Drupal\mymodule\Controller\FirstController::variableContent
     _title: 'Aur ye Boom! Guys'
   requirements:
-    _permission: access content
+    _permission: 'access content'
