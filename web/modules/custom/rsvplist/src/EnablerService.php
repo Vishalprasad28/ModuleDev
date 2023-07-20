@@ -94,7 +94,7 @@ class EnablerService {
    * Deletes the RSVP List Enabled Node ids from the table.
    *
    * @param \Drupal\node\Entity\Node $node
-   *   Takes the Node Object.
+   *   Takes the Node Object to perform operation upon.
    */
   public function deleteEnabled(Node $node) {
     try {

@@ -89,8 +89,8 @@ class ReportController extends ControllerBase {
   /**
    * Function to Return an render array of all the RSVP Reports.
    *
-   * @return array|null
-   *   Returns the array or Null.
+   * @return array
+   *   Returns the array of data after loading from Database.
    */
   public function report() {
     $content = [];
