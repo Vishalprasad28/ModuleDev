@@ -1,4 +1,4 @@
-uuid: a74f3e15-8882-404f-be90-8b9fec42eac6
+uuid: 616e5421-8a4c-40a2-8932-194d209e068e
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - node
     - user
 _core:
-  default_config_hash: vBKWYGGDoAX-tFd1JErB8tZLSxx3lJ0foouVsgpcbB4
+  default_config_hash: 3ELwBpDb9lzqW5-daqjZYsC5lNcwbDS_i_-LKba12Lw
 id: content
 label: Content
 module: node
@@ -187,9 +187,8 @@ display:
             date_format: short
             custom_date_format: ''
             timezone: ''
-<<<<<<< HEAD
             tooltip:
-              date_format: ''
+              date_format: long
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -197,8 +196,6 @@ display:
               past_format: '@interval ago'
               granularity: 2
               refresh: 60
-=======
->>>>>>> development
         operations:
           id: operations
           table: node

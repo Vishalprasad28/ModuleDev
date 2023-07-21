@@ -1,15 +1,14 @@
 _core:
   default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: en
-uuid: 8da2d4a8-5e84-43ae-bed3-745f84e66e54
-name: Moduledev
-mail: vishaldemo28@gmail.com
+uuid: ca969b17-b42d-41eb-b506-2ea238cd9f93
+name: 'Drush Site-Install'
+mail: admin@example.com
 slogan: ''
 page:
   403: ''
   404: ''
-  front: /node/1
+  front: /node
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en
-mail_notification: ''

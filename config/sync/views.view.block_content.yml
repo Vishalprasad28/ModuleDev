@@ -1,4 +1,4 @@
-uuid: 60d56ca6-20bc-407a-b7dd-f1c00e749210
+uuid: 0e136344-e346-44bc-badd-ba00fd02d28f
 langcode: en
 status: true
 dependencies:
@@ -6,15 +6,11 @@ dependencies:
     - block_content
     - user
 _core:
-  default_config_hash: jvd5Pu6jy-lra4oMr-mR7zuY6CVDv9CaNeoj0Y70gV4
+  default_config_hash: AcOE_1RLjX4okjWSOk7Pen1IdtPsY0Nbn0HXWG3zMqc
 id: block_content
-<<<<<<< HEAD
 label: 'Content blocks'
-=======
-label: 'Custom block library'
->>>>>>> development
 module: views
-description: 'Find and manage custom blocks.'
+description: 'Find and manage content blocks.'
 tag: default
 base_table: block_content_field_data
 base_field: id
@@ -25,7 +21,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Custom block library'
+      title: 'Content blocks'
       fields:
         info:
           id: info
@@ -213,9 +209,8 @@ display:
             date_format: short
             custom_date_format: ''
             timezone: ''
-<<<<<<< HEAD
             tooltip:
-              date_format: ''
+              date_format: long
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -223,8 +218,6 @@ display:
               past_format: '@interval ago'
               granularity: 2
               refresh: 60
-=======
->>>>>>> development
         operations:
           id: operations
           table: block_content
@@ -307,11 +300,7 @@ display:
       access:
         type: perm
         options:
-<<<<<<< HEAD
           perm: 'access block library'
-=======
-          perm: 'administer blocks'
->>>>>>> development
       cache:
         type: tag
         options: {  }
@@ -325,7 +314,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'There are no custom blocks available.'
+          content: 'There are no content blocks available.'
           tokenize: false
         block_content_listing_empty:
           id: block_content_listing_empty
@@ -543,26 +532,14 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-<<<<<<< HEAD
       path: admin/content/block
       menu:
         type: tab
         title: Blocks
-        description: 'Create and edit block content.'
+        description: 'Create and edit content blocks.'
         weight: 0
-        expanded: false
         menu_name: admin
         parent: system.admin_content
-=======
-      path: admin/structure/block/block-content
-      menu:
-        type: tab
-        title: 'Custom block library'
-        description: ''
-        weight: 0
-        menu_name: admin
-        parent: block.admin_display
->>>>>>> development
         context: '0'
     cache_metadata:
       max-age: -1

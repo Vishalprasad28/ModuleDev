@@ -1,7 +1,0 @@
-uuid: 50230d5a-0c35-4756-90c1-2efeaa4d3e8d
-langcode: en
-status: false
-dependencies: {  }
-formId: node_core_capabilities_form
-captchaType: default
-label: node_core_capabilities_form
