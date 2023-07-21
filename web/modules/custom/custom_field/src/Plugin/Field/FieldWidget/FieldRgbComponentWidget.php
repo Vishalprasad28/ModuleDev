@@ -56,6 +56,14 @@ final class FieldRgbComponentWidget extends WidgetBase implements ContainerFacto
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
 
     foreach ($values as $index => $value) {
+      // Discarding the #000000 value that comes as default for the picker.
+      // Removing it because while adding the unlimited fields in the contents,
+      // the default #000000 value also gets stored, everytime the content is 
+      // edited.
+      if ($value['red'] == '' && $value['green'] == '' && $value['blue'] == '') {
+        unset($values[$index]);
+        continue;
+      }
       $full_rgb = '#' . $value['red'] . $value['green'] . $value['blue'];
       $values[$index]['value'] = $full_rgb;
       unset($values[$index]['red']);

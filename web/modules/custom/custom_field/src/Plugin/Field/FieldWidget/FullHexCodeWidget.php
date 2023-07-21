@@ -41,4 +41,21 @@ final class FullHexCodeWidget extends WidgetBase implements ContainerFactoryPlug
     return $element;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
+    foreach ($values as $index => $value) {
+      // Discarding the #000000 value that comes as default for the picker.
+      // Removing it because while adding the unlimited fields in the contents,
+      // the default #000000 value also gets stored, everytime the content is 
+      // edited.
+      if ($value['value'] == '#000000') {
+        unset($values[$index]);
+        continue;
+      }
+    }
+    return $values;
+  }
+
 }

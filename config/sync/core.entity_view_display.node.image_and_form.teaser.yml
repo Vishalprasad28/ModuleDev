@@ -1,0 +1,25 @@
+uuid: 23f0e754-1b4c-4617-b40b-065348d56928
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.image_and_form.field_digital_agency_form
+    - field.field.node.image_and_form.field_form_image
+    - node.type.image_and_form
+  module:
+    - user
+id: node.image_and_form.teaser
+targetEntityType: node
+bundle: image_and_form
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_digital_agency_form: true
+  field_form_image: true
+  langcode: true

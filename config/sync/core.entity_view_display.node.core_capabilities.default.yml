@@ -1,0 +1,42 @@
+uuid: 26b73db7-4b6a-418a-bae7-e9417ca38c60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.core_capabilities.body
+    - field.field.node.core_capabilities.field_core_capability_image
+    - node.type.core_capabilities
+  module:
+    - image
+    - text
+    - user
+id: node.core_capabilities.default
+targetEntityType: node
+bundle: core_capabilities
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_core_capability_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

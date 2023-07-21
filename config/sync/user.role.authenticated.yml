@@ -1,19 +1,34 @@
-uuid: 620828f8-5a08-4839-b85a-cfca502f1f17
+<<<<<<< HEAD
+uuid: 7641a2da-8407-4682-9ef0-2cca02f9b4c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - background_image
+id: authenticated
+label: 'Authenticated user'
+weight: -9
+is_admin: null
+permissions:
+  - 'view background image'
+=======
+uuid: 56de4745-ec90-4d45-9160-a5b4049bb3db
 langcode: en
 status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.webform_default
   module:
     - comment
     - contact
-    - file
     - filter
+    - media
     - search
     - shortcut
     - system
 _core:
-  default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
+  default_config_hash: I44QAB4es39lNzMQWiJLq2dfjX7VRSOzT_5KzAcUq_M
 id: authenticated
 label: 'Authenticated user'
 weight: 1
@@ -23,8 +38,10 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'access site-wide contact form'
-  - 'delete own files'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
   - 'use text format basic_html'
+  - 'use text format webform_default'
+  - 'view media'
+>>>>>>> development

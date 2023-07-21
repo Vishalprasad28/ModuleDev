@@ -22,21 +22,29 @@ final class RgbPickerWidget extends WidgetBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state): array {
-    if ($items[$delta]->value) {
-      $value = $items[$delta]->value;
-    }
-    elseif ($items[$delta]->red && $items[$delta]->green && $items[$delta]->blue) {
-      $value = '#' . $items[$delta]->red . $items[$delta]->green . $items[$delta]->blue;
-    }
-    else {
-      $value = '';
-    }
     $element['value'] = $element + [
       '#type' => 'color',
       '#title' => $this->t('Pick the color'),
-      '#default_value' => $value,
+      '#default_value' => $items[$delta]->value ? $items[$delta]->value : '',
     ];
     return $element;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
+    foreach ($values as $index => $value) {
+      // Discarding the #000000 value that comes as default for the picker.
+      // Removing it because while adding the unlimited fields in the contents,
+      // the default #000000 value also gets stored, everytime the content is 
+      // edited.
+      if ($value['value'] == '#000000') {
+        unset($values[$index]);
+        continue;
+      }
+    }
+    return $values;
   }
 
 }
