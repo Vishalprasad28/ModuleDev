@@ -1,0 +1,23 @@
+uuid: 03b1512e-2e38-4506-b4df-e5f8a72121ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_num
+    - node.type.testing
+id: node.testing.field_num
+field_name: field_num
+entity_type: node
+bundle: testing
+label: num
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

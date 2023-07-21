@@ -1,15 +1,11 @@
-uuid: b51960ef-fc22-475c-a9ba-69463e6fa3a4
+uuid: d6eb05d2-5832-4a58-a755-e658c6ce247d
 langcode: en
 status: true
 dependencies:
   module:
     - editor
-<<<<<<< HEAD
-    - slick
-=======
->>>>>>> development
 _core:
-  default_config_hash: RjoJPQLCAE8u1Ys_yCKubpkYlRz_Oy12a5qCVeNIHJ8
+  default_config_hash: mufoCrfOvOmGXWBLRwQblEQbGEKQz09rnTbXnuVGC9o
 name: 'Basic HTML'
 format: basic_html
 weight: 0
@@ -41,26 +37,15 @@ filters:
     status: true
     weight: 9
     settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: 15
+    settings: {  }
   editor_file_reference:
     id: editor_file_reference
     provider: editor
     status: true
     weight: 11
     settings: {  }
-<<<<<<< HEAD
-  filter_image_lazy_load:
-    id: filter_image_lazy_load
-    provider: filter
-    status: true
-    weight: 12
-    settings: {  }
-  slick_filter:
-    id: slick_filter
-    provider: slick
-    status: false
-    weight: 4
-    settings:
-      optionset: default
-      media_switch: ''
-=======
->>>>>>> development
