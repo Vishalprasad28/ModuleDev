@@ -20,18 +20,6 @@ function custom_entity_uninstall() {
     'core.entity_form_display.node.movie.default',
     'core.entity_view_display.node.movie.default',
   ];
-  
-  // $content_type = 'movie';
-  // $ids = \Drupal::entityQuery('node')
-  //   ->condition('type', $content_type)
-  //   ->accessCheck(FALSE)
-  //   ->execute();
-
-  //Method 1: To delete multiple nodes by looping node entities.
-  // $nodes = Node::loadMultiple($ids);
-  // foreach($nodes as $node) {
-  //   $node->delete();
-  // }
 
   foreach ($config_names as $config_name) {
     \Drupal::configFactory()->getEditable($config_name)->delete();
