@@ -1,4 +1,4 @@
-uuid: 04aa68d6-ecc3-4e77-9e6d-a5f708979f3d
+uuid: 5cfd84d4-ae06-4219-9cfa-638c0e2f463a
 langcode: en
 status: true
 dependencies:
@@ -6,10 +6,8 @@ dependencies:
     - field.field.node.movie.body
     - field.field.node.movie.field_movie_image
     - field.field.node.movie.field_movie_price
-    - image.style.thumbnail
     - node.type.movie
   module:
-    - image
     - path
     - text
 _core:
@@ -20,70 +18,51 @@ bundle: movie
 mode: default
 content:
   body:
-    type: text_textarea_with_summary
-    weight: 6
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
     label: hidden
-  created:
-    type: datetime_timestamp
-    weight: 2
-    region: content
+    type: text_textarea_with_summary
+    weight: 101
     settings: {  }
     third_party_settings: {  }
-  field_movie_image:
-    type: image_image
-    weight: 8
     region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_movie_price:
-    type: number
-    weight: 9
+  created:
+    type: datetime_timestamp
+    weight: 10
     region: content
-    settings:
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   links:
     weight: 100
     region: content
   path:
     type: path
-    weight: 5
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 3
-    region: content
     settings:
       display_label: true
+    weight: 15
+    region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 7
-    region: content
     settings:
       display_label: true
+    weight: 120
+    region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 4
-    region: content
     settings:
       display_label: true
+    weight: 16
+    region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: -5
     region: content
     settings:
       size: 60
@@ -91,12 +70,14 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
-    region: content
+    weight: 5
     settings:
       match_operator: CONTAINS
-      match_limit: 10
-      size: 60
+      size: '60'
       placeholder: ''
+      match_limit: 10
+    region: content
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_movie_image: true
+  field_movie_price: true

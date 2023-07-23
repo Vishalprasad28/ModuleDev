@@ -20,4 +20,19 @@ content:
     third_party_settings: {  }
   links:
     weight: 100
+  field_movie_image:
+    type: image_image
+    weight: 102
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_movie_price:
+    type: number
+    weight: 103
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
 hidden: {  }
