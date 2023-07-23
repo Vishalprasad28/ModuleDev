@@ -1,0 +1,32 @@
+uuid: 0acb9750-319d-4068-90f4-85d2b0bb49ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.movie.body
+    - field.field.node.movie.field_movie_image
+    - field.field.node.movie.field_movie_price
+    - node.type.movie
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: 5gZB-GhrxW7u46-XPS3NPY__WxfCbbDBRTx6zZcdWZQ
+id: node.movie.default
+targetEntityType: node
+bundle: movie
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_movie_image: true
+  field_movie_price: true

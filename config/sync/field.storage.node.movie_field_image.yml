@@ -1,0 +1,34 @@
+uuid: 50d134f1-4f3e-4374-a331-3de0ab1cca42
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - node
+_core:
+  default_config_hash: G48ZNQlhn6_kjC11E7oW-HI7Weth4YHjpzCr1os-FCo
+id: node.movie_field_image
+field_name: movie_field_image
+entity_type: node
+type: image
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes:
+  target_id:
+    - target_id
+persist_with_no_fields: false
+custom_storage: false

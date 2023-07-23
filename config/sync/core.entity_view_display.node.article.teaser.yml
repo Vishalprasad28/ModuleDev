@@ -1,4 +1,4 @@
-uuid: 22c77b12-14a9-4b7e-a0f9-faa2022acb8f
+uuid: 0a837a3b-0302-4c63-a30b-5588508daeba
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,9 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.article.body
     - field.field.node.article.comment
-    - field.field.node.article.field_carousel
     - field.field.node.article.field_image
+    - field.field.node.article.field_number
+    - field.field.node.article.field_tags
     - image.style.medium
     - node.type.article
   module:
@@ -40,11 +41,19 @@ content:
     third_party_settings: {  }
     weight: -1
     region: content
+  field_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
   links:
     weight: 100
     region: content
 hidden:
   comment: true
-  field_carousel: true
   field_image: true
-  langcode: true
+  field_number: true
+  field_tags: true
