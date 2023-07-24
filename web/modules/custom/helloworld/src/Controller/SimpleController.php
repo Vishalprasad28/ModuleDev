@@ -10,6 +10,9 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * A SimpleCotroller class to handle the requests coming from different routes.
+ */
 class SimpleController extends ControllerBase {
 
   /**
