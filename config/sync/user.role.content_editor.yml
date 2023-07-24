@@ -5,12 +5,10 @@ dependencies:
   config:
     - node.type.article
     - node.type.page
-    - node.type.testing
     - taxonomy.vocabulary.tags
   module:
     - comment
     - contextual
-    - field_ui
     - file
     - node
     - path
@@ -31,8 +29,6 @@ permissions:
   - 'access files overview'
   - 'access toolbar'
   - 'access tour'
-  - 'administer node display'
-  - 'administer node fields'
   - 'administer url aliases'
   - 'create article content'
   - 'create page content'
@@ -43,9 +39,6 @@ permissions:
   - 'delete own files'
   - 'delete own page content'
   - 'delete page revisions'
-  - 'edit any article content'
-  - 'edit any page content'
-  - 'edit any testing content'
   - 'edit own article content'
   - 'edit own comments'
   - 'edit own page content'

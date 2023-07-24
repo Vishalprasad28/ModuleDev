@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_image
-    - field.field.node.article.field_number
     - field.field.node.article.field_tags
     - image.style.wide
     - node.type.article
@@ -49,15 +48,6 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: -1
-    region: content
-  field_number:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 111
     region: content
   field_tags:
     type: entity_reference_label
