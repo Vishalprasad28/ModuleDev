@@ -27,7 +27,7 @@ final class MovieConfigEntityListBuilder extends ConfigEntityListBuilder {
   public function buildRow(EntityInterface $entity): array {
     $row['label'] = $entity->label();
     $row['id'] = $entity->id();
-    $row['description'] = $entity->getDescription(100);
+    $row['description'] = $entity->getDescription(40);
     $row['year'] = $entity->get('release_year');
     return $row + parent::buildRow($entity);
   }

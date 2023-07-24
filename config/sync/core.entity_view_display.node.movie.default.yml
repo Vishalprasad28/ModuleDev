@@ -1,4 +1,4 @@
-uuid: 0acb9750-319d-4068-90f4-85d2b0bb49ca
+uuid: 6379fe1a-4670-4e4a-b25a-15702f17f789
 langcode: en
 status: true
 dependencies:
@@ -6,12 +6,14 @@ dependencies:
     - field.field.node.movie.body
     - field.field.node.movie.field_movie_image
     - field.field.node.movie.field_movie_price
+    - image.style.medium
     - node.type.movie
   module:
+    - image
     - text
     - user
 _core:
-  default_config_hash: 5gZB-GhrxW7u46-XPS3NPY__WxfCbbDBRTx6zZcdWZQ
+  default_config_hash: GLG2T35Z7WADjKKgRDfF3C1Y3nj2ld76egmTR1UJ6rA
 id: node.movie.default
 targetEntityType: node
 bundle: movie
@@ -24,9 +26,27 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_movie_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_movie_price:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
   links:
     weight: 100
     region: content
-hidden:
-  field_movie_image: true
-  field_movie_price: true
+hidden: {  }

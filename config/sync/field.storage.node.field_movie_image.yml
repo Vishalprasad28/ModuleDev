@@ -1,3 +1,4 @@
+uuid: f7c87c78-602a-402b-9a89-7496f432e770
 langcode: en
 status: true
 dependencies:
@@ -5,6 +6,8 @@ dependencies:
     - file
     - image
     - node
+_core:
+  default_config_hash: ADtYDw0yoZbyda0yfao0wrJfqYPTyERl2cELf_dssO0
 id: node.field_movie_image
 field_name: field_movie_image
 entity_type: node

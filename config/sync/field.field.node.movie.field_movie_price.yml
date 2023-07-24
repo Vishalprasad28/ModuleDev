@@ -1,4 +1,4 @@
-uuid: e8cdcb40-1a6f-42a8-bc37-86a9c2bf4a09
+uuid: 9f38976a-ba38-496d-8c09-8481dd8cf380
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_movie_price
     - node.type.movie
 _core:
-  default_config_hash: iczizbGdbBgFewtsvyDnvITkMqpQCRus_SItXK-eVyE
+  default_config_hash: Yh06QlQ2TuMA6rmjGh5gUQtugVi1tNIzDE_ulyyoYfc
 id: node.movie.field_movie_price
 field_name: field_movie_price
 entity_type: node
@@ -20,6 +20,6 @@ default_value_callback: ''
 settings:
   min: null
   max: null
-  prefix: ''
+  prefix: ₹
   suffix: ''
 field_type: integer

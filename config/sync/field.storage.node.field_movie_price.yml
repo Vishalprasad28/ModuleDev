@@ -1,8 +1,11 @@
+uuid: 6b8f26e1-dcf1-4e90-847b-15c906d4e1ec
 langcode: en
 status: true
 dependencies:
   module:
     - node
+_core:
+  default_config_hash: VBu2V8zd5749rGtCz1kbCs-iTi89b8btsUPWfRu4iu4
 id: node.field_movie_price
 field_name: field_movie_price
 entity_type: node
