@@ -22,6 +22,13 @@ class SimpleController extends ControllerBase {
    */
   protected $currentUser;
 
+  /**
+   * Constructs the Current User detailobject.
+   * 
+   * @param \Drupal\Core\Session\AccountInterface $user
+   *   Contains the AccountInterface Object, containing the current logged in
+   *   user details.
+   */
   public function __construct(AccountInterface $user) {
     $this->currentUser = $user;
   }
