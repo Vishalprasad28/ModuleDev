@@ -2,11 +2,11 @@
 
 /**
  * @file
- * Contains the hook impletemnation.
+ * Contains the hook impletemnations.
  */
 
  /**
-  * Implementing hook_permission().
+  * Implements hook_permission().
   */
 function helloworld_permission() {
   return array(

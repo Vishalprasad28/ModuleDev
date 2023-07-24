@@ -7,16 +7,29 @@
 namespace Drupal\helloworld\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class SimpleController extends ControllerBase {
 
   /**
-   * @var object
+   * Contains the Current Logged In User details.
+   * 
+   * @var \Drupal\Core\Session\AccountInterface
    */
-  private $current_user;
+  protected $currentUser;
 
-  public function __construct() {
-    $this->current_user = \Drupal::currentUser();
+  public function __construct(AccountInterface $user) {
+    $this->currentUser = $user;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('current_user')
+    );
   }
 
   /**
@@ -30,8 +43,8 @@ class SimpleController extends ControllerBase {
       '#type' => 'markup',
       '#markup' => $this->t('Hello <strong>@user</strong> how are you? <br><br> gocha we got your email id: @email',
       [
-        '@user' => $this->current_user->getAccountName(),
-        '@email' => $this->current_user->getEmail(),
+        '@user' => $this->currentUser->getAccountName(),
+        '@email' => $this->currentUser->getEmail(),
       ]),
       '#cache' => [
         'max-age' => 0
@@ -40,4 +53,5 @@ class SimpleController extends ControllerBase {
 
     return $content;
   }
+
 }
