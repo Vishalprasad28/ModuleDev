@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains the Controller code for the simple page
+ * Contains the Controller code for the simple page.
  */
 namespace Drupal\helloworld\Controller;
 
@@ -20,10 +20,10 @@ class SimpleController extends ControllerBase {
   }
 
   /**
-   * @method
-   * To Return a simple markup.
+   * Function to print sinple message on UI.
    * 
    * @return array
+   *   Returns the Render Array to display on the UI.
    */
   public function helloUser() {
     $content = [
