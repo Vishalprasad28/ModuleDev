@@ -1,0 +1,10 @@
+view RSVP List:
+  title: 'View RSVP Form'
+  description: 'Permission for viewing the RSVP List.'
+access RSVP Report:
+  title: 'View The RSVP Reports being submitted.'
+  description: 'Permission for the rsvp report page.'
+administer RSVP List:
+  title: 'Administer RSVP Settings.'
+  description: 'Access the Administer RSVP List Settings Psge.'
+  restrict access: TRUE
