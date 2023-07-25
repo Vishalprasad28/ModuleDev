@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - custom_entity
+name: 'Movie'
+type: movie
+description: 'A <em>Movie</em> content type to store movie related informations'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

@@ -1,72 +1,85 @@
-uuid: 7f7531dc-4f4f-4341-a23c-7bb5d7ecd227
+uuid: dea1a15d-e485-421f-b039-c05faf63951e
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.testing.body
-    - field.field.node.testing.field_num
-    - node.type.testing
+    - field.field.node.movie.body
+    - field.field.node.movie.field_movie_image
+    - field.field.node.movie.field_movie_price
+    - image.style.thumbnail
+    - node.type.movie
   module:
+    - image
     - path
     - text
-id: node.testing.default
+_core:
+  default_config_hash: SspNv_UTFt50cwirk7a5dn_FSRwRHFlMigFtFoaUChY
+id: node.movie.default
 targetEntityType: node
-bundle: testing
+bundle: movie
 mode: default
 content:
   body:
+    label: hidden
     type: text_textarea_with_summary
-    weight: 7
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
+    weight: 101
+    settings: {  }
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_num:
+  field_movie_image:
+    type: image_image
+    weight: 102
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_movie_price:
     type: number
-    weight: 27
+    weight: 103
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
+  links:
+    weight: 100
+    region: content
   path:
     type: path
-    weight: 5
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 3
-    region: content
     settings:
       display_label: true
+    weight: 15
+    region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 6
-    region: content
     settings:
       display_label: true
+    weight: 120
+    region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 4
-    region: content
     settings:
       display_label: true
+    weight: 16
+    region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: -5
     region: content
     settings:
       size: 60
@@ -74,12 +87,12 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
-    region: content
+    weight: 5
     settings:
       match_operator: CONTAINS
-      match_limit: 10
-      size: 60
+      size: '60'
       placeholder: ''
+      match_limit: 10
+    region: content
     third_party_settings: {  }
 hidden: {  }

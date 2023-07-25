@@ -1,0 +1,12 @@
+entity.movie_config_entity.overview:
+  title: Movie Configuration
+  parent: system.admin_structure
+  description: 'List of movie entity modules to extend site functionality.'
+  route_name: entity.movie_config_entity.collection
+
+custom_entity.budget:
+  title: Movie Budget
+  description: A Configuration form to declare the Movie Budget.
+  route_name: custom_entity.budget
+  parent: system.admin
+  weight: 8

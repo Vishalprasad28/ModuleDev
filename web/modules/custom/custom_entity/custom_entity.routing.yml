@@ -1,0 +1,39 @@
+entity.movie_config_entity.collection:
+  path: '/admin/structure/movie-config-entity'
+  defaults:
+    _entity_list: 'movie_config_entity'
+    _title: 'Movie Entity module configuration'
+  requirements:
+    _permission: 'administer movie_config_entity'
+
+entity.movie_config_entity.add_form:
+  path: '/admin/structure/movie_config_entity/add'
+  defaults:
+    _entity_form: 'movie_config_entity.add'
+    _title: 'Add a movie entity module'
+  requirements:
+    _permission: 'administer movie_config_entity'
+
+entity.movie_config_entity.edit_form:
+  path: '/admin/structure/movie-config-entity/{movie_config_entity}'
+  defaults:
+    _entity_form: 'movie_config_entity.edit'
+    _title: 'Edit a movie entity module'
+  requirements:
+    _permission: 'administer movie_config_entity'
+
+entity.movie_config_entity.delete_form:
+  path: '/admin/structure/movie-config-entity/{movie_config_entity}/delete'
+  defaults:
+    _entity_form: 'movie_config_entity.delete'
+    _title: 'Delete a movie entity module'
+  requirements:
+    _permission: 'administer movie_config_entity'
+
+custom_entity.budget:
+  path: '/admin/movie-budget-form'
+  defaults:
+    _title: 'Movie Budget Desclaration'
+    _form: 'Drupal\custom_entity\Form\BudgetForm'
+  requirements:
+    _permission: 'administer site configuration'

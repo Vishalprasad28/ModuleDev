@@ -1,0 +1,5 @@
+entity.movie_config_entity.add_form:
+  route_name: 'entity.movie_config_entity.add_form'
+  title: 'Add Category'
+  appears_on:
+    - entity.movie_config_entity.collection
