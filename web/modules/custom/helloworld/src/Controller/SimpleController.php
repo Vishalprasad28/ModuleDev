@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains the Controller code for the simple page.
- */
 namespace Drupal\helloworld\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
@@ -11,20 +7,20 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * A SimpleCotroller class to handle the requests coming from different routes.
+ * A SimpleController class to handle the requests coming from different routes.
  */
 class SimpleController extends ControllerBase {
 
   /**
    * Contains the Current Logged In User details.
-   * 
+   *
    * @var \Drupal\Core\Session\AccountInterface
    */
   protected $currentUser;
 
   /**
    * Constructs the Current User detailobject.
-   * 
+   *
    * @param \Drupal\Core\Session\AccountInterface $user
    *   Contains the AccountInterface Object, containing the current logged in
    *   user details.
@@ -44,7 +40,7 @@ class SimpleController extends ControllerBase {
 
   /**
    * Function to print sinple message on UI.
-   * 
+   *
    * @return array
    *   Returns the Render Array to display on the UI.
    */
@@ -57,7 +53,8 @@ class SimpleController extends ControllerBase {
         '@email' => $this->currentUser->getEmail(),
       ]),
       '#cache' => [
-        'max-age' => 0
+        'contexts' => ['user'],
+        'tags' => ['user:' . $this->currentUser->id()],
       ],
     ];
 
