@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Contains the hook Implementations.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function custom_entity_node_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if ($entity->getEntityType()->id() == 'node' && $entity->bundle() == 'movie') {
+    $node = Node::load($entity->id());
+    $movie_price = $node->field_movie_price->value;
+    $budget = Drupal::configFactory()->getEditable('custom_entity.budget')->get('budget');
+
+    // Comparing the movie price with the defined budget.
+    if ($budget > $movie_price) {
+      $message = "Movie is under Budget";
+    }
+    else if ($budget < $movie_price) {
+      $message = "Movie is over Budget";
+    }
+    else {
+      $message = "Movie fits the Budget";
+    }
+
+    $build['price_comparision'] = [
+      '#type' => 'markup',
+      '#markup' => t($message),
+      '#weight' => -1,
+    ];
+  }
+}
