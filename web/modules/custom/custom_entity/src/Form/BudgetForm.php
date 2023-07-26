@@ -2,6 +2,7 @@
 
 namespace Drupal\custom_entity\Form;
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -33,6 +34,9 @@ final class BudgetForm extends ConfigFormBase {
       '#title' => $this->t('Enter the Movie Budget'),
       '#description' => $this->t('Enter the amount that lies in range 0 and 90000'),
       '#default_value' => $this->config('custom_entity.budget')->get('budget'),
+      '#cache' => [
+        'tags' => ['movie_budget'],
+      ]
     ];
     return parent::buildForm($form, $form_state);
   }
@@ -54,6 +58,12 @@ final class BudgetForm extends ConfigFormBase {
     $this->config('custom_entity.budget')
       ->set('budget', $form_state->getValue('budget_amount'))
       ->save();
+    
+    // Merging my custom cache tag with the available cache tags of config and
+    // Invalidating them.
+    Cache::mergeTags($form['budget_amount']['#cache']['tags'], $this->config('custom_entity.budget')->getCacheTags());
+    Cache::invalidateTags(['movie_budget']);
+
     parent::submitForm($form, $form_state);
     $form_state->setRedirect('<front>');
   }

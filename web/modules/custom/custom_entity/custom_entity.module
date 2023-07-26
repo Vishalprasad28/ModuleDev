@@ -33,6 +33,9 @@ function custom_entity_node_view_alter(array &$build, EntityInterface $entity, E
       '#type' => 'markup',
       '#markup' => t($message),
       '#weight' => -1,
+      '#cache' => [
+        'tags' => ['movie_budget'],
+      ]
     ];
   }
 }
