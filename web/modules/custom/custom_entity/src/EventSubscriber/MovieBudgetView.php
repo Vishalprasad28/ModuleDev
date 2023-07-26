@@ -65,6 +65,9 @@ class MovieBudgetView implements EventSubscriberInterface {
           '#type' => 'markup',
           '#markup' => $this->t($message),
           '#weight' => -1,
+          '#cache' => [
+            'tags' => ['movie_budget'],
+          ],
         ];
         $event->setControllerResult($node);
       }

@@ -1,6 +1,6 @@
 custom_entity.movie_config_entity.*:
   type: config_entity
-  label: Movie Entity module
+  label: 'Movie Entity module'
   mapping:
     id:
       type: string
@@ -15,10 +15,11 @@ custom_entity.movie_config_entity.*:
       label: 'Description'
     release_year:
       type: integer
-      labe: 'Movie Release Year'
+      label: 'Movie Release Year'
       constraints:
         - range:
             min: 1800
             max: 3000
     movies:
+      label: 'Movies with given release year'
       type: string
