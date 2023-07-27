@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Contains the hook implementations.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function custom_entity_theme($existing, $type, $theme, $path) {
+  $data = [
+    'title' => t('No movies released on given year'),
+    'description' => NULL,
+    'price' => NULL,
+    'id' => NULL,
+  ];
+  return [
+    'movie_theme_hook' => [
+      'render_element' => 'children',
+      'template' => 'movie-listing',
+      'path' => $path . '/templates',
+      'variables' => [
+        'year' => NULL,
+        'data' => $data,
+      ],
+    ],
+  ];
+}

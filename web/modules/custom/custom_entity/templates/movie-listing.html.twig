@@ -1,0 +1,11 @@
+<p><strong>Movies Released in year {{year}} </strong></p>
+<ul style="list-style: none">
+{% for item in data %}
+    <li>
+      <a style="text-decoration: none" href="/node/{{item.id}}"><h3> {{ item.title }} </h3></a>
+      <p> {{item.description|striptags}} </p>
+      <p><strong>Movie Price:</strong></p>
+      <p> {{item.price}} </p>
+    </li>
+{% endfor %}
+</ul>

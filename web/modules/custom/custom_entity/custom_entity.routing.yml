@@ -22,6 +22,18 @@ entity.movie_config_entity.edit_form:
   requirements:
     _permission: 'administer movie_config_entity'
 
+entity.movie_config_entity.preview_page:
+  path: '/award-winnining-movies/{movie_config_entity}'
+  defaults:
+    _controller: '\Drupal\custom_entity\Controller\MoviePreviewPage::listMovies'
+    _title: 'Award Winning Movies'
+  requirements:
+    _permission: 'administer movie_config_entity'
+  options:
+    parameters:
+      movie_config_entity:
+        type: entity:movie_config_entity
+
 entity.movie_config_entity.delete_form:
   path: '/admin/structure/movie-config-entity/{movie_config_entity}/delete'
   defaults:

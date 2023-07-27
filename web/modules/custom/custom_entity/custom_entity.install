@@ -22,7 +22,9 @@ function custom_entity_uninstall() {
   $content_type = \Drupal::entityTypeManager()
     ->getStorage('node_type')
     ->load('movie');
-  $content_type->delete();
+  if ($content_type) {
+    $content_type->delete();
+  }
 
   $config_names = [
     'field.storage.node.field_movie_image',

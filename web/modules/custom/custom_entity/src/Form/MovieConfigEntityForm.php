@@ -90,12 +90,23 @@ final class MovieConfigEntityForm extends EntityForm {
 
     $form['movies'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('Movies released on given year'),
+      '#title' => $this->t('Movie Ids of Movies released on given year'),
       '#attributes' => [
         'id' => 'movie-list',
         'readonly' => 'readonly',
       ],
       '#default_value' => $this->entity->get('movies'),
+    ];
+
+    $form['update_button'] = [
+      '#type' => 'button',
+      '#value' => $this->t('Update Movie Ids'),
+      '#ajax' => [
+        'callback' => '::fetchMovieByYear',
+        'focus' => TRUE,
+        'event' => 'click',
+        'wrapper' => 'movie-list',
+      ],
     ];
 
     return $form;
@@ -168,7 +179,7 @@ final class MovieConfigEntityForm extends EntityForm {
     // Looping through all the entities.
     foreach ($entities as $id => $entity) {
       if ((int) date('Y', $entity->getCreatedTime()) == $form_state->getValue('release_year')) {
-        array_push($array_of_entity_urls, $entity->label() . '(' . $id . ')');
+        array_push($array_of_entity_urls, $id);
       }
     }
     $string_formate = implode(',', $array_of_entity_urls);

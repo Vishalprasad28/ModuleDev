@@ -31,8 +31,9 @@ use Drupal\custom_entity\MovieConfigEntityInterface;
  *   links = {
  *     "collection" = "/admin/structure/movie-config-entity",
  *     "add-form" = "/admin/structure/movie-config-entity/add",
+ *     "preview-page" = "/award-winnining-movies/{movie_config_entity}",
  *     "edit-form" = "/admin/structure/movie-config-entity/{movie_config_entity}",
- *     "delete-form" = "/admin/structure/movie-config-entity/{movie_config_entity}/delete",
+ *     "delete-form" = "/admin/structure/movie-config-entity/{movie_config_entity}/delete"
  *   },
  *   entity_keys = {
  *     "id" = "id",

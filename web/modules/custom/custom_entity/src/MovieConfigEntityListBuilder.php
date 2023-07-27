@@ -32,4 +32,20 @@ final class MovieConfigEntityListBuilder extends ConfigEntityListBuilder {
     return $row + parent::buildRow($entity);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultOperations(EntityInterface $entity) {
+    $operations = parent::getDefaultOperations($entity);
+
+    if ($this->entityType->hasLinkTemplate('preview-page')) {
+      $operations['preview'] = [
+        'title' => $this->t('Preview'),
+        'weight' => 10,
+        'url' => $this->ensureDestination($entity->toUrl('preview-page')),
+      ];
+    }
+    
+    return $operations;
+  }
 }
