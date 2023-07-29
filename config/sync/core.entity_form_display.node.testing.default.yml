@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.testing.body
+    - field.field.node.testing.field_num
     - node.type.testing
   module:
     - path
@@ -28,6 +29,13 @@ content:
     weight: 2
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_num:
+    type: number
+    weight: 27
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path
