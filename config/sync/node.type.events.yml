@@ -1,0 +1,16 @@
+uuid: 54c038e5-6f3a-4dc3-825a-2be93b216511
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - database_api
+_core:
+  default_config_hash: hkb6H3eAifvNKF9jNCmjhsD4OKc2DRzz0tQ9YkO3lWs
+name: Events
+type: events
+description: 'A <em>Events</em> content type to store event related informations'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

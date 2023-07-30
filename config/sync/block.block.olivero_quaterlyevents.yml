@@ -1,0 +1,26 @@
+uuid: e4495ac2-51a2-4581-a4a6-9f7067949358
+langcode: en
+status: true
+dependencies:
+  module:
+    - database_api
+    - system
+  theme:
+    - olivero
+id: olivero_quaterlyevents
+theme: olivero
+region: content
+weight: -6
+provider: null
+plugin: database_api_quaterly_events
+settings:
+  id: database_api_quaterly_events
+  label: 'Quaterly Events'
+  label_display: visible
+  provider: database_api
+  limit: '4'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/node/*'

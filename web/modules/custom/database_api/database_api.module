@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains the look implementations.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function database_api_theme($existing, $type, $theme, $path) {
+  $data = [
+    'desc' => NULL,
+    'data' => NULL,
+  ];
+  $headers = [
+    'info_header' => NULL,
+    'data_header' => NULL,
+  ];
+
+  return [
+    'event_template' => [
+      'render_element' => 'children',
+      'template' => 'event-template',
+      'path' => $path . '/templates',
+      'variables' => [
+        'headers' => $headers,
+        'rows' => $data,
+      ],
+    ],
+  ];
+
+}

@@ -1,0 +1,17 @@
+{% if rows is empty %}
+  <p>Nothing to display</p>
+{% else %}
+  <table class="events-data-table">
+  <tr class="events-data-row">
+    <th>{{headers.info_header}}</th>
+    <th>{{headers.data_header}}</th>
+  </tr>
+  {% for item in rows %}
+    <tr class="events-data-row">
+      <td>{{item.desc}}</td>
+      <td>{{item.data}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+{% endif %}
+

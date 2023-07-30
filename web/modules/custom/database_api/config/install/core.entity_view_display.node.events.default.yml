@@ -1,17 +1,18 @@
-uuid: e553ed3b-0015-4139-a104-a1f9f30a388d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.testing.body
-    - field.field.node.testing.field_num
-    - node.type.testing
+    - field.field.node.events.body
+    - field.field.node.events.field_date
+    - field.field.node.events.field_event_type
+    - node.type.events
   module:
+    - datetime
     - text
     - user
-id: node.testing.default
+id: node.events.default
 targetEntityType: node
-bundle: testing
+bundle: events
 mode: default
 content:
   body:
@@ -21,12 +22,20 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
-  field_num:
-    type: number_integer
+  field_date:
+    type: datetime_default
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_event_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
     third_party_settings: {  }
     weight: 103
     region: content

@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * @file
+ * Contains the hook implementation related for activatin and deactivation of
+ * the modulealong with some helper functions.
+ */
+
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\Vocabulary;
+
+/**
+ * Implemments hook_install().
+ */
+function database_api_install($is_syncing) {
+  $vid = 'events';
+  $name = 'Events';
+  $description = 'Type of the Event';
+  $hierarchy = TRUE;
+
+  // Call the function to create the vocabulary.
+  $vocabulary = create_taxonomy_vocabulary($vid, $name, $description, $hierarchy);
+  create_term('Type1', $vid);
+  create_term('Type2', $vid);
+  create_term('Type3', $vid);
+  create_term('Type4', $vid);
+}
+
+/**
+ * Function to create the new Vocabulary.
+ * 
+ * @param string $vid
+ *   contains the unique vocabulary id.
+ * @param string $name
+ *   Contains the name of the Vocabulary.
+ * @param string $description
+ *   Contains the description of the vocabulary.
+ * @param bool $hierarchy
+ *   Contains the boolean value defining the hierarchy of the vocabulary.
+ * 
+ * @return void
+ */
+function create_taxonomy_vocabulary($vid, $name, $description, $hierarchy = TRUE) {
+  $vocabulary = Vocabulary::load($vid);
+  
+  // If the vocabulary does not exist, create a new one.
+  if (!$vocabulary) {
+    $vocabulary = Vocabulary::create([
+      'vid' => $vid,
+      'name' => $name,
+      'description' => $description,
+      'hierarchy' => $hierarchy,
+    ]);
+    $vocabulary->save();
+  }
+}
+
+/**
+ * Function to create the taxonomy terms of type 'Event type'.
+ * 
+ * @param string $name
+ *   Contains the name of the term.
+ * @param string $vid
+ *   vid of the vocabulary to create the term of.
+ * 
+ * @return void
+ */
+function create_term(string $name, string $vid) {
+  $term = Term::create([
+    'name' => $name, 
+    'vid' => $vid,
+  ])->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function database_api_uninstall() {
+  $storage_handler = \Drupal::entityTypeManager()
+    ->getStorage('node');
+  $nodes = $storage_handler->loadByProperties(['type' => 'events']);
+  $storage_handler->delete($nodes);
+
+  // Delete content type.
+  $content_type = \Drupal::entityTypeManager()
+    ->getStorage('node_type')
+    ->load('events');
+  if ($content_type) {
+    $content_type->delete();
+  }
+
+  $tids = Drupal::entityQuery('taxonomy_term')
+    ->accessCheck(FALSE)
+    ->condition('vid', 'events')
+    ->execute();
+
+  $term_storage = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term');
+  $entities = $term_storage->loadMultiple($tids);
+  $term_storage->delete($entities);
+
+  $config_names = [
+    'field.field.node.events.body',
+    'field.storage.node.field_date',
+    'field.storage.node.field_event_type',
+    'field.field.node.events.field_event_type',
+    'field.field.node.events.field_date',
+    'core.entity_form_display.node.events.default',
+    'core.entity_view_display.node.events.default',
+    'node.type.events',
+  ];
+
+  foreach ($config_names as $config_name) {
+    \Drupal::configFactory()->getEditable($config_name)->delete();
+  }
+}

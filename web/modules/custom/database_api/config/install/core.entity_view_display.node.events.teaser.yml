@@ -1,18 +1,18 @@
-uuid: 667a4f33-693b-4dac-b4e0-7c717e61179f
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.testing.body
-    - field.field.node.testing.field_num
-    - node.type.testing
+    - field.field.node.events.body
+    - field.field.node.events.field_date
+    - field.field.node.events.field_event_type
+    - node.type.events
   module:
     - text
     - user
-id: node.testing.teaser
+id: node.events.teaser
 targetEntityType: node
-bundle: testing
+bundle: events
 mode: teaser
 content:
   body:
@@ -29,4 +29,5 @@ content:
     weight: 100
     region: content
 hidden:
-  field_num: true
+  field_date: true
+  field_event_type: true

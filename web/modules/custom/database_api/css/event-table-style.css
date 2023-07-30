@@ -1,0 +1,17 @@
+.events-data-table {
+  width: 40em;
+  text-align: left;
+}
+.events-data-row:nth-child(2n-1){
+  background-color: rgba(163, 163, 163, 0.168);
+}
+.events-data-row th, .events-data-row td {
+  padding: 0.5rem;
+}
+.events-data-row th {
+  background-color: hsl(202, 79%, calc(1% * 50));
+  color: white;
+}
+#heading {
+  color: red;
+}
