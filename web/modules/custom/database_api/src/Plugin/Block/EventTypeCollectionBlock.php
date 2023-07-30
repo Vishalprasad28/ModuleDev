@@ -140,29 +140,24 @@ final class EventTypeCollectionBlock extends BlockBase implements ContainerFacto
   private function fetchNodes(string $limit) {
     $query = $this->connection->select('node_field_data', 'n');
     $query->join('node__field_event_type', 'event_type', 'event_type.entity_id = n.nid');
-    $query->addField('event_type', 'field_event_type_target_id', 't_id');
+    $query->join('taxonomy_term_field_data',  'td', 'td.tid = event_type. field_event_type_target_id');
+    $query->addField('td', 'name');
     $query->condition('type', 'events');
     $result = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
 
     $array = [];
     // Calculating the count of events of given type.
     foreach ($result as $row) {
-      $array[$row['t_id']] = isset($array[$row['t_id']]) ? ++$array[$row['t_id']] : 1;
+      $array[$row['name']] = isset($array[$row['name']]) ? ++$array[$row['name']] : 1;
     }
 
     $table_rows = [];
     // Forming the associative array of the data to be rendered.
-    foreach ($array as $term_id => $count) {
+    foreach ($array as $term => $count) {
       if (count($table_rows) >= $limit) {
         break;
       }
-      $term =$this->entityManager->getStorage('taxonomy_term')->load($term_id);
-      if ($term && $term->bundle() == 'events') {
-        $temp['desc'] = $this->t('Event of type @type', ['@type' => $term->getName()]);
-      }
-      else {
-        $temp['desc'] = $this->t('undefined');
-      }
+      $temp['desc'] = $this->t('Event of type @type', ['@type' => $term]);
       $temp['data'] = $count;
       array_push($table_rows, $temp);
     }
