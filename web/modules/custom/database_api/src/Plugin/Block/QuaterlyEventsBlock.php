@@ -127,13 +127,18 @@ final class QuaterlyEventsBlock extends BlockBase implements ContainerFactoryPlu
    * @return void
    */
   private function fetchNodes(string $limit) {
-    $query = $this->connection->select('node__field_date', 'nfd');
-    $query->join('node_field_data', 'n_data', 'nfd.entity_id = n_data.nid');
-    $query->addField('nfd', 'field_date_value');
-    $query->condition('type', 'events');
-    $query->addExpression("YEAR(nfd.field_date_value)", 'year');
-    $query->addExpression("QUARTER(nfd.field_date_value)", 'quarter');
-    $result = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
+    try {
+      $query = $this->connection->select('node__field_date', 'nfd');
+      $query->join('node_field_data', 'n_data', 'nfd.entity_id = n_data.nid');
+      $query->addField('nfd', 'field_date_value');
+      $query->condition('type', 'events');
+      $query->addExpression("YEAR(nfd.field_date_value)", 'year');
+      $query->addExpression("QUARTER(nfd.field_date_value)", 'quarter');
+      $result = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    catch (\Exception $e) {
+      $this->messenger()->addMessage('Something wrong happened');
+    }
 
     $array = [];
     // Calculating the events count quarterly.

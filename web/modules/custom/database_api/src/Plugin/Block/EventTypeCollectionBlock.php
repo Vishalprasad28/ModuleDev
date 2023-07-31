@@ -1,15 +1,13 @@
-<?php declare(strict_types = 1);
+<?php
 
 namespace Drupal\database_api\Plugin\Block;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\taxonomy\Entity\Term;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -31,13 +29,6 @@ final class EventTypeCollectionBlock extends BlockBase implements ContainerFacto
   private $connection;
 
   /**
-   * Contains the EntityTypeManager Object to handle the entities of Drupal.
-   * 
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  private $entityManager;
-
-  /**
    * Constructs the plugin instance.
    * 
    * @param array $configuration
@@ -54,11 +45,9 @@ final class EventTypeCollectionBlock extends BlockBase implements ContainerFacto
     $plugin_id,
     $plugin_definition,
     Connection $connection,
-    EntityTypeManagerInterface $entity_type_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->connection = $connection;
-    $this->entityManager =$entity_type_manager;
   }
 
   /**
@@ -70,7 +59,6 @@ final class EventTypeCollectionBlock extends BlockBase implements ContainerFacto
       $plugin_id,
       $plugin_definition,
       $container->get('database'),
-      $container->get('entity_type.manager')
     );
   }
 
@@ -138,12 +126,17 @@ final class EventTypeCollectionBlock extends BlockBase implements ContainerFacto
    * @return void
    */
   private function fetchNodes(string $limit) {
-    $query = $this->connection->select('node_field_data', 'n');
-    $query->join('node__field_event_type', 'event_type', 'event_type.entity_id = n.nid');
-    $query->join('taxonomy_term_field_data',  'td', 'td.tid = event_type. field_event_type_target_id');
-    $query->addField('td', 'name');
-    $query->condition('type', 'events');
-    $result = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
+    try {
+      $query = $this->connection->select('node_field_data', 'n');
+      $query->join('node__field_event_type', 'event_type', 'event_type.entity_id = n.nid');
+      $query->join('taxonomy_term_field_data',  'td', 'td.tid = event_type. field_event_type_target_id');
+      $query->addField('td', 'name');
+      $query->condition('type', 'events');
+      $result = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    catch (\Exception $e) {
+      $this->messenger()->addMessage('Something wrong happened');
+    }
 
     $array = [];
     // Calculating the count of events of given type.
