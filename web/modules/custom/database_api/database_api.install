@@ -76,41 +76,16 @@ function create_term(string $name, string $vid) {
  * Implements hook_uninstall().
  */
 function database_api_uninstall() {
-  $storage_handler = \Drupal::entityTypeManager()
-    ->getStorage('node');
-  $nodes = $storage_handler->loadByProperties(['type' => 'events']);
-  $storage_handler->delete($nodes);
-
-  // Delete content type.
-  $content_type = \Drupal::entityTypeManager()
-    ->getStorage('node_type')
-    ->load('events');
-  if ($content_type) {
-    $content_type->delete();
-  }
+  $uninstaller_service = \Drupal::service('node_uninstaller.uninstall_node');
+  $uninstaller_service->uninstallConfirmation('events');
 
   $tids = Drupal::entityQuery('taxonomy_term')
-    ->accessCheck(FALSE)
-    ->condition('vid', 'events')
-    ->execute();
+  ->accessCheck(FALSE)
+  ->condition('vid', 'events')
+  ->execute();
 
   $term_storage = \Drupal::entityTypeManager()
     ->getStorage('taxonomy_term');
   $entities = $term_storage->loadMultiple($tids);
   $term_storage->delete($entities);
-
-  $config_names = [
-    'field.field.node.events.body',
-    'field.storage.node.field_date',
-    'field.storage.node.field_event_type',
-    'field.field.node.events.field_event_type',
-    'field.field.node.events.field_date',
-    'core.entity_form_display.node.events.default',
-    'core.entity_view_display.node.events.default',
-    'node.type.events',
-  ];
-
-  foreach ($config_names as $config_name) {
-    \Drupal::configFactory()->getEditable($config_name)->delete();
-  }
 }

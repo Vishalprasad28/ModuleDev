@@ -1,0 +1,4 @@
+services:
+  node_uninstaller.uninstall_node:
+    class: '\Drupal\node_uninstaller\NodeUninstallationHandler'
+    arguments: ['@entity_type.manager']
