@@ -6,36 +6,44 @@
  * of the module.
  */
 
-use Drupal\node\Entity\Node;
+// use Drupal\node\Entity\Node;
+// use Drupal\node\Entity\NodeType;
 
 /**
  * Implements hook_uninstall().
  */
 function custom_entity_uninstall() {
-  // Delete all nodes of given content type.
-  $storage_handler = \Drupal::entityTypeManager()
-    ->getStorage('node');
-  $nodes = $storage_handler->loadByProperties(['type' => 'movie']);
-  $storage_handler->delete($nodes);
+  $uninstaller_service = \Drupal::service('node_uninstaller.uninstall_node');
+  $uninstaller_service->uninstallConfirmation('movie');
+  // Loading the content type.
+  // $content_type = \Drupal::entityTypeManager()
+  //   ->getStorage('node_type')
+  //   ->load('movie');
 
-  // Delete content type.
-  $content_type = \Drupal::entityTypeManager()
-    ->getStorage('node_type')
-    ->load('movie');
-  if ($content_type) {
-    $content_type->delete();
-  }
+  // // If the Content type exists, setting its status to FALSE.
+  // if ($content_type) {
+  //   $content_type->set('status', FALSE);
+  //   $content_type->save();
+  // }
+  // // Delete all nodes of given content type.
+  // $storage_handler = \Drupal::entityTypeManager()
+  //   ->getStorage('node');
+  // $nodes = $storage_handler->loadByProperties(['type' => 'movie']);
+  // if ($nodes) {
+  //   echo 'There are nodes created of movie type, do you wanna delete them all?' . "(y/n):";
+  //   $input = strtolower(trim(fgets(STDIN)));
+  //   if ($input === 'n') {
+  //     throw new \Exception('Uninstallation terminated, Please delete all nodes of movie first');
+  //   }
+  //   else {
+  //     // $storage_handler->delete($nodes);
+  //     echo 'Deleting all the nodes of movies...';
+  //     $storage_handler->delete($nodes);
+  //   }
+  // }
 
-  $config_names = [
-    'field.storage.node.field_movie_image',
-    'field.storage.node.field_movie_price',
-    'field.field.node.movie.field_movie_image',
-    'field.field.node.movie.field_movie_price',
-    'core.entity_form_display.node.movie.default',
-    'core.entity_view_display.node.movie.default',
-  ];
-
-  foreach ($config_names as $config_name) {
-    \Drupal::configFactory()->getEditable($config_name)->delete();
-  }
+  // // Deleting content type.
+  // if ($content_type) {
+  //   $content_type->delete();
+  // }
 }
