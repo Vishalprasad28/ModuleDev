@@ -6,35 +6,13 @@
  * of the module.
  */
 
-use Drupal\node\Entity\Node;
+// use Drupal\node\Entity\Node;
+// use Drupal\node\Entity\NodeType;
 
 /**
  * Implements hook_uninstall().
  */
 function custom_entity_uninstall() {
-  // Delete all nodes of given content type.
-  $storage_handler = \Drupal::entityTypeManager()
-    ->getStorage('node');
-  $nodes = $storage_handler->loadByProperties(['type' => 'movie']);
-  $storage_handler->delete($nodes);
-
-  // Delete content type.
-  $content_type = \Drupal::entityTypeManager()
-    ->getStorage('node_type')
-    ->load('movie');
-  $content_type->delete();
-
-  $config_names = [
-    'field.storage.node.field_movie_image',
-    'field.storage.node.field_movie_price',
-    'field.field.node.movie.field_movie_image',
-    'field.field.node.movie.field_movie_price',
-    'core.entity_form_display.node.movie.default',
-    'core.entity_view_display.node.movie.default',
-    'custom_entity.budget',
-  ];
-
-  foreach ($config_names as $config_name) {
-    \Drupal::configFactory()->getEditable($config_name)->delete();
-  }
+  $uninstaller_service = \Drupal::service('node_uninstaller.uninstall_node');
+  $uninstaller_service->uninstallConfirmation('movie');
 }

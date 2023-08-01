@@ -1,0 +1,7 @@
+name: 'Node Uninstaller'
+type: module
+description: 'To ask for user permission before deleting a content type.'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+  - drupal:node
