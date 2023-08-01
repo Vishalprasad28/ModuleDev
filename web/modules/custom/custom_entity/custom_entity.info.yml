@@ -3,3 +3,6 @@ type: module
 description: 'A Custom Module to create the movie Content Entity Type'
 package: Custom
 core_version_requirement: ^10
+configure: custom_entity.budget
+dependencies:
+  - node_uninstaller
