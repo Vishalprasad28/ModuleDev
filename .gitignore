@@ -67,10 +67,5 @@ package*.json
 /source
 /web/themes/custom
 privateFiles/
-<<<<<<< HEAD
 *.vscode/
 *.bashrc
-=======
-*.vscode
-*.bashrc
->>>>>>> development
