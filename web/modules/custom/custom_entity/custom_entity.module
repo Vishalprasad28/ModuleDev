@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Contains the hook Implementations.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function custom_entity_node_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if ($entity->getEntityType()->id() == 'node' && $entity->bundle() == 'movie') {
+    $node = Node::load($entity->id());
+    $movie_price = $node->field_movie_price->value;
+    $budget = Drupal::configFactory()->getEditable('custom_entity.budget')->get('budget');
+
+    // Comparing the movie price with the defined budget.
+    if ($budget > $movie_price) {
+      $message = "Movie is under Budget";
+    }
+    else if ($budget < $movie_price) {
+      $message = "Movie is over Budget";
+    }
+    else {
+      $message = "Movie fits the Budget";
+    }
+
+    $build['price_comparision'] = [
+      '#type' => 'markup',
+      '#markup' => t($message),
+      '#weight' => -1,
+      '#cache' => [
+        'tags' => ['movie_budget'],
+      ]
+    ];
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_entity_form_alter(&$form, &$form_state, $form_id) {
+  $nodes = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->loadByProperties(['type' => 'movie']);
+    
+  if ($nodes && $form_id === 'system_modules_uninstall') {
+    $protect_module = 'custom_entity';
+    // Checking if the module to protect is present in the form.
+    if (isset($form['uninstall'][$protect_module])) {
+      // disalbing the uninstallation checkbox for the protected module.
+      $form['uninstall'][$protect_module]['#disabled'] = TRUE;
+      $default_desc = $form['modules'][$protect_module]['description']['#markup'];
+      $form['modules'][$protect_module]['description']['#markup'] = $default_desc . '<li>' . 
+        t('This Module creates an entity, delete all nodes first') . '</li>';
+    }
+  }
+}

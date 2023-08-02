@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Contains the operations tobe performed upon installation and uninstallation 
+ * of the module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function custom_entity_uninstall() {
+  $uninstaller_service = \Drupal::service('node_uninstaller.uninstall_node');
+  $uninstaller_service->uninstallConfirmation('movie');
+}
