@@ -1,0 +1,23 @@
+block.settings.database_api_yearly_events:
+  type: block_settings
+  label: 'Yearly Events block'
+  mapping:
+    limit:
+      type: number
+      label: 'Max Limit of Data'
+
+block.settings.database_api_quaterly_events:
+  type: block_settings
+  label: 'Quaterly Events block'
+  mapping:
+    example:
+      type: string
+      label: Example
+
+block.settings.database_api_event_type_collection:
+  type: block_settings
+  label: 'Event Type Collection block'
+  mapping:
+    example:
+      type: string
+      label: Example

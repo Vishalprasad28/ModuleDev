@@ -1,0 +1,26 @@
+uuid: 6ee57b79-09e9-460d-8bd7-f594811bff98
+langcode: en
+status: true
+dependencies:
+  module:
+    - database_api
+    - system
+  theme:
+    - olivero
+id: olivero_eventtypecollection
+theme: olivero
+region: content
+weight: -7
+provider: null
+plugin: database_api_event_type_collection
+settings:
+  id: database_api_event_type_collection
+  label: 'Event Type Collection'
+  label_display: visible
+  provider: database_api
+  limit: '2'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/node/*'

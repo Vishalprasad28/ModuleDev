@@ -1,0 +1,7 @@
+name: 'Database APi test'
+description: 'A Simplemodule for the database API testing'
+type: module
+package: custom
+core_version_requirement: ^10
+dependencies:
+  - node_uninstaller

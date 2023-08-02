@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Contains the look implementations.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function database_api_theme($existing, $type, $theme, $path) {
+  $data = [
+    'desc' => NULL,
+    'data' => NULL,
+  ];
+  $headers = [
+    'info_header' => NULL,
+    'data_header' => NULL,
+  ];
+
+  return [
+    'event_template' => [
+      'render_element' => 'children',
+      'template' => 'event-template',
+      'path' => $path . '/templates',
+      'variables' => [
+        'headers' => $headers,
+        'rows' => $data,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function database_api_form_alter(&$form, &$form_state, $form_id) {
+  $nodes = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->loadByProperties(['type' => 'events']);
+    
+  if ($nodes && $form_id === 'system_modules_uninstall') {
+    $protect_module = 'database_api';
+    // Checking if the module to protect is present in the form.
+    if (isset($form['uninstall'][$protect_module])) {
+      // disalbing the uninstallation checkbox for the protected module.
+      $form['uninstall'][$protect_module]['#disabled'] = TRUE;
+      $default_desc = $form['modules'][$protect_module]['description']['#markup'];
+      $form['modules'][$protect_module]['description']['#markup'] = $default_desc . '<li>' . 
+        t('This Module creates an entity, delete all nodes first') . '</li>';
+    }
+  }
+}

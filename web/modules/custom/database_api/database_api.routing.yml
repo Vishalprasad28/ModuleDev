@@ -1,0 +1,7 @@
+database_api.taxonomy_search:
+  path: '/database-api/taxonomy-search'
+  defaults:
+    _title: 'Taxonomy Search'
+    _form: 'Drupal\database_api\Form\TaxonomySearchForm'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,26 @@
+uuid: d77675d7-80d9-4766-811a-733c97ee4e3a
+langcode: en
+status: true
+dependencies:
+  module:
+    - database_api
+    - system
+  theme:
+    - olivero
+id: olivero_yearlyevents
+theme: olivero
+region: content
+weight: -5
+provider: null
+plugin: database_api_yearly_events
+settings:
+  id: database_api_yearly_events
+  label: 'Yearly Events'
+  label_display: visible
+  provider: database_api
+  limit: '3'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/node/*'
