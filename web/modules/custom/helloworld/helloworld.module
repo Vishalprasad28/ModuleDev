@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Contains the hook impletemnations.
+ */
+
+ /**
+  * Implements hook_permission().
+  */
+function helloworld_permission() {
+  return array(
+    'administer hello module' => array(
+      'title' => t('Administer my module'),
+      'description' => t('Perform administration tasks for my module.'),
+    ),
+  );
+}

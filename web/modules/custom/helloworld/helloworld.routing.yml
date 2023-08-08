@@ -1,0 +1,7 @@
+helloworld.simple_page:
+  path: '/greet-me'
+  defaults:
+    _title: 'This is a Greeting Page for the Hello World Module'
+    _controller: \Drupal\helloworld\Controller\SimpleController::helloUser
+  requirements:
+    _permission: 'custom static permission'
