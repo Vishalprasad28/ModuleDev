@@ -65,7 +65,7 @@ package*.json
 /pattern_exports
 /public
 /source
-/web/themes/custom
+/web/themes/contrib
 privateFiles/
 *.vscode/
 *.bashrc
