@@ -1,0 +1,22 @@
+{% if data is not empty %}
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Sr no.</th>
+      <th>Cities</th>
+      <th>Theater</th>
+      <th>Time</th>
+    </tr>
+  <thead>
+  <tbody>
+    {% for index,value in data %}
+    <tr>
+      <td>{{ index + 1 }}</td>
+      <td>{{ value.city }}</td>
+      <td>{{ value.theater }}</td>
+      <td>{{ value.time }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}

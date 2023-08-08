@@ -3,14 +3,7 @@ description: 'A Custom Theme made for the practice.'
 type: theme
 core_version_requirement: ^10
 package: Custom
-base theme: classy
+base theme: bootstrap5
 screenshot: screenshot.jpg
-regions:
-  header: Header
-  simplesmartmenu: Navigation
-  content: Content
-  footer: Footer
-  page_top: Page_top
-  page_bottom: Page_bottom
 libraries:
   - simplesmart/global-css

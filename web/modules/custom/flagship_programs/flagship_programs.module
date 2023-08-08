@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Contains the hook implementations.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function flagship_programs_theme($existing, $type, $theme, $path) {
+  return [
+    'flagship-program-table-view' => [
+      'render_element' => 'children',
+      'template' => 'flagship-program--table',
+      'path' => $path . '/templates',
+      'variables' => [
+        'data' => NULL,
+      ],
+    ],
+    'flagship-program-list-view' => [
+      'render_element' => 'children',
+      'template' => 'flagship-program--list',
+      'path' => $path . '/templates',
+      'variables' => [
+        'data' => NULL,
+      ],
+    ],
+  ];
+}

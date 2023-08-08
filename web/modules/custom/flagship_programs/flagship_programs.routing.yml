@@ -1,0 +1,19 @@
+flagship_programs.form:
+  path: '/programs_form'
+  defaults:
+    _title: 'Flagship Programs Add Form'
+    _form: '\Drupal\flagship_programs\Form\FlagshipProgramsForm'
+  requirements:
+    _permission: 'access content'
+
+flagship_programs.view:
+  path: '/flagship_programs/show/{limit}'
+  defaults:
+    _title: 'Below are the Flagship Programs'
+    _controller: '\Drupal\flagship_programs\Controller\FlagshipProgramView::viewFlagshipData'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      limit:
+        type: integer

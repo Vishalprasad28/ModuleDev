@@ -1,0 +1,7 @@
+name: 'Flagship Programs'
+type: module
+description: 'A Custom module to take Flagship programs as input.'
+package: Custom
+core_version_requirement: ^10
+libraries:
+  - simplesmart/global-css
