@@ -1,7 +1,15 @@
 helloworld.simple_page:
   path: '/greet-me'
   defaults:
-    _title: 'This is a Greeting Page for the Hello World Module'
+    _title: This is a Greeting Page for the Hello World Module
     _controller: \Drupal\helloworld\Controller\SimpleController::helloUser
   requirements:
-    _permission: 'custom static permission'
+    _permission: 'custom static Permission'
+
+helloworld.dynamic_page:
+  path: '/hello/{name}/{company}'
+  defaults:
+    _title: This is a dynamic page taking parameters from url
+    _controller: \Drupal\helloworld\Controller\SimpleController::dynamicGreeting
+  requirements:
+    _permission: 'custom static Permission'

@@ -61,4 +61,29 @@ class SimpleController extends ControllerBase {
     return $content;
   }
 
+  /**
+   * Function for dynamic content rendering.
+   * 
+   * @param string $name
+   *   Contains the arbitary name of the person.
+   * @param string $company
+   *   Contains the name of the company.
+   * 
+   * @return array
+   *   Returns the render array.
+   */
+  public function dynamicGreeting(string $name, string $company) {
+    $content = [
+      '#type' => 'markup',
+      '#markup' => t('Hello <strong> @user </strong> You are an employee at <strong> @company </strong>',
+       [
+        '@user' => $name,
+        '@company' => $company,
+       ]
+       ),
+    ];
+
+    return $content;
+  }
+
 }
