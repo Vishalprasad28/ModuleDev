@@ -2,30 +2,29 @@
 
 /**
  * @file
- * 
- * Contains the hook impletemnation
+ * Contains the hook impletemnations.
  */
 
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Messenger\Messenger;
+use Drupal\Core\Routing\RouteMatchInterface;
 
- /**
-  * Implementing the hook_permission()
-  */
+/**
+ * Implements hook_permission().
+ */
 function helloworld_permission() {
-  return array(
-    'administer hello module' => array(
+  return [
+    'administer hello module' => [
       'title' => t('Administer my module'),
       'description' => t('Perform administration tasks for my module.'),
-    ),
-  );
+    ],
+  ];
 }
 
 /**
- * Implementing the hook_help module
+ * Implements hook_help().
  */
-function helloworld_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+function helloworld_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
     case 'help.page.helloworld':
       return '<p>' . '<h3>' . t('Its a custom Page') . '</h3>' . t('Where your name and the email id will be printed  provided you are logged in, also it has a feature of printing the content based on route parameter,') . '<br> <i>' . t('This Page is being brought by implementing the ') . '<strong><a href="https://api.drupal.org/api/drupal/core%21modules%21help%21help.api.php/function/hook_help/10">hook_help()</a></strong> </i>' . '</p>';
@@ -33,36 +32,37 @@ function helloworld_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $
 }
 
 /**
- * Implementing the hook_hello_greet()
+ * Implements hook_hello_greet().
  */
 function helloworld_hello_greet(int $count, string $bundle_name, array &$build) {
-  // \Drupal::messenger()->addMessage(t('You have viewed this page @count times in current session',['@count' => $count]));
   $build['hello_world'] = [
     '#type' => 'markup',
-    '#markup' => t('This Entity is of <strong> @bundle_type </strong> type and it has been visited <strong> @count </strong> times', ['@bundle_type' => $bundle_name, '@count' => $count]),
-    '#cache' => array(
-      'max-age' => 0
-    ),
+    '#markup' => t('This node is of <strong> @bundle_type </strong> type and it has been 
+      visited <strong> @count </strong> times', 
+      ['@bundle_type' => $bundle_name, '@count' => $count]),
+    '#cache' => [
+      'tags' => ['node_list'],
+    ],
   ];
 }
 
 /**
- * Implementing the hook_entity_view()
+ * Implements hook_node_view().
  */
-function helloworld_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+function helloworld_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
 
-  //Initiating a session variable to store the viewing count of different nodes
+  // Initiating a session variable to store the viewing count of different nodes.
   $session = \Drupal::request()->getSession();
 
-  //Getting the name of the session and the type of data it needs to store
+  // Getting the name of the session and the type of data it needs to store.
   $current_count = $session->get('node_view_count', array());
 
-  //Checking if an entity with given id has been visited or not
+  // Checking if an entity with given id has been visited or not.
   $current_count[$entity->id()] = !isset($current_count[$entity->id()]) ? 1 : ++$current_count[$entity->id()];
   $session->set('node_view_count', $current_count);
   $module_handler = \Drupal::moduleHandler();
 
-  //Invoking all the hooks with given name and passing the required parameters
-  //to them
+  // Invoking all the hooks with given name and passing the required parameters
+  // to them.
   $module_handler->invokeAll('hello_greet',array($current_count[$entity->id()], $entity->bundle(), &$build));
 }
