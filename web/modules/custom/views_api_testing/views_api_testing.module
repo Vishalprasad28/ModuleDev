@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Contains the hook implementations.
+ */
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_view_pre_render().
+ */
+function views_api_testing_views_pre_render(ViewExecutable $view) {
+  // Printing the view id of each view being created on the site.
+  // it just for making debugging easy.
+  \Drupal::messenger()->addMessage($view->id());
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function views_api_testing_views_query_alter(&$view, &$query) {
+  // Checking if the view id is the desired one in the desired view formate.
+  if ($view->id() === 'article_listing' && $view->getDisplay()->display['id'] == 'page_1') {
+    // Adding a sort criteria dynamically.
+    $query->addOrderBy(NULL, '', 'ASC', 'node_field_data.created');
+  }
+}
