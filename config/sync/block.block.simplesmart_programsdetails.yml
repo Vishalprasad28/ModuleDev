@@ -1,0 +1,27 @@
+uuid: 571a9f8a-2da2-455a-9e6e-f4c0ad996767
+langcode: en
+status: true
+dependencies:
+  module:
+    - flagship_programs
+    - system
+  theme:
+    - simplesmart
+id: simplesmart_programsdetails
+theme: simplesmart
+region: content
+weight: 0
+provider: null
+plugin: programs_details
+settings:
+  id: programs_details
+  label: 'programs Details'
+  label_display: '0'
+  provider: flagship_programs
+  template: table
+  limit: '4'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /program-details/show

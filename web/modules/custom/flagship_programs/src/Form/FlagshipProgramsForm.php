@@ -46,16 +46,6 @@ class FlagshipProgramsForm extends ConfigFormBase {
       '#date_time_format' => 'H:i',
       '#default_value' => '00:00',
     ];
-    $form['flagship_programs']['template'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Select template'),
-      '#options' => [
-        'table' => $this->t('Table'),
-        'list' => $this->t('List'),
-      ],
-      '#default_value' => $this->config('flagship_programs.data')->get('template'),
-    ];
-
     $form['flagship_programs']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Save'),
@@ -79,7 +69,6 @@ class FlagshipProgramsForm extends ConfigFormBase {
     array_push($data, $temp);
     $this->config('flagship_programs.data')
       ->set('data', $data)
-      ->set('template', $form_state->getValue('template'))
       ->save();
   }
 

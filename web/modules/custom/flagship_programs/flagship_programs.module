@@ -10,7 +10,7 @@
  */
 function flagship_programs_theme($existing, $type, $theme, $path) {
   return [
-    'flagship-program-table-view' => [
+    'flagship_program__table' => [
       'render_element' => 'children',
       'template' => 'flagship-program--table',
       'path' => $path . '/templates',
@@ -18,7 +18,7 @@ function flagship_programs_theme($existing, $type, $theme, $path) {
         'data' => NULL,
       ],
     ],
-    'flagship-program-list-view' => [
+    'flagship_program_list' => [
       'render_element' => 'children',
       'template' => 'flagship-program--list',
       'path' => $path . '/templates',
@@ -26,5 +26,24 @@ function flagship_programs_theme($existing, $type, $theme, $path) {
         'data' => NULL,
       ],
     ],
+    'webform_paragraph_view' => [
+      'render_element' => 'children',
+      'template' => 'webform-paragraph',
+      'path' => $path . '/templates',
+    ],
   ];
+}
+
+/**
+ * Implements hook_suggestions_HOOK().
+ */
+function flagship_programs_theme_suggestions_flagship_program__table_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'flagship_program__table';
+}
+
+/**
+ * Implements hook_suggestions_HOOK().
+ */
+function flagship_programs_theme_suggestions_flagship_program__list_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'flagship_program__list';
 }

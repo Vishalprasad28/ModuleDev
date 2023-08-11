@@ -1,0 +1,8 @@
+uuid: adcc1358-513c-4df1-8956-745cefd3ee12
+langcode: en
+status: true
+dependencies: {  }
+name: 'Views Relatiobnship'
+vid: views_relatiobnship
+description: 'testing taxonomy term'
+weight: 0

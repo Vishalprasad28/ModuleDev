@@ -1,0 +1,22 @@
+uuid: 7bf98abe-bcb1-4e58-b5de-6867ec0ce92c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - simplesmart
+_core:
+  default_config_hash: 9LdMj38y4GDi23GrIUtIZIV1bJEn1C47N19jrswvcLc
+id: simplesmart_messages
+theme: simplesmart
+region: breadcrumb
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }

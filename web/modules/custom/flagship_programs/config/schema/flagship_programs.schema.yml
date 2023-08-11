@@ -1,0 +1,10 @@
+block.settings.programs_details:
+  type: block_settings
+  label: 'programs Details block'
+  mapping:
+    template:
+      type: string
+      label: 'Template'
+    limit:
+      type: number
+      label: 'Limit'

@@ -1,0 +1,19 @@
+uuid: b0b4bd3f-447c-4949-ba02-a9fbf6f6a8a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - time_field
+id: paragraph.field_time
+field_name: field_time
+entity_type: paragraph
+type: time
+settings: {  }
+module: time_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

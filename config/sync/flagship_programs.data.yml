@@ -1,0 +1,28 @@
+_core:
+  default_config_hash: JyxIAVORXIuuXJV95P4TTUx4de5v5bHmPBgS3M_G9mU
+data:
+  -
+    city: kolkata
+    theater: PVR
+    time: 12-37-41
+  -
+    city: Delhi
+    theater: Inox
+    time: 12-37-25
+  -
+    city: Barelly
+    theater: PVR
+    time: 06-48-14
+  -
+    city: Gurgao
+    theater: inox
+    time: 11-55-03
+  -
+    city: kolkata
+    theater: PVR
+    time: 12-35-05
+  -
+    city: kolkata
+    theater: PVR
+    time: 12-05-47
+template: table

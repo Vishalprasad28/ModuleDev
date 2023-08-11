@@ -1,0 +1,10 @@
+uuid: 1904e8bf-3c27-462a-95ed-ea85a1f65585
+langcode: en
+status: true
+dependencies: {  }
+id: movie_details
+label: 'Movie Details'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

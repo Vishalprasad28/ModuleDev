@@ -1,0 +1,43 @@
+uuid: e0918711-1b84-4359-a315-d67aeb63b395
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.movie_details.field_city
+    - field.field.paragraph.movie_details.field_theater
+    - field.field.paragraph.movie_details.field_time
+    - paragraphs.paragraphs_type.movie_details
+  module:
+    - time_field
+id: paragraph.movie_details.default
+targetEntityType: paragraph
+bundle: movie_details
+mode: default
+content:
+  field_city:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_theater:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_time:
+    type: time_widget
+    weight: 2
+    region: content
+    settings:
+      enabled: false
+      step: 5
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,31 @@
+uuid: 79d18f3a-bf98-4edc-ab73-f4f99e1b0fd1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_movie_extra_details
+    - node.type.movie
+    - paragraphs.paragraphs_type.movie_details
+  module:
+    - entity_reference_revisions
+id: node.movie.field_movie_extra_details
+field_name: field_movie_extra_details
+entity_type: node
+bundle: movie
+label: 'Movie Extra Details'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      movie_details: movie_details
+    negate: 0
+    target_bundles_drag_drop:
+      movie_details:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

@@ -7,13 +7,17 @@ flagship_programs.form:
     _permission: 'access content'
 
 flagship_programs.view:
-  path: '/flagship_programs/show/{limit}'
+  path: '/program-details/show'
   defaults:
     _title: 'Below are the Flagship Programs'
     _controller: '\Drupal\flagship_programs\Controller\FlagshipProgramView::viewFlagshipData'
   requirements:
     _permission: 'access content'
-  options:
-    parameters:
-      limit:
-        type: integer
+
+flagship_programs.webform:
+  path: '/webform-paragraph'
+  defaults:
+    _title: 'This is a custom Page for Webform and a Paragraph'
+    _controller: '\Drupal\flagship_programs\Controller\FlagshipProgramView::showWebform'
+  requirements:
+    _permission: 'access content'

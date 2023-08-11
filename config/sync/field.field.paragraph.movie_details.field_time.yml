@@ -1,0 +1,21 @@
+uuid: 78e0d7d6-bb49-4a88-9c3e-85a6b3c1936b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_time
+    - paragraphs.paragraphs_type.movie_details
+  module:
+    - time_field
+id: paragraph.movie_details.field_time
+field_name: field_time
+entity_type: paragraph
+bundle: movie_details
+label: Time
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: time

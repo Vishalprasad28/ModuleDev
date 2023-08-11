@@ -1,0 +1,21 @@
+uuid: 75a3b2c0-2bb0-451c-9423-0da3e2d17c06
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - node
+    - paragraphs
+id: node.field_movie_extra_details
+field_name: field_movie_extra_details
+entity_type: node
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
