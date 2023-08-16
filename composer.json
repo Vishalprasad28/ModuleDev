@@ -30,6 +30,7 @@
         "drupal/devel_entity_updates": "^4.1",
         "drupal/ds": "^3.15",
         "drupal/hcaptcha": "^1.2",
+        "drupal/maillog": "^1.1",
         "drupal/mix": "^1.6",
         "drupal/paragraphs": "^1.15",
         "drupal/pathauto": "^1.11",

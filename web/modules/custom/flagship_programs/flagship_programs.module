@@ -5,6 +5,9 @@
  * Contains the hook implementations.
  */
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+
 /**
  * Implements hook_theme().
  */
@@ -46,4 +49,17 @@ function flagship_programs_theme_suggestions_flagship_program__table_alter(array
  */
 function flagship_programs_theme_suggestions_flagship_program__list_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'flagship_program__list';
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function flagship_programs_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  $node = $entity->getEntityTypeId();
+  if ($node && $entity->bundle() == 'movie') {
+    echo 'hello';
+    $build['#attached'] = [
+      'library' => ['simplesmart/simple-js']
+    ];
+  }
 }

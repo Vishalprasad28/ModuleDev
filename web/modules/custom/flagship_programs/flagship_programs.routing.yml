@@ -21,3 +21,11 @@ flagship_programs.webform:
     _controller: '\Drupal\flagship_programs\Controller\FlagshipProgramView::showWebform'
   requirements:
     _permission: 'access content'
+
+flagship_programs.demo:
+  path: '/flagship-programs/demo'
+  defaults:
+    _title: 'Demo'
+    _form: 'Drupal\flagship_programs\Form\DemoForm'
+  requirements:
+    _permission: 'access content'

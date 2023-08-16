@@ -8,3 +8,7 @@ layout-css:
   css:
     theme:
       css/layout.css: {}
+simple-js:
+  version: 1.x
+  js:
+    js/main.js: {}

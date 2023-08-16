@@ -4,6 +4,9 @@
  * Contains the hook implementations.
  */
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+
  /**
  * Implements hook_theme().
  */
@@ -45,8 +48,6 @@ function simplesmart_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'custom-class';
   }
 }
-
-
 
 /**
  * Implements hook_suggestions_HOOK().
