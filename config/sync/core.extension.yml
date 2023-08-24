@@ -11,6 +11,7 @@ module:
   config: 0
   contact: 0
   contextual: 0
+  custom_entity: 0
   datetime: 0
   dblog: 0
   devel: 0
@@ -32,6 +33,7 @@ module:
   mymodule: 0
   mysql: 0
   node: 0
+  node_uninstaller: 0
   options: 0
   page_cache: 0
   path: 0

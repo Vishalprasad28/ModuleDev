@@ -1,0 +1,6 @@
+services:
+  custom_entity.node_view_alter:
+    class: Drupal\custom_entity\EventSubscriber\MovieBudgetView
+    arguments: ['@config.factory']
+    tags:
+      - { name: event_subscriber }
